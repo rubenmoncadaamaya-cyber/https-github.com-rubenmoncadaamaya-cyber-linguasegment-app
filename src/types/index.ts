@@ -370,4 +370,31 @@ export interface BreBConfig {
   accountNumber: string;
 }
 
+// ========================
+// AUTHENTICATION & RBAC ROLES (4.1 to 4.4)
+// ========================
+export type UserRole = 
+  | 'admin'          // 4.1 Administrador / Coordinador Académico
+  | 'teacher'        // 4.2 Profesor / Tutor
+  | 'sales'          // 4.3 Comercial / Mercadeo
+  | 'parent_student'; // 4.4 Padre de Familia / Estudiante
 
+export interface AuthUser {
+  uid: string;
+  email: string;
+  displayName: string;
+  role: UserRole;
+  avatarUrl?: string;
+  studentId?: number; // Linked student profile for student/parent view
+  phoneNumber?: string;
+  institution?: string;
+}
+
+export interface RolePermissionConfig {
+  role: UserRole;
+  label: string;
+  badge: string;
+  description: string;
+  badgeColor: string;
+  allowedTabs: ('dashboard' | 'students' | 'personalization' | 'marketing' | 'payments' | 'scheduling' | 'reports' | 'student_portal')[];
+}

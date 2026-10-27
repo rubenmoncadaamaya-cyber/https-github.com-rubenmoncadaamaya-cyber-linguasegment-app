@@ -1,0 +1,112 @@
+{
+  "entities": {
+    "UserProfile": {
+      "title": "UserProfile",
+      "description": "User account profile and role information",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string", "maxLength": 128 },
+        "email": { "type": "string", "maxLength": 128 },
+        "displayName": { "type": "string", "maxLength": 128 },
+        "role": { "type": "string", "enum": ["admin", "teacher", "sales", "student"] },
+        "photoURL": { "type": "string", "maxLength": 512 },
+        "createdAt": { "type": "string", "maxLength": 64 },
+        "updatedAt": { "type": "string", "maxLength": 64 }
+      },
+      "required": ["uid", "email", "role"]
+    },
+    "Lead": {
+      "title": "Lead",
+      "description": "Commercial sales prospect lead",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "name": { "type": "string", "maxLength": 128 },
+        "email": { "type": "string", "maxLength": 128 },
+        "phone": { "type": "string", "maxLength": 32 },
+        "age": { "type": "number" },
+        "segment": { "type": "string", "maxLength": 64 },
+        "status": { "type": "string", "enum": ["Nuevo", "Contactado", "Diagnóstico Agendado", "Matriculado", "Inactivo"] },
+        "estimatedLtv": { "type": "number" },
+        "source": { "type": "string", "maxLength": 64 },
+        "createdAt": { "type": "string", "maxLength": 64 }
+      },
+      "required": ["id", "name", "segment", "status"]
+    },
+    "AcademicClass": {
+      "title": "AcademicClass",
+      "description": "Scheduled tutor-student class session",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "subject": { "type": "string", "maxLength": 128 },
+        "tutorId": { "type": "string", "maxLength": 128 },
+        "tutorName": { "type": "string", "maxLength": 128 },
+        "studentId": { "type": "string", "maxLength": 128 },
+        "studentName": { "type": "string", "maxLength": 128 },
+        "date": { "type": "string", "maxLength": 64 },
+        "time": { "type": "string", "maxLength": 32 },
+        "status": { "type": "string", "enum": ["Agendada", "En curso", "Completada", "Cancelada"] },
+        "notes": { "type": "string", "maxLength": 512 },
+        "meetingUrl": { "type": "string", "maxLength": 512 }
+      },
+      "required": ["id", "subject", "tutorId", "studentId", "status"]
+    },
+    "Diagnostic": {
+      "title": "Diagnostic",
+      "description": "Student pedagogical diagnostic and AI assessment",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "studentId": { "type": "string", "maxLength": 128 },
+        "studentName": { "type": "string", "maxLength": 128 },
+        "tutorId": { "type": "string", "maxLength": 128 },
+        "level": { "type": "string", "maxLength": 32 },
+        "strengths": { "type": "string", "maxLength": 512 },
+        "weaknesses": { "type": "string", "maxLength": 512 },
+        "aiReport": { "type": "string", "maxLength": 2048 },
+        "createdAt": { "type": "string", "maxLength": 64 }
+      },
+      "required": ["id", "studentId", "tutorId", "level"]
+    },
+    "Payment": {
+      "title": "Payment",
+      "description": "Bre-B, Nequi, or Daviplata fee transaction record",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "studentId": { "type": "string", "maxLength": 128 },
+        "studentName": { "type": "string", "maxLength": 128 },
+        "amount": { "type": "number" },
+        "reference": { "type": "string", "maxLength": 64 },
+        "method": { "type": "string", "enum": ["Bre-B", "Nequi", "Daviplata", "Transferencia"] },
+        "status": { "type": "string", "enum": ["Confirmado", "Pendiente", "Fallido"] },
+        "month": { "type": "string", "maxLength": 32 },
+        "paidAt": { "type": "string", "maxLength": 64 }
+      },
+      "required": ["id", "studentId", "amount", "reference", "method", "status"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": { "$ref": "#/entities/UserProfile" },
+      "description": "User profiles and RBAC role assignments"
+    },
+    "/leads/{leadId}": {
+      "schema": { "$ref": "#/entities/Lead" },
+      "description": "Commercial prospects for sales funnel"
+    },
+    "/classes/{classId}": {
+      "schema": { "$ref": "#/entities/AcademicClass" },
+      "description": "Scheduled tutor-student class sessions"
+    },
+    "/diagnostics/{diagnosticId}": {
+      "schema": { "$ref": "#/entities/Diagnostic" },
+      "description": "Pedagogical diagnostics and AI progress evaluations"
+    },
+    "/payments/{paymentId}": {
+      "schema": { "$ref": "#/entities/Payment" },
+      "description": "Monthly student fee records via Bre-B / Wallets"
+    }
+  }
+}

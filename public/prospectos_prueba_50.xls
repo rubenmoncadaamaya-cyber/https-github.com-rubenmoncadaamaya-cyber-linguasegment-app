@@ -1,0 +1,692 @@
+<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns="http://www.w3.org/TR/REC-html40">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <!--[if gte mso 9]>
+  <xml>
+    <x:ExcelWorkbook>
+      <x:ExcelWorksheets>
+        <x:ExcelWorksheet>
+          <x:Name>Prospectos Comerciales (50)</x:Name>
+          <x:WorksheetOptions>
+            <x:DisplayGridlines/>
+          </x:WorksheetOptions>
+        </x:ExcelWorksheet>
+      </x:ExcelWorksheets>
+    </x:ExcelWorkbook>
+  </xml>
+  <![endif]-->
+  <style>
+    body { font-family: Calibri, 'Segoe UI', Arial, sans-serif; }
+    table { border-collapse: collapse; width: 100%; }
+    th { background-color: #1E293B; color: #FFFFFF; font-weight: bold; padding: 10px 12px; border: 1px solid #94A3B8; text-align: left; }
+    td { padding: 8px 12px; border: 1px solid #CBD5E1; font-size: 11pt; }
+    .header-kids { background-color: #FCE7F3; font-weight: bold; }
+    .header-b2b { background-color: #E0F2FE; font-weight: bold; }
+    .header-cert { background-color: #FEF3C7; font-weight: bold; }
+    .header-vip { background-color: #EEF2FF; font-weight: bold; }
+    .header-travel { background-color: #D1FAE5; font-weight: bold; }
+    .header-winback { background-color: #FFE4E6; font-weight: bold; }
+    .header-nurture { background-color: #F3E8FF; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <h2>LINGUASEGMENT AI - BASE DE PRUEBA DE 50 PROSPECTOS COMERCIALES</h2>
+  <p>Generado para pruebas de importación y segmentación de mercadeo (incluye Enseñanza Infantil, B2B Corporativo, Certificación Oficial, VIP, Viajes, Winback y Nurturing).</p>
+  <table>
+    <thead>
+      <tr>
+        <th>full_name</th>
+        <th>email</th>
+        <th>subscription</th>
+        <th>learning_goal</th>
+        <th>estimated_budget</th>
+        <th>industry</th>
+        <th>urgency_level</th>
+        <th>lead_source</th>
+        <th>total_lessons</th>
+        <th>cefr_level</th>
+        <th>notes</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="header-kids">
+        <td>Mariana Benítez Osorio</td>
+        <td>mbenitez.madre@gmail.com</td>
+        <td>premium</td>
+        <td>Enseñanza Infantil / Kids (4-12 años)</td>
+        <td>Premium / VIP ($100-220/mes)</td>
+        <td>Padres de Familia / Escolar</td>
+        <td>Alta (&lt; 2 semanas)</td>
+        <td>Instagram Ads</td>
+        <td>8</td>
+        <td>A1</td>
+        <td>Mamá de Mateo (6 años). Busca clases lúdicas con canciones y cuentos en Bogotá</td>
+      </tr>
+      <tr class="header-kids">
+        <td>Rodrigo Arismendi Gómez</td>
+        <td>rarismendi@colegio.edu.co</td>
+        <td>basic</td>
+        <td>Enseñanza Infantil / Kids (4-12 años)</td>
+        <td>Estándar ($40-85/mes)</td>
+        <td>Padres de Familia / Escolar</td>
+        <td>Media (1-3 meses)</td>
+        <td>Referral / Boca a Boca</td>
+        <td>5</td>
+        <td>A1</td>
+        <td>Papá de mellizos de 8 años en Medellín. Iniciación bilingüe escolar</td>
+      </tr>
+      <tr class="header-kids">
+        <td>Claudia Patricia Henao</td>
+        <td>claudia.henao@familias.co</td>
+        <td>free</td>
+        <td>Enseñanza Infantil / Kids (4-12 años)</td>
+        <td>Estándar ($40-85/mes)</td>
+        <td>Padres de Familia / Escolar</td>
+        <td>Alta (&lt; 2 semanas)</td>
+        <td>Instagram Ads</td>
+        <td>2</td>
+        <td>A1</td>
+        <td>Madre de Sofía (5 años). Desea estimulación temprana y fonética en Cali</td>
+      </tr>
+      <tr class="header-kids">
+        <td>Felipe Andrés Restrepo</td>
+        <td>felipe.restrepo.papa@gmail.com</td>
+        <td>premium</td>
+        <td>Enseñanza Infantil / Kids (4-12 años)</td>
+        <td>Premium / VIP ($100-220/mes)</td>
+        <td>Padres de Familia / Escolar</td>
+        <td>Media (1-3 meses)</td>
+        <td>Google Search</td>
+        <td>10</td>
+        <td>A2</td>
+        <td>Padre de Lucas (9 años). Apoyo para colegio bilingüe en Chía</td>
+      </tr>
+      <tr class="header-kids">
+        <td>Natalia María Zuluaga</td>
+        <td>natalia.zuluaga@educacion.co</td>
+        <td>basic</td>
+        <td>Enseñanza Infantil / Kids (4-12 años)</td>
+        <td>Estándar ($40-85/mes)</td>
+        <td>Padres de Familia / Escolar</td>
+        <td>Alta (&lt; 2 semanas)</td>
+        <td>Instagram Ads</td>
+        <td>4</td>
+        <td>A1</td>
+        <td>Madre de Martín (7 años). Le interesan clases interactivas con juegos en Envigado</td>
+      </tr>
+      <tr class="header-kids">
+        <td>Juan Guillermo Londoño</td>
+        <td>jglondono.padre@yahoo.com</td>
+        <td>free</td>
+        <td>Enseñanza Infantil / Kids (4-12 años)</td>
+        <td>Económico ($15-35/mes)</td>
+        <td>Padres de Familia / Escolar</td>
+        <td>Baja / Exploratoria</td>
+        <td>Organic / Blog</td>
+        <td>1</td>
+        <td>A1</td>
+        <td>Papá de Luciana (4 años). Buscando opciones accesibles para preescolar</td>
+      </tr>
+      <tr class="header-kids">
+        <td>Andrea Marcela Cárdenas</td>
+        <td>andrea.cardenas@servicios.com</td>
+        <td>premium</td>
+        <td>Enseñanza Infantil / Kids (4-12 años)</td>
+        <td>Premium / VIP ($100-220/mes)</td>
+        <td>Padres de Familia / Escolar</td>
+        <td>Alta (&lt; 2 semanas)</td>
+        <td>Referral / Boca a Boca</td>
+        <td>12</td>
+        <td>A2</td>
+        <td>Madre de Juan José (11 años). Preparación para campamento de verano en USA</td>
+      </tr>
+      <tr class="header-kids">
+        <td>David Esteban Morales</td>
+        <td>dmorales.familia@outlook.com</td>
+        <td>basic</td>
+        <td>Enseñanza Infantil / Kids (4-12 años)</td>
+        <td>Estándar ($40-85/mes)</td>
+        <td>Padres de Familia / Escolar</td>
+        <td>Media (1-3 meses)</td>
+        <td>Instagram Ads</td>
+        <td>6</td>
+        <td>A1</td>
+        <td>Padre de Isabella (8 años) en Barranquilla. Interés en fluidez oral</td>
+      </tr>
+      <tr class="header-kids">
+        <td>Paola Andrea Echeverry</td>
+        <td>paola.echeverry@colombia.org</td>
+        <td>free</td>
+        <td>Enseñanza Infantil / Kids (4-12 años)</td>
+        <td>Estándar ($40-85/mes)</td>
+        <td>Padres de Familia / Escolar</td>
+        <td>Media (1-3 meses)</td>
+        <td>Google Search</td>
+        <td>3</td>
+        <td>A1</td>
+        <td>Madre de Tomás (6 años) y Daniela (9 años) en Pereira</td>
+      </tr>
+      <tr class="header-kids">
+        <td>Santiago Vélez Montoya</td>
+        <td>santiago.velez@alcaldia.gov.co</td>
+        <td>basic</td>
+        <td>Enseñanza Infantil / Kids (4-12 años)</td>
+        <td>Estándar ($40-85/mes)</td>
+        <td>Padres de Familia / Escolar</td>
+        <td>Alta (&lt; 2 semanas)</td>
+        <td>Webinar Educativo</td>
+        <td>5</td>
+        <td>A1</td>
+        <td>Papá de Gabriela (10 años). Interesado en club de conversación infantil</td>
+      </tr>
+      <tr class="header-kids">
+        <td>Diana Milena Quintero</td>
+        <td>diana.quintero@gmail.com</td>
+        <td>premium</td>
+        <td>Enseñanza Infantil / Kids (4-12 años)</td>
+        <td>Premium / VIP ($100-220/mes)</td>
+        <td>Padres de Familia / Escolar</td>
+        <td>Alta (&lt; 2 semanas)</td>
+        <td>Instagram Ads</td>
+        <td>9</td>
+        <td>A2</td>
+        <td>Mamá de Emiliano (7 años) en Bucaramanga. Desea tutor nativo 1 a 1</td>
+      </tr>
+      <tr class="header-kids">
+        <td>Carlos Eduardo Betancur</td>
+        <td>cbetancur.padre@hotmail.com</td>
+        <td>free</td>
+        <td>Enseñanza Infantil / Kids (4-12 años)</td>
+        <td>Económico ($15-35/mes)</td>
+        <td>Padres de Familia / Escolar</td>
+        <td>Baja / Exploratoria</td>
+        <td>Referral / Boca a Boca</td>
+        <td>2</td>
+        <td>A1</td>
+        <td>Papá de Salomé (5 años) en Manizales. Desea probar clase demo</td>
+      </tr>
+      <tr class="header-b2b">
+        <td>Alejandra Ramos Pineda</td>
+        <td>alejandra.ramos@techcorp.co</td>
+        <td>basic</td>
+        <td>Desarrollo Profesional / B2B</td>
+        <td>Corporativo Empresarial</td>
+        <td>Tecnología &amp; Software</td>
+        <td>Alta (&lt; 2 semanas)</td>
+        <td>LinkedIn B2B</td>
+        <td>7</td>
+        <td>B2</td>
+        <td>Tech Lead en fintech de Bogotá. Requiere inglés para liderar equipo en EE.UU.</td>
+      </tr>
+      <tr class="header-b2b">
+        <td>Mauricio Silva Santos</td>
+        <td>mauricio.silva@bancolombia.com.co</td>
+        <td>premium</td>
+        <td>Desarrollo Profesional / B2B</td>
+        <td>Corporativo Empresarial</td>
+        <td>Finanzas &amp; Negocios</td>
+        <td>Alta (&lt; 2 semanas)</td>
+        <td>LinkedIn B2B</td>
+        <td>14</td>
+        <td>B2</td>
+        <td>VP Adjunto de Riesgos. Presentación de resultados a fondos de inversión en NY</td>
+      </tr>
+      <tr class="header-b2b">
+        <td>Valentina Casas Franco</td>
+        <td>vcasas@mercadolibre.com</td>
+        <td>basic</td>
+        <td>Desarrollo Profesional / B2B</td>
+        <td>Corporativo Empresarial</td>
+        <td>Tecnología &amp; Software</td>
+        <td>Media (1-3 meses)</td>
+        <td>Google Search</td>
+        <td>6</td>
+        <td>B1</td>
+        <td>Product Manager en MercadoLibre. Reuniones diarias en inglés con equipos regionales</td>
+      </tr>
+      <tr class="header-b2b">
+        <td>Andrés Felipe Ospina</td>
+        <td>andres.ospina@rappi.com</td>
+        <td>free</td>
+        <td>Desarrollo Profesional / B2B</td>
+        <td>Corporativo Empresarial</td>
+        <td>Tecnología &amp; Software</td>
+        <td>Alta (&lt; 2 semanas)</td>
+        <td>LinkedIn B2B</td>
+        <td>3</td>
+        <td>B1</td>
+        <td>Backend Engineer preparando entrevistas técnicas para unicornio de Silicon Valley</td>
+      </tr>
+      <tr class="header-b2b">
+        <td>Juliana Correa Tabares</td>
+        <td>jcorrea@nutresa.com</td>
+        <td>premium</td>
+        <td>Desarrollo Profesional / B2B</td>
+        <td>Corporativo Empresarial</td>
+        <td>Finanzas &amp; Negocios</td>
+        <td>Media (1-3 meses)</td>
+        <td>Referral / Boca a Boca</td>
+        <td>11</td>
+        <td>B2</td>
+        <td>Gerente de Expansión Internacional. Negociación de contratos con proveedores asiáticos</td>
+      </tr>
+      <tr class="header-b2b">
+        <td>Gustavo Adolfo Parra</td>
+        <td>gustavo.parra@globant.com</td>
+        <td>basic</td>
+        <td>Desarrollo Profesional / B2B</td>
+        <td>Corporativo Empresarial</td>
+        <td>Tecnología &amp; Software</td>
+        <td>Alta (&lt; 2 semanas)</td>
+        <td>LinkedIn B2B</td>
+        <td>8</td>
+        <td>B2</td>
+        <td>Software Architect en Globant. Pitch comercial con clientes de Reino Unido</td>
+      </tr>
+      <tr class="header-b2b">
+        <td>Luisa Fernanda Mendoza</td>
+        <td>lmendoza@ecopetrol.com.co</td>
+        <td>premium</td>
+        <td>Desarrollo Profesional / B2B</td>
+        <td>Corporativo Empresarial</td>
+        <td>Finanzas &amp; Negocios</td>
+        <td>Media (1-3 meses)</td>
+        <td>Webinar Educativo</td>
+        <td>9</td>
+        <td>B1</td>
+        <td>Líder de sostenibilidad en Ecopetrol. Conferencia internacional de energía</td>
+      </tr>
+      <tr class="header-b2b">
+        <td>Héctor Fabio Carmona</td>
+        <td>hcarmona@segurosbolivar.com</td>
+        <td>basic</td>
+        <td>Desarrollo Profesional / B2B</td>
+        <td>Corporativo Empresarial</td>
+        <td>Finanzas &amp; Negocios</td>
+        <td>Media (1-3 meses)</td>
+        <td>LinkedIn B2B</td>
+        <td>5</td>
+        <td>B1</td>
+        <td>Director actuarial. Interés en terminología financiera anglosajona</td>
+      </tr>
+      <tr class="header-cert">
+        <td>Carlos Mendoza Vidal</td>
+        <td>cmendoza@uniandes.edu.co</td>
+        <td>premium</td>
+        <td>Certificación Oficial (IELTS/TOEFL)</td>
+        <td>Premium / VIP ($100-220/mes)</td>
+        <td>Estudiante Universitario</td>
+        <td>Alta (&lt; 2 semanas)</td>
+        <td>Google Search</td>
+        <td>13</td>
+        <td>B2</td>
+        <td>Graduado de economía preparando IELTS Académico (banda 7.5 requerida para LSE)</td>
+      </tr>
+      <tr class="header-cert">
+        <td>Camila Torres Vargas</td>
+        <td>ctorres@javeriana.edu.co</td>
+        <td>basic</td>
+        <td>Certificación Oficial (IELTS/TOEFL)</td>
+        <td>Estándar ($40-85/mes)</td>
+        <td>Estudiante Universitario</td>
+        <td>Alta (&lt; 2 semanas)</td>
+        <td>Instagram Ads</td>
+        <td>8</td>
+        <td>B2</td>
+        <td>Estudiante de Medicina Javeriana. Preparando examen OET para residencia en Reino Unido</td>
+      </tr>
+      <tr class="header-cert">
+        <td>Javier Ignacio Rojas</td>
+        <td>jrojas@eafit.edu.co</td>
+        <td>free</td>
+        <td>Certificación Oficial (IELTS/TOEFL)</td>
+        <td>Estándar ($40-85/mes)</td>
+        <td>Estudiante Universitario</td>
+        <td>Media (1-3 meses)</td>
+        <td>Google Search</td>
+        <td>4</td>
+        <td>B1</td>
+        <td>Ingeniero mecánico EAFIT aplicando a beca Erasmus Mundus en Alemania</td>
+      </tr>
+      <tr class="header-cert">
+        <td>Daniela Sofía Rincón</td>
+        <td>daniela.rincon@unal.edu.co</td>
+        <td>basic</td>
+        <td>Certificación Oficial (IELTS/TOEFL)</td>
+        <td>Estándar ($40-85/mes)</td>
+        <td>Estudiante Universitario</td>
+        <td>Alta (&lt; 2 semanas)</td>
+        <td>Webinar Educativo</td>
+        <td>7</td>
+        <td>B2</td>
+        <td>Bióloga Universidad Nacional preparando TOEFL iBT (meta 100 puntos) para Canadá</td>
+      </tr>
+      <tr class="header-cert">
+        <td>Sebastián Marín Ocampo</td>
+        <td>smarin.toefl@gmail.com</td>
+        <td>premium</td>
+        <td>Certificación Oficial (IELTS/TOEFL)</td>
+        <td>Premium / VIP ($100-220/mes)</td>
+        <td>Finanzas &amp; Negocios</td>
+        <td>Alta (&lt; 2 semanas)</td>
+        <td>Referral / Boca a Boca</td>
+        <td>10</td>
+        <td>B2</td>
+        <td>Consultor en Deloitte preparando GMAT e IELTS para MBA en INSEAD</td>
+      </tr>
+      <tr class="header-cert">
+        <td>Manuela Gómez Salcedo</td>
+        <td>mgomez.ielts@yahoo.com</td>
+        <td>basic</td>
+        <td>Certificación Oficial (IELTS/TOEFL)</td>
+        <td>Estándar ($40-85/mes)</td>
+        <td>Educación &amp; Academia</td>
+        <td>Media (1-3 meses)</td>
+        <td>Google Search</td>
+        <td>6</td>
+        <td>B1</td>
+        <td>Docente universitaria aplicando a doctorado en University of Melbourne</td>
+      </tr>
+      <tr class="header-cert">
+        <td>Nicolás Duque Arango</td>
+        <td>nduque@uis.edu.co</td>
+        <td>free</td>
+        <td>Certificación Oficial (IELTS/TOEFL)</td>
+        <td>Económico ($15-35/mes)</td>
+        <td>Estudiante Universitario</td>
+        <td>Media (1-3 meses)</td>
+        <td>Organic / Blog</td>
+        <td>3</td>
+        <td>B1</td>
+        <td>Estudiante de UIS Bucaramanga preparando requisito de grado y visa de trabajo</td>
+      </tr>
+      <tr class="header-vip">
+        <td>Guillermo Vidal Pardo</td>
+        <td>gvidal@hospitalpablo.org</td>
+        <td>premium</td>
+        <td>Desarrollo Profesional / B2B</td>
+        <td>Premium / VIP ($100-220/mes)</td>
+        <td>Salud &amp; Medicina</td>
+        <td>Alta (&lt; 2 semanas)</td>
+        <td>Webinar Educativo</td>
+        <td>15</td>
+        <td>B2</td>
+        <td>Cirujano cardiovascular aplicando a fellowship de especialización en Boston</td>
+      </tr>
+      <tr class="header-vip">
+        <td>Klaus Alberto Weber</td>
+        <td>klaus.weber@abogados.com.co</td>
+        <td>premium</td>
+        <td>Certificación Oficial (IELTS/TOEFL)</td>
+        <td>Premium / VIP ($100-220/mes)</td>
+        <td>Finanzas &amp; Negocios</td>
+        <td>Alta (&lt; 2 semanas)</td>
+        <td>Referral / Boca a Boca</td>
+        <td>16</td>
+        <td>C1</td>
+        <td>Socio de firma tributaria preparando certificación legal TOLES</td>
+      </tr>
+      <tr class="header-vip">
+        <td>Verónica Salazar Ríos</td>
+        <td>vsalazar@creativos.co</td>
+        <td>premium</td>
+        <td>Desarrollo Profesional / B2B</td>
+        <td>Premium / VIP ($100-220/mes)</td>
+        <td>Tecnología &amp; Software</td>
+        <td>Media (1-3 meses)</td>
+        <td>Instagram Ads</td>
+        <td>12</td>
+        <td>B2</td>
+        <td>Directora creativa en agencia digital. Gestión de cuentas en EE.UU. y Canadá</td>
+      </tr>
+      <tr class="header-vip">
+        <td>Esteban Morales Peña</td>
+        <td>emorales@constructora.com.co</td>
+        <td>basic</td>
+        <td>Desarrollo Profesional / B2B</td>
+        <td>Premium / VIP ($100-220/mes)</td>
+        <td>Finanzas &amp; Negocios</td>
+        <td>Alta (&lt; 2 semanas)</td>
+        <td>Referral / Boca a Boca</td>
+        <td>9</td>
+        <td>B1</td>
+        <td>Gerente de proyectos inmobiliarios. Interés en negociar con inversionistas de Miami</td>
+      </tr>
+      <tr class="header-vip">
+        <td>Catalina Botero Luján</td>
+        <td>cbotero@laboratorios.com</td>
+        <td>premium</td>
+        <td>Desarrollo Profesional / B2B</td>
+        <td>Premium / VIP ($100-220/mes)</td>
+        <td>Salud &amp; Medicina</td>
+        <td>Media (1-3 meses)</td>
+        <td>LinkedIn B2B</td>
+        <td>14</td>
+        <td>B2</td>
+        <td>Gerente de asuntos regulatorios farmacéuticos para Latinoamérica</td>
+      </tr>
+      <tr class="header-vip">
+        <td>Jorge Enrique Pinzón</td>
+        <td>jpinzon@inversiones.co</td>
+        <td>premium</td>
+        <td>Desarrollo Profesional / B2B</td>
+        <td>Premium / VIP ($100-220/mes)</td>
+        <td>Finanzas &amp; Negocios</td>
+        <td>Alta (&lt; 2 semanas)</td>
+        <td>LinkedIn B2B</td>
+        <td>15</td>
+        <td>C1</td>
+        <td>Managing Director en banca de inversión. Negociación M&amp;A con firmas de Wall Street</td>
+      </tr>
+      <tr class="header-travel">
+        <td>Daniela Soto Carvajal</td>
+        <td>daniela.soto@viajes.com.co</td>
+        <td>free</td>
+        <td>Viajes e Inmersión</td>
+        <td>Económico ($15-35/mes)</td>
+        <td>Turismo &amp; Hospitalidad</td>
+        <td>Baja / Exploratoria</td>
+        <td>Instagram Ads</td>
+        <td>3</td>
+        <td>A2</td>
+        <td>Guía de turismo en Cartagena interesada en inglés conversacional para cruceros</td>
+      </tr>
+      <tr class="header-travel">
+        <td>Simón Arango Calle</td>
+        <td>simon.arango.viajero@gmail.com</td>
+        <td>free</td>
+        <td>Viajes e Inmersión</td>
+        <td>Económico ($15-35/mes)</td>
+        <td>Turismo &amp; Hospitalidad</td>
+        <td>Media (1-3 meses)</td>
+        <td>Instagram Ads</td>
+        <td>4</td>
+        <td>A2</td>
+        <td>Chef planificando pasantía gastronómica en restaurantes de Dublín</td>
+      </tr>
+      <tr class="header-travel">
+        <td>Laura Camila Beltrán</td>
+        <td>laura.beltran@viajeros.co</td>
+        <td>basic</td>
+        <td>Viajes e Inmersión</td>
+        <td>Estándar ($40-85/mes)</td>
+        <td>Turismo &amp; Hospitalidad</td>
+        <td>Media (1-3 meses)</td>
+        <td>Google Search</td>
+        <td>5</td>
+        <td>B1</td>
+        <td>Viaje sabático de 6 meses por el sudeste asiático y Oceanía</td>
+      </tr>
+      <tr class="header-travel">
+        <td>Lucas Mateo Herrera</td>
+        <td>lucas.herrera@nomada.io</td>
+        <td>basic</td>
+        <td>Viajes e Inmersión</td>
+        <td>Estándar ($40-85/mes)</td>
+        <td>Tecnología &amp; Software</td>
+        <td>Baja / Exploratoria</td>
+        <td>Referral / Boca a Boca</td>
+        <td>6</td>
+        <td>B1</td>
+        <td>Nómada digital trabajando desde Medellín. Desea soltura social para coworking</td>
+      </tr>
+      <tr class="header-travel">
+        <td>Carolina Vega Castillo</td>
+        <td>carolina.vega@gmail.com</td>
+        <td>free</td>
+        <td>Viajes e Inmersión</td>
+        <td>Económico ($15-35/mes)</td>
+        <td>Educación &amp; Academia</td>
+        <td>Baja / Exploratoria</td>
+        <td>Organic / Blog</td>
+        <td>2</td>
+        <td>A1</td>
+        <td>Diseñadora de modas preparando viaje a la semana de la moda en Milán y Londres</td>
+      </tr>
+      <tr class="header-travel">
+        <td>Pablo César Zambrano</td>
+        <td>pzambrano@turismo.gov.co</td>
+        <td>basic</td>
+        <td>Viajes e Inmersión</td>
+        <td>Estándar ($40-85/mes)</td>
+        <td>Turismo &amp; Hospitalidad</td>
+        <td>Media (1-3 meses)</td>
+        <td>Instagram Ads</td>
+        <td>5</td>
+        <td>A2</td>
+        <td>Funcionario del viceministerio de turismo promoviendo destinos colombianos</td>
+      </tr>
+      <tr class="header-winback">
+        <td>Ignacio Valdés Cuéllar</td>
+        <td>ivaldes.rescate@retail.com</td>
+        <td>basic</td>
+        <td>Desarrollo Profesional / B2B</td>
+        <td></td>
+        <td>Finanzas &amp; Negocios</td>
+        <td>Baja / Exploratoria</td>
+        <td>LinkedIn B2B</td>
+        <td>8</td>
+        <td>B1</td>
+        <td>Antiguo alumno inactivo hace 75 días. Gerente de compras en cadena de retail</td>
+      </tr>
+      <tr class="header-winback">
+        <td>Helena Castro Mejía</td>
+        <td>helena.castro.ex@gmail.com</td>
+        <td>free</td>
+        <td>Crecimiento Personal</td>
+        <td></td>
+        <td>Educación &amp; Academia</td>
+        <td>Baja / Exploratoria</td>
+        <td>Organic / Blog</td>
+        <td>5</td>
+        <td>A2</td>
+        <td>Usuaria inactiva hace 68 días. Ex-alumna interesada en reactivar hábito de lectura</td>
+      </tr>
+      <tr class="header-winback">
+        <td>Gabriel Jaime Peláez</td>
+        <td>gpelaez.reactivacion@gmail.com</td>
+        <td>basic</td>
+        <td>Viajes e Inmersión</td>
+        <td>Estándar ($40-85/mes)</td>
+        <td>Turismo &amp; Hospitalidad</td>
+        <td>Baja / Exploratoria</td>
+        <td>Referral / Boca a Boca</td>
+        <td>7</td>
+        <td>B1</td>
+        <td>Inactivo hace 82 días por viaje de trabajo. Pendiente de retomar plan conversacional</td>
+      </tr>
+      <tr class="header-winback">
+        <td>Ángela María Serrano</td>
+        <td>aserrano.pausa@outlook.com</td>
+        <td>free</td>
+        <td>Desarrollo Profesional / B2B</td>
+        <td></td>
+        <td>Tecnología &amp; Software</td>
+        <td>Baja / Exploratoria</td>
+        <td>Google Search</td>
+        <td>6</td>
+        <td>B1</td>
+        <td>Pausa de 64 días por cambio laboral. Interés en reactivarse con descuento</td>
+      </tr>
+      <tr class="header-winback">
+        <td>Tomás Alberto Villamizar</td>
+        <td>tvillamizar.rescate@empresa.co</td>
+        <td>basic</td>
+        <td>Certificación Oficial (IELTS/TOEFL)</td>
+        <td>Estándar ($40-85/mes)</td>
+        <td>Estudiante Universitario</td>
+        <td>Baja / Exploratoria</td>
+        <td>Webinar Educativo</td>
+        <td>9</td>
+        <td>B2</td>
+        <td>Inactivo hace 70 días por entrega de tesis universitaria</td>
+      </tr>
+      <tr class="header-nurture">
+        <td>Fernanda Ortiz Moncada</td>
+        <td>fernanda.ortiz@gmail.com</td>
+        <td>free</td>
+        <td>Crecimiento Personal</td>
+        <td>Económico ($15-35/mes)</td>
+        <td>Estudiante Universitario</td>
+        <td>Baja / Exploratoria</td>
+        <td>Instagram Ads</td>
+        <td>1</td>
+        <td>A1</td>
+        <td>Estudiante de psicología. Interés exploratorio por aprender inglés por superación</td>
+      </tr>
+      <tr class="header-nurture">
+        <td>Jimena Fuentes Lozano</td>
+        <td>jfuentes@startup.co</td>
+        <td>free</td>
+        <td>Desarrollo Profesional / B2B</td>
+        <td></td>
+        <td>Tecnología &amp; Software</td>
+        <td>Media (1-3 meses)</td>
+        <td>Google Search</td>
+        <td>2</td>
+        <td>B1</td>
+        <td>Analista junior en fintech. Perfil con presupuesto omitido para probar imputación ML</td>
+      </tr>
+      <tr class="header-nurture">
+        <td>Lucía Navarrete Peña</td>
+        <td>lucia.navarrete@yahoo.es</td>
+        <td>free</td>
+        <td>Viajes e Inmersión</td>
+        <td>Económico ($15-35/mes)</td>
+        <td></td>
+        <td>Baja / Exploratoria</td>
+        <td>Instagram Ads</td>
+        <td>1</td>
+        <td>A1</td>
+        <td>Sin industria especificada para comprobar resiliencia del modelo</td>
+      </tr>
+      <tr class="header-nurture">
+        <td>Mario Pardo Buendía</td>
+        <td>mario.pardo@logistica.com.co</td>
+        <td>free</td>
+        <td></td>
+        <td></td>
+        <td>Tecnología &amp; Software</td>
+        <td>Media (1-3 meses)</td>
+        <td>Google Search</td>
+        <td>2</td>
+        <td>A2</td>
+        <td>Registro con meta y presupuesto vacíos para validar tolerancia a datos incompletos</td>
+      </tr>
+      <tr class="header-nurture">
+        <td>Yenny Patricia Barrientos</td>
+        <td>ybarrientos@gmail.com</td>
+        <td>free</td>
+        <td></td>
+        <td>Económico ($15-35/mes)</td>
+        <td></td>
+        <td>Baja / Exploratoria</td>
+        <td>Organic / Blog</td>
+        <td>1</td>
+        <td>A1</td>
+        <td>Lead de registro rápido en página de aterrizaje con información básica</td>
+      </tr>
+    </tbody>
+  </table>
+</body>
+</html>

@@ -13,7 +13,10 @@ import {
 import { MarketingProfile, StudentProfile } from '../types';
 import {
   parseUploadedLeadsCSV,
-  downloadSampleMarketingLeadsCSV
+  downloadSampleMarketingLeadsCSV,
+  download50SampleLeadsCSV,
+  download50SampleLeadsExcel,
+  SAMPLE_50_LEADS_CSV
 } from '../services/leadImportService';
 
 interface UploadLeadsModalProps {
@@ -93,6 +96,21 @@ export const UploadLeadsModal: React.FC<UploadLeadsModalProps> = ({
     }
   };
 
+  const handleLoadSample50 = () => {
+    setErrorMsg(null);
+    setIsProcessing(true);
+    try {
+      const leads = parseUploadedLeadsCSV(SAMPLE_50_LEADS_CSV, existingStudents);
+      setParsedLeads(leads);
+      setSelectedFile(new File([SAMPLE_50_LEADS_CSV], '50_prospectos_prueba_segmentacion.csv', { type: 'text/csv' }));
+    } catch (err: unknown) {
+      const message = err instanceof Error ? err.message : 'Error al cargar prospectos de prueba.';
+      setErrorMsg(message);
+    } finally {
+      setIsProcessing(false);
+    }
+  };
+
   const handleConfirm = () => {
     if (parsedLeads.length === 0) return;
     onConfirmUpload(parsedLeads, importMode);
@@ -110,7 +128,7 @@ export const UploadLeadsModal: React.FC<UploadLeadsModalProps> = ({
               <span>Cargar Base de Prospectos para Segmentación Comercial</span>
             </h3>
             <p className="text-xs text-slate-400 mt-1">
-              Importa clientes o leads desde cualquier archivo CSV. Las variables son 100% flexibles: si faltan columnas, el modelo de Machine Learning imputa valores neutrales sin invalidar registros.
+              Importa clientes o leads desde cualquier archivo Excel o CSV. Las variables son 100% flexibles: si faltan columnas, el modelo de Machine Learning imputa valores neutrales sin invalidar registros.
             </p>
           </div>
           <button
@@ -123,24 +141,48 @@ export const UploadLeadsModal: React.FC<UploadLeadsModalProps> = ({
 
         {/* Modal Body */}
         <div className="flex-1 overflow-y-auto py-4 space-y-4 pr-1">
-          {/* Helper & Template Banner */}
-          <div className="p-3.5 rounded-lg bg-indigo-950/40 border border-indigo-900/60 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs">
-            <div className="space-y-0.5">
-              <div className="font-semibold text-indigo-200 flex items-center gap-1.5">
-                <FileSpreadsheet className="w-4 h-4 text-indigo-400" />
-                <span>¿No tienes un archivo preparado?</span>
+          {/* Helper & Template Banner with 50 test records */}
+          <div className="p-3.5 rounded-lg bg-indigo-950/40 border border-indigo-900/60 flex flex-col items-start gap-3 text-xs">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between w-full gap-2">
+              <div className="space-y-0.5">
+                <div className="font-semibold text-indigo-200 flex items-center gap-1.5">
+                  <FileSpreadsheet className="w-4 h-4 text-indigo-400" />
+                  <span>Base de Prueba Oficial con 50 Prospectos (Excel & CSV)</span>
+                </div>
+                <p className="text-slate-300 text-[11px]">
+                  Contiene 50 leads colombianos representativos de todos los segmentos (Enseñanza Infantil, B2B, Certificaciones, VIP, Viajes y Winback).
+                </p>
               </div>
-              <p className="text-slate-300 text-[11px]">
-                Descarga nuestra plantilla de ejemplo con campos completos e incompletos para probar de inmediato.
-              </p>
+              <button
+                type="button"
+                onClick={handleLoadSample50}
+                className="px-3 py-1.5 bg-emerald-600 hover:bg-emerald-500 text-white rounded font-medium flex items-center gap-1.5 shrink-0 transition-colors shadow-sm text-xs"
+                title="Carga directamente los 50 registros a la vista previa para segmentar sin necesidad de arrastrar archivos"
+              >
+                <Sparkles className="w-3.5 h-3.5 text-amber-300" />
+                <span>Cargar 50 de Prueba (1 Clic)</span>
+              </button>
             </div>
-            <button
-              onClick={downloadSampleMarketingLeadsCSV}
-              className="px-3 py-1.5 bg-indigo-600 hover:bg-indigo-500 text-white rounded font-medium flex items-center gap-1.5 shrink-0 transition-colors shadow-sm text-xs"
-            >
-              <Download className="w-3.5 h-3.5" />
-              <span>Descargar Plantilla CSV</span>
-            </button>
+            
+            <div className="flex flex-wrap items-center gap-2 pt-2 border-t border-indigo-900/40 w-full">
+              <span className="text-[11px] text-indigo-300 font-medium">O descarga el archivo para abrirlo en Excel:</span>
+              <button
+                type="button"
+                onClick={download50SampleLeadsExcel}
+                className="px-2.5 py-1 bg-slate-800 hover:bg-slate-700 text-slate-200 rounded text-[11px] font-medium flex items-center gap-1 border border-slate-700 transition-colors"
+              >
+                <Download className="w-3 h-3 text-emerald-400" />
+                <span>Descargar en Excel (.xls)</span>
+              </button>
+              <button
+                type="button"
+                onClick={download50SampleLeadsCSV}
+                className="px-2.5 py-1 bg-slate-800 hover:bg-slate-700 text-slate-200 rounded text-[11px] font-medium flex items-center gap-1 border border-slate-700 transition-colors"
+              >
+                <Download className="w-3 h-3 text-indigo-400" />
+                <span>Descargar en CSV</span>
+              </button>
+            </div>
           </div>
 
           {/* Upload Dropzone */}

@@ -10,7 +10,9 @@ import {
   MarketingProfile,
   MarketingCluster,
   MarketingSegmentationConfig,
-  PaymentRecord
+  PaymentRecord,
+  AuthUser,
+  UserRole
 } from './types';
 import { loadInitialDatasets } from './data/csvDataLoader';
 import { runClustering, predictStudentCluster, DEFAULT_ML_CONFIG } from './services/mlEngine';
@@ -20,7 +22,7 @@ import {
   DEFAULT_MARKETING_CONFIG
 } from './services/marketingEngine';
 import { initializeStudentPayments, formatCOP } from './services/paymentService';
-import { Header } from './components/Header';
+import { Header, AppTab } from './components/Header';
 import { DashboardView } from './components/DashboardView';
 import { StudentsView } from './components/StudentsView';
 import { PersonalizationView } from './components/PersonalizationView';
@@ -28,7 +30,12 @@ import { MarketingView } from './components/MarketingView';
 import { PaymentsView } from './components/PaymentsView';
 import { SchedulingView } from './components/SchedulingView';
 import { ReportsView } from './components/ReportsView';
+import { StudentPortalView } from './components/StudentPortalView';
+import { AuthModal } from './components/AuthModal';
+import { getStoredUser, saveStoredUser, DEMO_USERS, ROLE_CONFIGS, syncUserProfileToFirestore } from './services/authService';
 import { NotificationToast, ToastData } from './components/NotificationToast';
+import { auth, testFirestoreConnection } from './lib/firebase';
+import { onAuthStateChanged } from 'firebase/auth';
 
 const INITIAL_SCHEDULED_CLASSES: ScheduledClass[] = [
   {
@@ -123,7 +130,15 @@ const INITIAL_NOTIFICATIONS: ReminderNotification[] = [
 ];
 
 export default function App() {
-  const [currentTab, setCurrentTab] = useState<'dashboard' | 'students' | 'personalization' | 'marketing' | 'payments' | 'scheduling' | 'reports'>('dashboard');
+  const [currentUser, setCurrentUser] = useState<AuthUser>(getStoredUser);
+  const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
+  const [currentTab, setCurrentTab] = useState<AppTab>(() => {
+    const user = getStoredUser();
+    if (user.role === 'parent_student') return 'student_portal';
+    if (user.role === 'teacher') return 'scheduling';
+    if (user.role === 'sales') return 'marketing';
+    return 'dashboard';
+  });
   const [loading, setLoading] = useState(true);
   const [students, setStudents] = useState<StudentProfile[]>([]);
   const [clusters, setClusters] = useState<MLCluster[]>([]);
@@ -230,6 +245,8 @@ export default function App() {
           }
         ];
         setEvents(sampleEvents);
+        // Check connection to provisioned Firestore database
+        testFirestoreConnection().catch(console.warn);
       } catch (err) {
         console.error('Error initializing data:', err);
       } finally {
@@ -238,6 +255,27 @@ export default function App() {
     }
 
     init();
+
+    // Listen to Firebase Auth state changes
+    const unsubscribeAuth = onAuthStateChanged(auth, async (fbUser) => {
+      if (fbUser) {
+        // Active Firebase Auth user detected
+        const updatedUser: AuthUser = {
+          uid: fbUser.uid,
+          email: fbUser.email || 'usuario@lingua-ai.edu',
+          displayName: fbUser.displayName || 'Usuario Google',
+          role: currentUser.role, // Maintain selected role
+          avatarUrl: fbUser.photoURL || undefined
+        };
+        setCurrentUser(updatedUser);
+        saveStoredUser(updatedUser);
+        syncUserProfileToFirestore(updatedUser).catch(console.warn);
+      }
+    });
+
+    return () => {
+      unsubscribeAuth();
+    };
   }, []);
 
   // Re-run clustering handler
@@ -566,19 +604,44 @@ export default function App() {
     }
   }, []);
 
+  // Handle switching RBAC role
+  const handleSelectRole = useCallback((newRole: UserRole) => {
+    const newUser = DEMO_USERS[newRole];
+    setCurrentUser(newUser);
+    saveStoredUser(newUser);
+
+    const allowed = ROLE_CONFIGS[newRole].allowedTabs;
+    if (!allowed.includes(currentTab)) {
+      setCurrentTab(allowed[0]);
+    }
+
+    setActiveToast({
+      id: `toast_${Date.now()}`,
+      title: `Sesión Iniciada: ${ROLE_CONFIGS[newRole].badge}`,
+      body: `Has ingresado como ${newUser.displayName} (${newUser.email}). Módulos adaptados para ${ROLE_CONFIGS[newRole].label}.`,
+      recipient: ROLE_CONFIGS[newRole].label,
+      channel: 'push'
+    });
+  }, [currentTab]);
+
+  const currentStudentForPortal = students.find(s => s.id === currentUser.studentId) || selectedStudent || students[0];
+  const currentStudentPayment = currentStudentForPortal ? payments.find(p => p.studentId === currentStudentForPortal.id) : undefined;
+
   return (
     <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col font-['Plus_Jakarta_Sans',sans-serif]">
-      {/* Top Bar Header */}
+      {/* Top Bar Header with Mobile Drawer & Role Switcher */}
       <Header
         currentTab={currentTab}
         onSelectTab={setCurrentTab}
         onOpenScheduleModal={() => setCurrentTab('scheduling')}
         liveSimulationActive={liveSimulationActive}
         onToggleSimulation={() => setLiveSimulationActive(prev => !prev)}
+        currentUser={currentUser}
+        onOpenAuthModal={() => setIsAuthModalOpen(true)}
       />
 
       {/* Main Content Area */}
-      <main className="flex-1 max-w-7xl w-full mx-auto p-4 sm:p-6 lg:p-8">
+      <main className="flex-1 max-w-7xl w-full mx-auto p-4 sm:p-6 lg:p-8 pb-20 lg:pb-8">
         {loading ? (
           <div className="py-24 flex flex-col items-center justify-center text-center space-y-4">
             <div className="w-10 h-10 border-4 border-indigo-500 border-t-transparent rounded-full animate-spin" />
@@ -674,9 +737,84 @@ export default function App() {
                 payments={payments}
               />
             )}
+
+            {currentTab === 'student_portal' && currentStudentForPortal && (
+              <StudentPortalView
+                student={currentStudentForPortal}
+                classes={classes}
+                payment={currentStudentPayment}
+                onRecordPracticeLesson={(name, dur, pts) => handleRecordManualLesson(currentStudentForPortal.id, name, 'easy', dur, pts)}
+                onReportPayment={() => {
+                  if (currentStudentPayment) {
+                    handleUpdatePayment({
+                      ...currentStudentPayment,
+                      status: 'pagado',
+                      method: 'Bre-B (Llave / QR Interoperable)',
+                      paidAt: new Date().toISOString().split('T')[0],
+                      referenceNumber: `BREB-PORTAL-${Date.now().toString().slice(-6)}`
+                    });
+                  }
+                }}
+              />
+            )}
           </>
         )}
       </main>
+
+      {/* Mobile Bottom Navigation Bar (Guarantees navigation on mobile and external devices) */}
+      <nav aria-label="Navegación móvil" className="lg:hidden fixed bottom-0 left-0 right-0 z-30 bg-slate-900/95 backdrop-blur-md border-t border-slate-800 px-2 py-1.5 flex items-center justify-around shadow-2xl">
+        {ROLE_CONFIGS[currentUser.role].allowedTabs.slice(0, 5).map(tabId => {
+          const tabMeta: Record<string, { label: string; icon: string }> = {
+            dashboard: { label: 'ML', icon: '📊' },
+            students: { label: 'Alumnos', icon: '👥' },
+            marketing: { label: 'Mercadeo', icon: '📈' },
+            payments: { label: 'Pagos', icon: '💳' },
+            personalization: { label: 'Pedagogía', icon: '✨' },
+            scheduling: { label: 'Clases', icon: '📅' },
+            reports: { label: 'Reportes', icon: '📑' },
+            student_portal: { label: 'Mi Portal', icon: '🧸' }
+          };
+          const meta = tabMeta[tabId] || { label: tabId, icon: '📌' };
+          const isActive = currentTab === tabId;
+          return (
+            <button
+              key={tabId}
+              onClick={() => setCurrentTab(tabId)}
+              className={`flex flex-col items-center py-1 px-2.5 rounded-lg text-[10px] font-semibold transition-colors ${
+                isActive
+                  ? 'text-indigo-400 font-bold bg-indigo-950/70 border border-indigo-800/60'
+                  : 'text-slate-400 hover:text-slate-200'
+              }`}
+            >
+              <span className="text-base leading-tight">{meta.icon}</span>
+              <span className="leading-tight mt-0.5">{meta.label}</span>
+            </button>
+          );
+        })}
+      </nav>
+
+      {/* RBAC Authentication & Role Switcher Modal */}
+      <AuthModal
+        isOpen={isAuthModalOpen}
+        onClose={() => setIsAuthModalOpen(false)}
+        currentUser={currentUser}
+        onSelectRole={handleSelectRole}
+        onUserAuthenticated={(authenticatedUser) => {
+          setCurrentUser(authenticatedUser);
+          saveStoredUser(authenticatedUser);
+          const allowed = ROLE_CONFIGS[authenticatedUser.role].allowedTabs;
+          if (!allowed.includes(currentTab)) {
+            setCurrentTab(allowed[0]);
+          }
+          setActiveToast({
+            id: `toast_${Date.now()}`,
+            title: `Google Identity Conectado (${ROLE_CONFIGS[authenticatedUser.role].badge})`,
+            body: `Bienvenido ${authenticatedUser.displayName}. Tu perfil fue verificado y registrado en Firebase Firestore.`,
+            recipient: authenticatedUser.email,
+            channel: 'push'
+          });
+        }}
+      />
 
       {/* Push Notification Banner Overlay */}
       <NotificationToast

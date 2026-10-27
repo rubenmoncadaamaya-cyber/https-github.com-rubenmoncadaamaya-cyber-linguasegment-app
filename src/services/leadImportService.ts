@@ -13,41 +13,150 @@ import {
 } from '../types';
 
 /**
+ * 50 realistic Colombian test leads representing all segments:
+ * Enseñanza Infantil, B2B Corporativo, Certificación Oficial, VIP, Viajes, Winback y Nurturing.
+ */
+export const SAMPLE_50_LEADS_CSV = `full_name,email,subscription,learning_goal,estimated_budget,industry,urgency_level,lead_source,total_lessons,cefr_level,notes
+Mariana Benítez Osorio,mbenitez.madre@gmail.com,premium,Enseñanza Infantil / Kids (4-12 años),Premium / VIP ($100-220/mes),Padres de Familia / Escolar,Alta (< 2 semanas),Instagram Ads,8,A1,Mamá de Mateo (6 años). Busca clases lúdicas con canciones y cuentos en Bogotá
+Rodrigo Arismendi Gómez,rarismendi@colegio.edu.co,basic,Enseñanza Infantil / Kids (4-12 años),Estándar ($40-85/mes),Padres de Familia / Escolar,Media (1-3 meses),Referral / Boca a Boca,5,A1,Papá de mellizos de 8 años en Medellín. Iniciación bilingüe escolar
+Claudia Patricia Henao,claudia.henao@familias.co,free,Enseñanza Infantil / Kids (4-12 años),Estándar ($40-85/mes),Padres de Familia / Escolar,Alta (< 2 semanas),Instagram Ads,2,A1,Madre de Sofía (5 años). Desea estimulación temprana y fonética en Cali
+Felipe Andrés Restrepo,felipe.restrepo.papa@gmail.com,premium,Enseñanza Infantil / Kids (4-12 años),Premium / VIP ($100-220/mes),Padres de Familia / Escolar,Media (1-3 meses),Google Search,10,A2,Padre de Lucas (9 años). Apoyo para colegio bilingüe en Chía
+Natalia María Zuluaga,natalia.zuluaga@educacion.co,basic,Enseñanza Infantil / Kids (4-12 años),Estándar ($40-85/mes),Padres de Familia / Escolar,Alta (< 2 semanas),Instagram Ads,4,A1,Madre de Martín (7 años). Le interesan clases interactivas con juegos en Envigado
+Juan Guillermo Londoño,jglondono.padre@yahoo.com,free,Enseñanza Infantil / Kids (4-12 años),Económico ($15-35/mes),Padres de Familia / Escolar,Baja / Exploratoria,Organic / Blog,1,A1,Papá de Luciana (4 años). Buscando opciones accesibles para preescolar
+Andrea Marcela Cárdenas,andrea.cardenas@servicios.com,premium,Enseñanza Infantil / Kids (4-12 años),Premium / VIP ($100-220/mes),Padres de Familia / Escolar,Alta (< 2 semanas),Referral / Boca a Boca,12,A2,Madre de Juan José (11 años). Preparación para campamento de verano en USA
+David Esteban Morales,dmorales.familia@outlook.com,basic,Enseñanza Infantil / Kids (4-12 años),Estándar ($40-85/mes),Padres de Familia / Escolar,Media (1-3 meses),Instagram Ads,6,A1,Padre de Isabella (8 años) en Barranquilla. Interés en fluidez oral
+Paola Andrea Echeverry,paola.echeverry@colombia.org,free,Enseñanza Infantil / Kids (4-12 años),Estándar ($40-85/mes),Padres de Familia / Escolar,Media (1-3 meses),Google Search,3,A1,Madre de Tomás (6 años) y Daniela (9 años) en Pereira
+Santiago Vélez Montoya,santiago.velez@alcaldia.gov.co,basic,Enseñanza Infantil / Kids (4-12 años),Estándar ($40-85/mes),Padres de Familia / Escolar,Alta (< 2 semanas),Webinar Educativo,5,A1,Papá de Gabriela (10 años). Interesado en club de conversación infantil
+Diana Milena Quintero,diana.quintero@gmail.com,premium,Enseñanza Infantil / Kids (4-12 años),Premium / VIP ($100-220/mes),Padres de Familia / Escolar,Alta (< 2 semanas),Instagram Ads,9,A2,Mamá de Emiliano (7 años) en Bucaramanga. Desea tutor nativo 1 a 1
+Carlos Eduardo Betancur,cbetancur.padre@hotmail.com,free,Enseñanza Infantil / Kids (4-12 años),Económico ($15-35/mes),Padres de Familia / Escolar,Baja / Exploratoria,Referral / Boca a Boca,2,A1,Papá de Salomé (5 años) en Manizales. Desea probar clase demo
+Alejandra Ramos Pineda,alejandra.ramos@techcorp.co,basic,Desarrollo Profesional / B2B,Corporativo Empresarial,Tecnología & Software,Alta (< 2 semanas),LinkedIn B2B,7,B2,Tech Lead en fintech de Bogotá. Requiere inglés para liderar equipo en EE.UU.
+Mauricio Silva Santos,mauricio.silva@bancolombia.com.co,premium,Desarrollo Profesional / B2B,Corporativo Empresarial,Finanzas & Negocios,Alta (< 2 semanas),LinkedIn B2B,14,B2,VP Adjunto de Riesgos. Presentación de resultados a fondos de inversión en NY
+Valentina Casas Franco,vcasas@mercadolibre.com,basic,Desarrollo Profesional / B2B,Corporativo Empresarial,Tecnología & Software,Media (1-3 meses),Google Search,6,B1,Product Manager en MercadoLibre. Reuniones diarias en inglés con equipos regionales
+Andrés Felipe Ospina,andres.ospina@rappi.com,free,Desarrollo Profesional / B2B,Corporativo Empresarial,Tecnología & Software,Alta (< 2 semanas),LinkedIn B2B,3,B1,Backend Engineer preparando entrevistas técnicas para unicornio de Silicon Valley
+Juliana Correa Tabares,jcorrea@nutresa.com,premium,Desarrollo Profesional / B2B,Corporativo Empresarial,Finanzas & Negocios,Media (1-3 meses),Referral / Boca a Boca,11,B2,Gerente de Expansión Internacional. Negociación de contratos con proveedores asiáticos
+Gustavo Adolfo Parra,gustavo.parra@globant.com,basic,Desarrollo Profesional / B2B,Corporativo Empresarial,Tecnología & Software,Alta (< 2 semanas),LinkedIn B2B,8,B2,Software Architect en Globant. Pitch comercial con clientes de Reino Unido
+Luisa Fernanda Mendoza,lmendoza@ecopetrol.com.co,premium,Desarrollo Profesional / B2B,Corporativo Empresarial,Finanzas & Negocios,Media (1-3 meses),Webinar Educativo,9,B1,Líder de sostenibilidad en Ecopetrol. Conferencia internacional de energía
+Héctor Fabio Carmona,hcarmona@segurosbolivar.com,basic,Desarrollo Profesional / B2B,Corporativo Empresarial,Finanzas & Negocios,Media (1-3 meses),LinkedIn B2B,5,B1,Director actuarial. Interés en terminología financiera anglosajona
+Carlos Mendoza Vidal,cmendoza@uniandes.edu.co,premium,Certificación Oficial (IELTS/TOEFL),Premium / VIP ($100-220/mes),Estudiante Universitario,Alta (< 2 semanas),Google Search,13,B2,Graduado de economía preparando IELTS Académico (banda 7.5 requerida para LSE)
+Camila Torres Vargas,ctorres@javeriana.edu.co,basic,Certificación Oficial (IELTS/TOEFL),Estándar ($40-85/mes),Estudiante Universitario,Alta (< 2 semanas),Instagram Ads,8,B2,Estudiante de Medicina Javeriana. Preparando examen OET para residencia en Reino Unido
+Javier Ignacio Rojas,jrojas@eafit.edu.co,free,Certificación Oficial (IELTS/TOEFL),Estándar ($40-85/mes),Estudiante Universitario,Media (1-3 meses),Google Search,4,B1,Ingeniero mecánico EAFIT aplicando a beca Erasmus Mundus en Alemania
+Daniela Sofía Rincón,daniela.rincon@unal.edu.co,basic,Certificación Oficial (IELTS/TOEFL),Estándar ($40-85/mes),Estudiante Universitario,Alta (< 2 semanas),Webinar Educativo,7,B2,Bióloga Universidad Nacional preparando TOEFL iBT (meta 100 puntos) para Canadá
+Sebastián Marín Ocampo,smarin.toefl@gmail.com,premium,Certificación Oficial (IELTS/TOEFL),Premium / VIP ($100-220/mes),Finanzas & Negocios,Alta (< 2 semanas),Referral / Boca a Boca,10,B2,Consultor en Deloitte preparando GMAT e IELTS para MBA en INSEAD
+Manuela Gómez Salcedo,mgomez.ielts@yahoo.com,basic,Certificación Oficial (IELTS/TOEFL),Estándar ($40-85/mes),Educación & Academia,Media (1-3 meses),Google Search,6,B1,Docente universitaria aplicando a doctorado en University of Melbourne
+Nicolás Duque Arango,nduque@uis.edu.co,free,Certificación Oficial (IELTS/TOEFL),Económico ($15-35/mes),Estudiante Universitario,Media (1-3 meses),Organic / Blog,3,B1,Estudiante de UIS Bucaramanga preparando requisito de grado y visa de trabajo
+Guillermo Vidal Pardo,gvidal@hospitalpablo.org,premium,Desarrollo Profesional / B2B,Premium / VIP ($100-220/mes),Salud & Medicina,Alta (< 2 semanas),Webinar Educativo,15,B2,Cirujano cardiovascular aplicando a fellowship de especialización en Boston
+Klaus Alberto Weber,klaus.weber@abogados.com.co,premium,Certificación Oficial (IELTS/TOEFL),Premium / VIP ($100-220/mes),Finanzas & Negocios,Alta (< 2 semanas),Referral / Boca a Boca,16,C1,Socio de firma tributaria preparando certificación legal TOLES
+Verónica Salazar Ríos,vsalazar@creativos.co,premium,Desarrollo Profesional / B2B,Premium / VIP ($100-220/mes),Tecnología & Software,Media (1-3 meses),Instagram Ads,12,B2,Directora creativa en agencia digital. Gestión de cuentas en EE.UU. y Canadá
+Esteban Morales Peña,emorales@constructora.com.co,basic,Desarrollo Profesional / B2B,Premium / VIP ($100-220/mes),Finanzas & Negocios,Alta (< 2 semanas),Referral / Boca a Boca,9,B1,Gerente de proyectos inmobiliarios. Interés en negociar con inversionistas de Miami
+Catalina Botero Luján,cbotero@laboratorios.com,premium,Desarrollo Profesional / B2B,Premium / VIP ($100-220/mes),Salud & Medicina,Media (1-3 meses),LinkedIn B2B,14,B2,Gerente de asuntos regulatorios farmacéuticos para Latinoamérica
+Jorge Enrique Pinzón,jpinzon@inversiones.co,premium,Desarrollo Profesional / B2B,Premium / VIP ($100-220/mes),Finanzas & Negocios,Alta (< 2 semanas),LinkedIn B2B,15,C1,Managing Director en banca de inversión. Negociación M&A con firmas de Wall Street
+Daniela Soto Carvajal,daniela.soto@viajes.com.co,free,Viajes e Inmersión,Económico ($15-35/mes),Turismo & Hospitalidad,Baja / Exploratoria,Instagram Ads,3,A2,Guía de turismo en Cartagena interesada en inglés conversacional para cruceros
+Simón Arango Calle,simon.arango.viajero@gmail.com,free,Viajes e Inmersión,Económico ($15-35/mes),Turismo & Hospitalidad,Media (1-3 meses),Instagram Ads,4,A2,Chef planificando pasantía gastronómica en restaurantes de Dublín
+Laura Camila Beltrán,laura.beltran@viajeros.co,basic,Viajes e Inmersión,Estándar ($40-85/mes),Turismo & Hospitalidad,Media (1-3 meses),Google Search,5,B1,Viaje sabático de 6 meses por el sudeste asiático y Oceanía
+Lucas Mateo Herrera,lucas.herrera@nomada.io,basic,Viajes e Inmersión,Estándar ($40-85/mes),Tecnología & Software,Baja / Exploratoria,Referral / Boca a Boca,6,B1,Nómada digital trabajando desde Medellín. Desea soltura social para coworking
+Carolina Vega Castillo,carolina.vega@gmail.com,free,Viajes e Inmersión,Económico ($15-35/mes),Educación & Academia,Baja / Exploratoria,Organic / Blog,2,A1,Diseñadora de modas preparando viaje a la semana de la moda en Milán y Londres
+Pablo César Zambrano,pzambrano@turismo.gov.co,basic,Viajes e Inmersión,Estándar ($40-85/mes),Turismo & Hospitalidad,Media (1-3 meses),Instagram Ads,5,A2,Funcionario del viceministerio de turismo promoviendo destinos colombianos
+Ignacio Valdés Cuéllar,ivaldes.rescate@retail.com,basic,Desarrollo Profesional / B2B,,Finanzas & Negocios,Baja / Exploratoria,LinkedIn B2B,8,B1,Antiguo alumno inactivo hace 75 días. Gerente de compras en cadena de retail
+Helena Castro Mejía,helena.castro.ex@gmail.com,free,Crecimiento Personal,,Educación & Academia,Baja / Exploratoria,Organic / Blog,5,A2,Usuaria inactiva hace 68 días. Ex-alumna interesada en reactivar hábito de lectura
+Gabriel Jaime Peláez,gpelaez.reactivacion@gmail.com,basic,Viajes e Inmersión,Estándar ($40-85/mes),Turismo & Hospitalidad,Baja / Exploratoria,Referral / Boca a Boca,7,B1,Inactivo hace 82 días por viaje de trabajo. Pendiente de retomar plan conversacional
+Ángela María Serrano,aserrano.pausa@outlook.com,free,Desarrollo Profesional / B2B,,Tecnología & Software,Baja / Exploratoria,Google Search,6,B1,Pausa de 64 días por cambio laboral. Interés en reactivarse con descuento
+Tomás Alberto Villamizar,tvillamizar.rescate@empresa.co,basic,Certificación Oficial (IELTS/TOEFL),Estándar ($40-85/mes),Estudiante Universitario,Baja / Exploratoria,Webinar Educativo,9,B2,Inactivo hace 70 días por entrega de tesis universitaria
+Fernanda Ortiz Moncada,fernanda.ortiz@gmail.com,free,Crecimiento Personal,Económico ($15-35/mes),Estudiante Universitario,Baja / Exploratoria,Instagram Ads,1,A1,Estudiante de psicología. Interés exploratorio por aprender inglés por superación
+Jimena Fuentes Lozano,jfuentes@startup.co,free,Desarrollo Profesional / B2B,,Tecnología & Software,Media (1-3 meses),Google Search,2,B1,Analista junior en fintech. Perfil con presupuesto omitido para probar imputación ML
+Lucía Navarrete Peña,lucia.navarrete@yahoo.es,free,Viajes e Inmersión,Económico ($15-35/mes),,Baja / Exploratoria,Instagram Ads,1,A1,Sin industria especificada para comprobar resiliencia del modelo
+Mario Pardo Buendía,mario.pardo@logistica.com.co,free,,,Tecnología & Software,Media (1-3 meses),Google Search,2,A2,Registro con meta y presupuesto vacíos para validar tolerancia a datos incompletos
+Yenny Patricia Barrientos,ybarrientos@gmail.com,free,,Económico ($15-35/mes),,Baja / Exploratoria,Organic / Blog,1,A1,Lead de registro rápido en página de aterrizaje con información básica`;
+
+export function generate50TestLeadsCSV(): string {
+  return SAMPLE_50_LEADS_CSV;
+}
+
+/**
+ * Triggers a browser download of the 50 test leads CSV with UTF-8 BOM for Excel compatibility
+ */
+export function download50SampleLeadsCSV(): void {
+  const content = '\uFEFF' + SAMPLE_50_LEADS_CSV;
+  const blob = new Blob([content], { type: 'text/csv;charset=utf-8;' });
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement('a');
+  link.setAttribute('href', url);
+  link.setAttribute('download', '50_prospectos_prueba_segmentacion.csv');
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+  URL.revokeObjectURL(url);
+}
+
+/**
+ * Triggers a download of the 50 test leads formatted as an Excel spreadsheet (.xls)
+ */
+export function download50SampleLeadsExcel(): void {
+  const lines = SAMPLE_50_LEADS_CSV.split('\n');
+  const headers = lines[0].split(',');
+  const rows = lines.slice(1).map(line => line.split(','));
+
+  const rowsHtml = rows
+    .map(
+      cols =>
+        `<tr>${cols.map(c => `<td>${c || ''}</td>`).join('')}</tr>`
+    )
+    .join('\n');
+
+  const excelHtml = `<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns="http://www.w3.org/TR/REC-html40">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <!--[if gte mso 9]>
+  <xml>
+    <x:ExcelWorkbook>
+      <x:ExcelWorksheets>
+        <x:ExcelWorksheet>
+          <x:Name>50 Prospectos Prueba</x:Name>
+          <x:WorksheetOptions><x:DisplayGridlines/></x:WorksheetOptions>
+        </x:ExcelWorksheet>
+      </x:ExcelWorksheets>
+    </x:ExcelWorkbook>
+  </xml>
+  <![endif]-->
+  <style>
+    body { font-family: Calibri, 'Segoe UI', Arial, sans-serif; }
+    table { border-collapse: collapse; width: 100%; }
+    th { background-color: #1E293B; color: #FFFFFF; font-weight: bold; padding: 10px; border: 1px solid #94A3B8; text-align: left; }
+    td { padding: 8px; border: 1px solid #CBD5E1; font-size: 11pt; }
+  </style>
+</head>
+<body>
+  <h2>LINGUASEGMENT AI - 50 PROSPECTOS COMERCIALES DE PRUEBA</h2>
+  <table>
+    <thead><tr>${headers.map(h => `<th>${h}</th>`).join('')}</tr></thead>
+    <tbody>${rowsHtml}</tbody>
+  </table>
+</body>
+</html>`;
+
+  const blob = new Blob([excelHtml], { type: 'application/vnd.ms-excel;charset=utf-8;' });
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement('a');
+  link.setAttribute('href', url);
+  link.setAttribute('download', '50_prospectos_prueba_segmentacion.xls');
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+  URL.revokeObjectURL(url);
+}
+
+/**
  * Generates a realistic CSV template for commercial leads
  * with mixed complete and partial data to demonstrate tolerance.
  */
 export function generateSampleMarketingLeadsCSV(): string {
-  return `full_name,email,subscription,learning_goal,estimated_budget,industry,urgency_level,lead_source,notes
-Mariana Benítez,mbenitez.madre@gmail.com,premium,Enseñanza Infantil / Kids (4-12 años),Premium / VIP ($100-220/mes),Padres de Familia / Escolar,Alta (< 2 semanas),Instagram Ads,Mamá de Mateo (6 años) busca clases de inglés lúdicas con canciones y cuentos
-Rodrigo Arismendi,rarismendi@colegio.edu,basic,Enseñanza Infantil / Kids (4-12 años),Estándar ($40-85/mes),Padres de Familia / Escolar,Media (1-3 meses),Referral / Boca a Boca,Iniciación bilingüe para mellizos de 8 años
-Alejandra Ramos,alejandra.ramos@techcorp.com,basic,Desarrollo Profesional / B2B,Corporativo Empresarial,Tecnología & Software,Alta (< 2 semanas),LinkedIn B2B,Ingeniera de software requiere inglés para entrevistas en EE.UU.
-Carlos Mendoza,cmendoza@finanzas.pe,premium,Certificación Oficial (IELTS/TOEFL),Premium / VIP ($100-220/mes),Finanzas & Negocios,Media (1-3 meses),Google Search,Preparando examen IELTS banda 7.5
-Daniela Soto,daniela.soto@viajes.org,free,Viajes e Inmersión,Económico ($15-35/mes),Turismo & Hospitalidad,Baja / Exploratoria,Instagram Ads,Interesada en francés conversacional para mochilazo
-Esteban Morales,emorales@constructora.cl,basic,Desarrollo Profesional / B2B,,Finanzas & Negocios,Media (1-3 meses),Referral / Boca a Boca,Empresa dispuesta a cofinanciar curso
-Fernanda Ortiz,fernanda.ortiz@gmail.com,free,Crecimiento Personal,,,Estudiante Universitario,,Instagram Ads,Solo le interesa aprender italiano por ocio
-Guillermo Vidal,gvidal@medicos.org,premium,Desarrollo Profesional / B2B,Premium / VIP ($100-220/mes),Salud & Medicina,Alta (< 2 semanas),Webinar Educativo,Médico cirujano postulando a fellowship en Boston
-Helena Castro,helena.castro@gmail.com,free,,,Educación & Academia,,Organic / Blog,Ex-alumna interesada en reactivar hábitos
-Ignacio Valdés,ivaldes@retail.com,basic,Desarrollo Profesional / B2B,Estándar ($40-85/mes),Finanzas & Negocios,Media (1-3 meses),LinkedIn B2B,Gerente de operaciones buscando mejorar vocabulario
-Jimena Fuentes,jfuentes@startup.co,free,Desarrollo Profesional / B2B,Estándar ($40-85/mes),Tecnología & Software,Media (1-3 meses),Google Search,Product Manager en startup de pagos
-Klaus Weber,klaus.weber@global.de,premium,Certificación Oficial (IELTS/TOEFL),Corporativo Empresarial,Finanzas & Negocios,Alta (< 2 semanas),Referral / Boca a Boca,Abogado corporativo preparando TOLES
-Lucía Navarrete,lucia.navarrete@yahoo.es,free,Viajes e Inmersión,Económico ($15-35/mes),,,Instagram Ads,Sin industria declarada
-Mario Pardo,mario.pardo@logistica.com,basic,,,Tecnología & Software,Media (1-3 meses),Google Search,Interés en inglés técnico para transportes`;
+  return SAMPLE_50_LEADS_CSV;
 }
 
 /**
  * Triggers a browser download of the sample marketing CSV template
  */
 export function downloadSampleMarketingLeadsCSV(): void {
-  const content = generateSampleMarketingLeadsCSV();
-  const blob = new Blob([content], { type: 'text/csv;charset=utf-8;' });
-  const url = URL.createObjectURL(blob);
-  const link = document.createElement('a');
-  link.setAttribute('href', url);
-  link.setAttribute('download', 'plantilla_leads_segmentacion_mercadeo.csv');
-  document.body.appendChild(link);
-  link.click();
-  document.body.removeChild(link);
-  URL.revokeObjectURL(url);
+  download50SampleLeadsCSV();
 }
 
 /**

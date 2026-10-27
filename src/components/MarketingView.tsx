@@ -27,8 +27,7 @@ import {
   Upload,
   RotateCcw,
   LayoutDashboard,
-  ListFilter,
-  FileSpreadsheet
+  ListFilter
 } from 'lucide-react';
 import { GoogleGenAI } from '@google/genai';
 import { MarketingOpportunityPlot } from './MarketingOpportunityPlot';
@@ -36,7 +35,6 @@ import { MarketingDistributionDonut } from './MarketingDistributionDonut';
 import { MarketingComparisonBar } from './MarketingComparisonBar';
 import { MarketingChannelFunnel } from './MarketingChannelFunnel';
 import { UploadLeadsModal } from './UploadLeadsModal';
-import { downloadSampleMarketingLeadsCSV } from '../services/leadImportService';
 
 interface MarketingViewProps {
   marketingProfiles: MarketingProfile[];
@@ -220,20 +218,10 @@ Proporciona:
           <button
             onClick={() => setIsUploadModalOpen(true)}
             className="px-3.5 py-1.5 bg-indigo-600 hover:bg-indigo-500 text-white rounded text-xs font-semibold flex items-center gap-1.5 transition-colors shadow-sm shadow-indigo-600/30"
-            title="Cargar lista de personas o prospectos desde un archivo CSV"
+            title="Cargar lista de personas o prospectos desde un archivo CSV o Excel"
           >
             <Upload className="w-3.5 h-3.5" />
-            <span>Cargar Lista de Leads (CSV)</span>
-          </button>
-
-          {/* Sample template download */}
-          <button
-            onClick={downloadSampleMarketingLeadsCSV}
-            className="px-3 py-1.5 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded text-xs font-medium flex items-center gap-1.5 transition-colors border border-slate-700"
-            title="Descargar plantilla CSV con formato de ejemplo"
-          >
-            <FileSpreadsheet className="w-3.5 h-3.5 text-indigo-400" />
-            <span>Plantilla CSV</span>
+            <span>Cargar Lista de Leads</span>
           </button>
 
           {/* Reset button if custom cohort is active */}

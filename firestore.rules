@@ -1,0 +1,152 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Default deny all
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // Helper functions
+    function isValidId(id) {
+      return id is string && id.size() <= 128 && id.matches('^[a-zA-Z0-9_\\-]+$');
+    }
+
+    function incoming() {
+      return request.resource.data;
+    }
+
+    function existing() {
+      return resource.data;
+    }
+
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isOwner(userId) {
+      return isSignedIn() && request.auth.uid == userId;
+    }
+
+    function getUserRole() {
+      return exists(/databases/$(database)/documents/users/$(request.auth.uid)) ?
+        get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role : 'none';
+    }
+
+    function isAdmin() {
+      return isSignedIn() && (
+        exists(/databases/$(database)/documents/admins/$(request.auth.uid)) ||
+        getUserRole() == 'admin'
+      );
+    }
+
+    function isTeacher() {
+      return isSignedIn() && (getUserRole() == 'teacher' || isAdmin());
+    }
+
+    function isSales() {
+      return isSignedIn() && (getUserRole() == 'sales' || isAdmin());
+    }
+
+    // Entity validation functions
+    function isValidUserProfile(data) {
+      return data.keys().hasAll(['uid', 'email', 'role']) &&
+        data.keys().hasOnly(['uid', 'email', 'displayName', 'role', 'photoURL', 'createdAt', 'updatedAt']) &&
+        data.uid is string && data.uid.size() <= 128 &&
+        data.email is string && data.email.size() <= 128 &&
+        data.role in ['admin', 'teacher', 'sales', 'student'];
+    }
+
+    function isValidLead(data) {
+      return data.keys().hasAll(['id', 'name', 'segment', 'status']) &&
+        data.keys().hasOnly(['id', 'name', 'email', 'phone', 'age', 'segment', 'status', 'estimatedLtv', 'source', 'createdAt']) &&
+        data.id is string && data.id.size() <= 128 &&
+        data.name is string && data.name.size() <= 128 &&
+        data.segment is string && data.segment.size() <= 64 &&
+        data.status in ['Nuevo', 'Contactado', 'Diagnóstico Agendado', 'Matriculado', 'Inactivo'];
+    }
+
+    function isValidClass(data) {
+      return data.keys().hasAll(['id', 'subject', 'tutorId', 'studentId', 'status']) &&
+        data.keys().hasOnly(['id', 'subject', 'tutorId', 'tutorName', 'studentId', 'studentName', 'date', 'time', 'status', 'notes', 'meetingUrl']) &&
+        data.id is string && data.id.size() <= 128 &&
+        data.subject is string && data.subject.size() <= 128 &&
+        data.tutorId is string && data.tutorId.size() <= 128 &&
+        data.studentId is string && data.studentId.size() <= 128 &&
+        data.status in ['Agendada', 'En curso', 'Completada', 'Cancelada'];
+    }
+
+    function isValidDiagnostic(data) {
+      return data.keys().hasAll(['id', 'studentId', 'tutorId', 'level']) &&
+        data.keys().hasOnly(['id', 'studentId', 'studentName', 'tutorId', 'level', 'strengths', 'weaknesses', 'aiReport', 'createdAt']) &&
+        data.id is string && data.id.size() <= 128 &&
+        data.studentId is string && data.studentId.size() <= 128 &&
+        data.tutorId is string && data.tutorId.size() <= 128 &&
+        data.level is string && data.level.size() <= 32;
+    }
+
+    function isValidPayment(data) {
+      return data.keys().hasAll(['id', 'studentId', 'amount', 'reference', 'method', 'status']) &&
+        data.keys().hasOnly(['id', 'studentId', 'studentName', 'amount', 'reference', 'method', 'status', 'month', 'paidAt']) &&
+        data.id is string && data.id.size() <= 128 &&
+        data.studentId is string && data.studentId.size() <= 128 &&
+        data.amount is number &&
+        data.reference is string && data.reference.size() <= 64 &&
+        data.method in ['Bre-B', 'Nequi', 'Daviplata', 'Transferencia'] &&
+        data.status in ['Confirmado', 'Pendiente', 'Fallido'];
+    }
+
+    // Admins collection (list of explicitly provisioned admin UIDs)
+    match /admins/{adminId} {
+      allow read: if isSignedIn();
+      allow write: if isAdmin();
+    }
+
+    // Users Collection
+    match /users/{userId} {
+      allow get: if isSignedIn() && (request.auth.uid == userId || isAdmin());
+      allow list: if isAdmin();
+      allow create: if isSignedIn() && request.auth.uid == userId && isValidUserProfile(incoming());
+      allow update: if isSignedIn() && isValidUserProfile(incoming()) && (
+        isAdmin() ||
+        (request.auth.uid == userId && incoming().role == existing().role)
+      );
+      allow delete: if isAdmin();
+    }
+
+    // Leads Collection (Sales & Marketing, and Admin)
+    match /leads/{leadId} {
+      allow read: if isSales();
+      allow create: if isSales() && isValidLead(incoming());
+      allow update: if isSales() && isValidLead(incoming());
+      allow delete: if isAdmin();
+    }
+
+    // Classes Collection (Tutors, Students for their own, and Admin)
+    match /classes/{classId} {
+      allow get: if isSignedIn() && (isAdmin() || existing().tutorId == request.auth.uid || existing().studentId == request.auth.uid);
+      allow list: if isSignedIn() && (isTeacher() || existing().studentId == request.auth.uid);
+      allow create: if isTeacher() && isValidClass(incoming());
+      allow update: if isTeacher() && isValidClass(incoming());
+      allow delete: if isAdmin();
+    }
+
+    // Diagnostics Collection (Pedagogical reports)
+    match /diagnostics/{diagnosticId} {
+      allow get: if isSignedIn() && (isAdmin() || existing().studentId == request.auth.uid || existing().tutorId == request.auth.uid);
+      allow list: if isSignedIn() && (isTeacher() || existing().studentId == request.auth.uid);
+      allow create: if isTeacher() && isValidDiagnostic(incoming());
+      allow update: if isTeacher() && isValidDiagnostic(incoming());
+      allow delete: if isAdmin();
+    }
+
+    // Payments Collection (Tuition / Bre-B records)
+    match /payments/{paymentId} {
+      allow get: if isSignedIn() && (isAdmin() || existing().studentId == request.auth.uid);
+      allow list: if isSignedIn() && (isAdmin() || existing().studentId == request.auth.uid);
+      allow create: if isAdmin() && isValidPayment(incoming());
+      allow update: if isAdmin() && isValidPayment(incoming());
+      allow delete: if isAdmin();
+    }
+  }
+}
