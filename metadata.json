@@ -1,0 +1,8 @@
+{
+  "name": "LinguaSegment AI - Segmentación y Análisis de Estudiantes de Idiomas",
+  "description": "Plataforma avanzada de segmentación de estudiantes con Machine Learning en tiempo real, personalización de lecciones pedagógicas, agendamiento de clases y exportación de reportes.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

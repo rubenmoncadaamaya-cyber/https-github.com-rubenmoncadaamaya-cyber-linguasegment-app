@@ -1,0 +1,401 @@
+id,user_id,achievement_name,unlocked_date,achievement_type,achievement_points
+1,77,expertise trophy,2023-06-06,skill,45
+2,72,badge,2024-07-02,skill,56
+3,67,mastery level,2023-11-11,milestone,58
+4,54,milestone recognition,2024-07-10,milestone,56
+5,169,completion level honor,2024-09-25,skill,45
+6,24,award progress trophy,2024-09-29,milestone,41
+7,75,badge,2024-01-29,skill,39
+8,137,distinction recognition,2024-04-08,participation,63
+9,188,badge skill,2024-10-21,participation,59
+10,97,excellence,2024-02-28,milestone,61
+11,165,mastery growth,2024-03-09,milestone,29
+12,102,award proficiency,2023-12-12,skill,45
+13,188,trophy level,2024-07-08,milestone,39
+14,199,progress,2023-01-13,skill,53
+15,196,certification trophy level,2023-09-17,skill,40
+16,112,mastery,2023-03-12,participation,51
+17,188,distinction,2023-04-15,milestone,66
+18,148,award,2024-10-24,milestone,62
+19,95,completion growth,2024-12-22,skill,47
+20,16,level growth,2023-05-16,skill,58
+21,174,excellence accomplishment,2024-09-08,milestone,66
+22,146,growth trophy,2024-09-19,milestone,53
+23,58,distinction milestone success,2024-04-06,milestone,57
+24,134,recognition progress,2023-09-02,participation,45
+25,63,mastery success honor,2023-02-05,skill,62
+26,196,level mastery badge,2024-12-23,skill,51
+27,138,success,2023-12-01,milestone,45
+28,63,completion,2024-09-26,milestone,68
+29,21,growth progress expertise,2023-01-28,skill,73
+30,98,milestone recognition level,2023-09-24,skill,54
+31,141,trophy excellence,2023-10-25,participation,63
+32,121,award,2023-05-11,skill,50
+33,75,completion,2023-04-01,participation,57
+34,111,level expertise,2023-02-07,milestone,49
+35,11,completion accomplishment certification,2023-08-29,milestone,62
+36,178,completion,2023-10-25,milestone,45
+37,106,honor,2024-05-21,milestone,42
+38,37,mastery trophy,2024-09-03,milestone,67
+39,81,level,2024-04-29,milestone,53
+40,143,level,2023-04-02,skill,52
+41,195,badge expertise,2023-04-26,milestone,42
+42,79,mastery,2023-04-10,milestone,82
+43,119,excellence recognition,2024-01-17,milestone,68
+44,25,trophy,2024-01-09,milestone,46
+45,107,trophy accomplishment,2023-05-17,skill,55
+46,50,trophy skill distinction,2023-10-30,skill,54
+47,52,progress trophy,2023-03-19,participation,55
+48,92,award,2023-08-09,skill,61
+49,55,proficiency accomplishment,2024-10-22,skill,61
+50,189,growth skill,2023-08-31,participation,48
+51,17,advancement completion,2024-09-06,milestone,54
+52,45,recognition mastery skill,2023-07-13,milestone,76
+53,158,success,2023-02-23,milestone,47
+54,200,mastery level,2024-09-10,skill,49
+55,179,milestone,2024-08-10,skill,46
+56,71,skill badge,2023-09-15,milestone,86
+57,10,proficiency skill recognition,2024-03-27,skill,49
+58,23,growth,2024-04-09,skill,59
+59,45,level advancement,2023-11-04,participation,65
+60,180,recognition level distinction,2024-04-13,milestone,45
+61,158,excellence,2024-05-21,skill,37
+62,69,completion badge,2024-08-17,skill,66
+63,100,recognition excellence,2024-11-09,milestone,29
+64,170,honor excellence milestone,2023-01-04,participation,42
+65,166,badge honor,2023-12-06,participation,31
+66,74,advancement proficiency expertise,2024-04-04,skill,51
+67,43,level honor proficiency,2023-01-17,milestone,53
+68,24,milestone,2024-09-27,skill,43
+69,183,honor,2023-02-24,milestone,59
+70,119,completion honor,2024-02-19,milestone,48
+71,36,expertise success,2023-02-04,milestone,53
+72,23,excellence award,2023-08-18,milestone,58
+73,109,completion,2024-02-21,participation,83
+74,104,progress,2023-10-17,participation,61
+75,112,completion,2023-03-02,skill,73
+76,109,skill distinction,2023-06-16,milestone,45
+77,150,recognition mastery certification,2023-04-17,participation,43
+78,27,mastery,2023-03-08,milestone,73
+79,184,excellence proficiency level,2024-07-05,participation,36
+80,123,accomplishment success,2024-07-28,participation,55
+81,117,advancement,2024-08-13,participation,60
+82,55,completion,2023-01-31,milestone,64
+83,51,mastery certification progress,2023-11-12,skill,40
+84,189,accomplishment recognition advancement,2024-11-17,skill,62
+85,89,milestone level distinction,2024-05-26,milestone,49
+86,109,victory expertise badge,2024-09-28,milestone,68
+87,172,award,2023-11-07,milestone,65
+88,30,success victory,2024-07-09,milestone,58
+89,6,mastery recognition excellence,2024-06-12,skill,42
+90,91,accomplishment level certification,2023-11-17,skill,54
+91,51,distinction excellence,2023-10-09,skill,59
+92,113,certification recognition,2024-09-07,skill,50
+93,81,honor progress award,2023-08-20,milestone,56
+94,103,accomplishment award,2023-11-27,skill,59
+95,132,growth success,2024-01-12,skill,54
+96,12,certification progress,2023-09-19,milestone,83
+97,60,success badge trophy,2023-11-23,milestone,74
+98,33,excellence skill,2024-08-31,skill,57
+99,73,proficiency trophy milestone,2024-08-29,milestone,49
+100,175,progress,2024-11-05,skill,60
+101,180,honor,2024-12-15,skill,54
+102,20,progress recognition,2023-03-27,skill,52
+103,147,expertise,2024-01-17,skill,54
+104,91,accomplishment proficiency progress,2024-09-04,milestone,67
+105,166,skill victory,2024-07-02,skill,70
+106,184,growth,2023-09-23,milestone,38
+107,41,skill certification,2023-03-17,participation,62
+108,160,honor,2024-05-14,skill,62
+109,60,mastery advancement skill,2023-12-23,milestone,58
+110,84,recognition level,2024-07-12,skill,61
+111,144,mastery,2023-10-11,participation,52
+112,63,certification victory,2024-02-20,milestone,57
+113,2,progress completion accomplishment,2024-05-11,milestone,80
+114,81,accomplishment success badge,2024-06-02,milestone,71
+115,193,excellence,2023-05-15,milestone,39
+116,50,trophy excellence completion,2023-10-20,milestone,81
+117,189,recognition award level,2023-08-15,skill,63
+118,4,recognition completion proficiency,2024-03-24,milestone,60
+119,140,honor success,2024-12-26,milestone,73
+120,184,honor progress,2024-03-31,skill,48
+121,96,award recognition milestone,2023-09-15,skill,56
+122,182,growth recognition,2024-04-15,participation,76
+123,196,trophy expertise certification,2024-08-05,milestone,59
+124,74,accomplishment recognition,2024-06-03,skill,72
+125,138,award,2024-07-21,milestone,59
+126,190,completion trophy growth,2024-11-18,skill,59
+127,181,mastery,2023-05-05,skill,52
+128,134,growth proficiency,2024-02-19,milestone,91
+129,41,excellence distinction,2024-02-17,participation,49
+130,72,milestone,2023-01-25,skill,41
+131,46,accomplishment proficiency,2023-09-30,milestone,78
+132,166,badge level excellence,2024-03-25,skill,44
+133,188,success completion proficiency,2023-09-23,skill,44
+134,45,distinction,2024-03-22,participation,52
+135,110,accomplishment growth,2023-08-30,milestone,46
+136,22,recognition badge milestone,2023-05-02,milestone,45
+137,46,badge expertise,2024-06-15,skill,47
+138,36,skill victory expertise,2024-03-26,participation,59
+139,114,level excellence,2024-08-10,milestone,49
+140,27,proficiency,2023-12-25,participation,58
+141,12,certification,2024-03-27,milestone,54
+142,137,level certification,2024-03-31,skill,62
+143,104,growth mastery,2024-03-31,skill,51
+144,183,proficiency certification expertise,2023-04-20,skill,74
+145,198,excellence,2024-09-30,milestone,42
+146,43,excellence,2023-06-28,milestone,57
+147,89,award proficiency,2024-06-04,milestone,58
+148,163,success recognition,2024-10-31,milestone,63
+149,121,victory,2024-11-28,skill,49
+150,97,excellence,2024-03-03,skill,70
+151,150,recognition progress growth,2023-10-28,skill,35
+152,43,expertise victory,2023-01-16,participation,36
+153,183,success growth,2024-10-02,skill,48
+154,154,completion,2024-07-08,skill,53
+155,16,success completion badge,2024-01-04,skill,60
+156,2,award progress,2023-05-29,skill,53
+157,112,advancement excellence victory,2023-03-20,milestone,45
+158,156,proficiency,2024-09-03,skill,57
+159,14,excellence recognition growth,2023-04-03,milestone,72
+160,7,skill level award,2024-11-24,milestone,90
+161,158,level advancement skill,2023-12-22,skill,68
+162,156,progress skill,2023-02-25,skill,53
+163,12,award advancement excellence,2024-12-23,milestone,41
+164,82,accomplishment level,2024-11-05,skill,45
+165,15,distinction,2024-09-16,skill,63
+166,149,honor recognition,2023-12-06,skill,93
+167,42,advancement milestone,2024-04-07,participation,59
+168,125,recognition trophy,2024-06-11,milestone,50
+169,22,badge expertise,2024-06-06,milestone,66
+170,92,level,2023-04-17,milestone,65
+171,126,certification mastery growth,2023-10-03,milestone,48
+172,199,badge,2023-07-08,participation,61
+173,26,proficiency badge,2023-10-07,milestone,68
+174,26,distinction milestone,2024-05-11,skill,49
+175,175,proficiency award,2023-11-13,skill,76
+176,135,advancement badge expertise,2024-09-09,skill,66
+177,29,excellence,2023-12-10,skill,37
+178,111,certification,2023-04-15,skill,67
+179,174,accomplishment excellence,2023-07-06,participation,27
+180,52,success,2024-08-31,participation,84
+181,88,distinction growth,2023-12-31,skill,43
+182,185,expertise accomplishment award,2024-02-02,skill,68
+183,47,excellence mastery advancement,2024-12-31,skill,47
+184,179,proficiency,2023-06-24,skill,37
+185,37,badge,2023-11-27,milestone,59
+186,138,victory trophy,2023-02-26,skill,27
+187,128,growth,2023-06-15,milestone,46
+188,15,completion,2024-05-09,milestone,44
+189,114,honor,2023-08-28,participation,57
+190,66,proficiency expertise,2023-04-23,participation,42
+191,62,victory completion,2024-06-24,skill,66
+192,158,trophy,2024-05-22,skill,52
+193,107,progress badge,2024-06-29,milestone,53
+194,112,level excellence progress,2023-06-26,participation,50
+195,155,badge,2024-06-02,milestone,46
+196,82,honor victory,2023-04-21,participation,39
+197,112,certification award progress,2023-11-29,milestone,77
+198,158,accomplishment certification,2023-03-18,skill,52
+199,48,accomplishment,2024-05-26,milestone,45
+200,66,advancement recognition,2024-06-08,participation,64
+201,181,accomplishment skill success,2023-05-15,skill,73
+202,58,excellence mastery victory,2024-09-06,milestone,26
+203,186,proficiency,2023-07-18,participation,51
+204,112,trophy proficiency expertise,2024-08-26,skill,51
+205,93,victory growth,2024-01-16,participation,54
+206,50,growth trophy level,2023-05-10,milestone,33
+207,198,honor,2024-03-04,participation,66
+208,112,trophy mastery,2023-08-28,skill,66
+209,102,certification level success,2023-10-18,participation,51
+210,148,honor distinction,2024-05-11,participation,64
+211,63,expertise,2023-11-07,participation,40
+212,180,trophy,2023-02-21,milestone,46
+213,116,honor,2024-11-27,milestone,64
+214,19,badge mastery advancement,2023-11-27,participation,38
+215,121,completion milestone expertise,2023-04-04,skill,43
+216,153,trophy level,2024-10-31,skill,38
+217,180,badge skill,2023-08-18,skill,52
+218,58,milestone trophy,2023-10-31,skill,73
+219,21,distinction proficiency,2023-12-20,skill,35
+220,9,badge growth,2024-12-27,skill,48
+221,43,excellence trophy advancement,2023-12-25,skill,56
+222,168,certification milestone award,2023-04-09,skill,35
+223,162,skill,2024-09-21,skill,75
+224,1,distinction advancement success,2024-01-01,participation,71
+225,89,milestone excellence expertise,2024-01-16,milestone,53
+226,159,advancement honor level,2024-02-29,participation,72
+227,4,milestone badge level,2023-08-20,milestone,58
+228,148,excellence expertise,2023-08-11,skill,64
+229,200,proficiency level,2023-02-07,milestone,57
+230,11,completion recognition,2024-07-21,skill,78
+231,58,progress mastery,2023-04-19,participation,32
+232,165,success advancement,2023-11-24,milestone,52
+233,153,progress,2023-10-13,participation,66
+234,182,victory expertise,2023-02-18,skill,51
+235,50,honor completion,2023-06-02,skill,49
+236,65,accomplishment,2024-08-29,participation,52
+237,136,success trophy proficiency,2023-11-28,skill,38
+238,57,completion success accomplishment,2023-11-27,skill,69
+239,110,distinction growth,2024-10-12,skill,68
+240,45,skill completion accomplishment,2023-12-08,skill,54
+241,73,accomplishment,2023-05-19,milestone,54
+242,98,badge excellence,2024-08-17,milestone,52
+243,25,proficiency milestone mastery,2023-12-06,milestone,61
+244,18,trophy,2023-01-09,milestone,50
+245,130,growth distinction milestone,2024-06-02,participation,37
+246,29,excellence,2023-11-25,skill,59
+247,6,trophy skill,2024-07-18,skill,49
+248,165,trophy level,2023-09-10,skill,52
+249,104,skill distinction mastery,2024-12-08,skill,73
+250,197,proficiency,2024-03-19,skill,51
+251,32,trophy growth level,2024-02-04,milestone,40
+252,100,milestone,2024-10-24,participation,73
+253,117,mastery,2023-12-28,milestone,51
+254,143,level advancement,2023-07-08,skill,34
+255,128,skill recognition completion,2024-10-03,milestone,47
+256,93,growth advancement,2023-02-10,milestone,45
+257,184,expertise trophy certification,2024-10-23,skill,42
+258,36,level success honor,2024-10-22,skill,49
+259,91,victory accomplishment expertise,2023-01-19,milestone,64
+260,86,completion progress,2023-04-19,participation,76
+261,82,mastery excellence success,2023-05-20,skill,63
+262,66,level,2023-03-20,skill,60
+263,90,expertise,2023-09-21,skill,46
+264,159,proficiency progress completion,2023-12-17,milestone,38
+265,126,distinction victory,2024-01-08,skill,73
+266,153,distinction honor milestone,2024-09-04,skill,47
+267,22,expertise,2024-09-05,participation,53
+268,159,success completion,2024-08-19,milestone,60
+269,12,badge trophy victory,2024-10-30,milestone,86
+270,151,accomplishment,2024-07-10,skill,73
+271,148,success,2023-08-24,skill,50
+272,177,award,2023-05-06,milestone,52
+273,174,certification level,2024-10-09,milestone,34
+274,12,growth honor,2023-12-11,skill,71
+275,164,completion expertise badge,2023-04-09,milestone,64
+276,136,trophy,2023-06-26,participation,43
+277,17,trophy honor,2023-12-13,milestone,35
+278,168,progress proficiency level,2024-11-07,skill,74
+279,165,trophy,2023-07-19,milestone,63
+280,38,recognition skill,2024-04-16,skill,70
+281,95,mastery,2024-01-20,milestone,68
+282,48,success advancement,2023-11-06,skill,44
+283,186,trophy expertise accomplishment,2023-11-13,skill,62
+284,46,progress milestone completion,2024-04-16,skill,72
+285,2,trophy proficiency distinction,2023-11-01,milestone,61
+286,33,mastery recognition milestone,2023-11-26,skill,65
+287,144,certification mastery,2023-11-05,participation,50
+288,192,distinction mastery progress,2023-11-25,milestone,43
+289,174,distinction growth,2023-06-07,milestone,74
+290,117,level expertise,2024-01-09,skill,67
+291,86,success level progress,2023-08-02,skill,76
+292,97,completion,2023-06-20,milestone,47
+293,177,honor,2024-01-07,skill,65
+294,139,proficiency honor level,2023-11-05,participation,54
+295,95,skill success,2023-12-15,skill,54
+296,108,excellence,2023-06-26,milestone,46
+297,127,accomplishment,2023-06-01,skill,40
+298,187,expertise trophy,2023-07-28,skill,53
+299,84,certification award,2023-02-20,milestone,83
+300,9,mastery,2024-05-12,participation,44
+301,59,advancement level,2024-09-28,milestone,53
+302,23,completion growth,2024-01-13,participation,59
+303,116,progress award,2024-08-20,skill,55
+304,7,growth,2024-04-16,milestone,45
+305,160,distinction,2024-06-29,milestone,54
+306,26,badge level,2023-11-07,skill,75
+307,105,progress trophy certification,2023-09-15,milestone,49
+308,68,trophy,2023-02-05,skill,63
+309,90,certification skill,2024-06-26,skill,54
+310,134,award growth advancement,2024-04-06,skill,42
+311,136,progress success,2024-09-12,skill,42
+312,125,accomplishment,2024-03-12,skill,40
+313,173,trophy proficiency,2023-10-28,skill,54
+314,63,certification skill,2023-02-07,milestone,21
+315,161,proficiency certification recognition,2024-11-30,skill,57
+316,25,growth,2023-03-20,milestone,56
+317,97,proficiency,2024-07-02,participation,49
+318,81,skill progress victory,2023-09-23,milestone,77
+319,105,progress excellence,2023-01-28,skill,65
+320,127,trophy award,2024-01-17,skill,70
+321,168,mastery growth award,2024-05-04,milestone,42
+322,4,badge growth,2024-12-25,skill,50
+323,32,honor victory,2023-06-23,milestone,45
+324,76,milestone,2024-10-27,participation,49
+325,179,proficiency completion excellence,2023-03-18,milestone,59
+326,108,award progress,2023-01-19,participation,47
+327,140,honor badge,2023-08-07,skill,46
+328,77,certification,2023-07-17,skill,39
+329,83,distinction trophy milestone,2024-04-25,participation,72
+330,60,trophy,2024-03-22,skill,64
+331,128,completion progress,2023-10-07,skill,63
+332,170,success,2024-09-03,milestone,46
+333,157,award skill accomplishment,2023-05-03,skill,79
+334,22,expertise accomplishment certification,2024-08-06,participation,68
+335,140,badge success,2024-12-04,milestone,34
+336,135,distinction,2024-12-12,skill,70
+337,119,expertise,2024-12-03,participation,66
+338,171,certification,2023-02-05,skill,70
+339,123,skill progress,2023-10-08,milestone,70
+340,71,badge,2024-11-03,participation,58
+341,108,certification recognition,2024-05-13,skill,73
+342,80,mastery completion,2023-03-17,milestone,79
+343,135,progress mastery,2024-05-16,milestone,55
+344,122,milestone,2023-08-21,milestone,53
+345,123,expertise badge progress,2023-05-23,milestone,65
+346,175,trophy,2024-10-25,participation,54
+347,10,skill,2023-12-16,skill,69
+348,167,proficiency success accomplishment,2023-10-30,milestone,44
+349,119,expertise,2024-02-14,milestone,67
+350,175,expertise,2023-12-16,skill,53
+351,70,advancement,2023-04-08,skill,54
+352,89,expertise,2024-09-26,milestone,55
+353,99,excellence,2023-05-28,milestone,35
+354,11,growth proficiency,2024-04-18,milestone,44
+355,148,level,2024-06-27,milestone,36
+356,4,milestone excellence,2024-08-23,skill,90
+357,122,completion mastery trophy,2024-08-03,participation,36
+358,127,trophy victory,2023-01-20,milestone,43
+359,43,expertise progress level,2023-07-14,milestone,66
+360,80,certification skill,2024-06-02,skill,30
+361,139,distinction completion recognition,2024-03-17,skill,55
+362,37,distinction trophy,2023-01-28,milestone,76
+363,31,mastery,2023-03-02,participation,50
+364,167,distinction certification,2024-02-25,skill,41
+365,4,recognition,2024-12-16,skill,46
+366,13,proficiency excellence completion,2023-05-29,participation,56
+367,79,certification,2023-01-02,participation,50
+368,151,recognition completion badge,2024-09-21,milestone,35
+369,101,completion badge recognition,2023-10-17,milestone,35
+370,59,expertise badge,2023-02-08,skill,65
+371,38,badge milestone proficiency,2024-03-03,milestone,46
+372,130,distinction,2023-04-10,milestone,38
+373,159,expertise victory milestone,2024-03-04,milestone,59
+374,142,completion award,2024-08-15,milestone,65
+375,4,recognition advancement,2023-06-02,milestone,75
+376,94,excellence expertise distinction,2024-09-04,skill,59
+377,36,honor distinction proficiency,2023-05-18,milestone,71
+378,33,expertise level recognition,2023-12-24,milestone,33
+379,87,mastery advancement,2023-06-13,skill,45
+380,9,trophy,2024-12-13,skill,33
+381,143,mastery proficiency,2023-08-13,milestone,42
+382,143,badge,2024-04-10,skill,56
+383,178,advancement certification,2023-08-02,milestone,38
+384,9,mastery honor level,2024-03-17,skill,49
+385,152,level growth certification,2024-10-31,skill,59
+386,49,progress victory certification,2024-03-08,milestone,63
+387,152,honor accomplishment milestone,2024-12-08,skill,68
+388,127,growth,2023-02-17,skill,60
+389,131,skill certification,2024-08-02,skill,58
+390,12,mastery expertise success,2023-01-07,participation,44
+391,108,proficiency honor excellence,2024-10-17,skill,53
+392,61,badge,2024-04-28,participation,32
+393,147,growth excellence badge,2024-08-28,skill,48
+394,119,certification advancement,2023-11-10,skill,38
+395,41,expertise,2024-04-30,milestone,26
+396,17,growth recognition,2024-02-21,milestone,44
+397,157,milestone,2023-01-27,skill,51
+398,90,distinction,2024-11-06,skill,65
+399,72,milestone growth progress,2024-08-12,milestone,42
+400,9,recognition,2024-11-06,participation,71

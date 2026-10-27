@@ -1,0 +1,801 @@
+id,user_id,lesson_name,completion_date,lesson_difficulty,lesson_duration_minutes
+1,149,conversation grammar,2023-01-06,hard,60
+2,124,levels,2024-09-24,easy,69
+3,69,review,2023-06-02,medium,59
+4,101,listening reading review,2024-08-10,easy,77
+5,151,vocabulary advanced writing,2023-01-05,easy,46
+6,55,skills comprehension idioms,2024-06-03,hard,52
+7,114,conversation,2024-06-27,medium,50
+8,69,beginner,2023-01-11,easy,45
+9,179,review,2024-05-28,easy,70
+10,125,listening idioms beginner,2024-10-11,hard,54
+11,131,pronunciation expressions,2024-03-08,easy,70
+12,2,assessment test,2023-09-20,easy,84
+13,149,culture,2024-07-19,easy,85
+14,135,levels,2023-03-02,easy,80
+15,150,culture dialogue,2024-11-07,medium,49
+16,39,review,2024-08-28,easy,27
+17,123,test dialogue comprehension,2024-01-04,easy,76
+18,51,idioms comprehension,2023-01-03,easy,79
+19,65,culture vocabulary,2023-02-06,medium,81
+20,193,grammar vocabulary,2023-01-18,easy,75
+21,54,idioms vocabulary,2023-11-04,easy,66
+22,180,vocabulary idioms,2023-03-13,easy,94
+23,110,review,2023-05-30,medium,55
+24,103,listening,2024-04-29,medium,56
+25,186,beginner,2023-12-03,easy,29
+26,129,pronunciation expressions levels,2024-01-05,hard,75
+27,40,comprehension dialogue,2024-10-09,hard,69
+28,138,writing comprehension,2023-01-30,easy,28
+29,140,intermediate advanced conversation,2024-10-10,easy,28
+30,120,beginner intermediate,2023-02-23,medium,54
+31,135,reading,2023-06-18,hard,69
+32,93,conversation,2023-05-22,easy,87
+33,26,idioms test practice,2024-05-13,medium,32
+34,20,expressions,2023-05-25,easy,49
+35,26,review culture writing,2024-11-04,easy,46
+36,173,levels idioms review,2023-02-02,medium,43
+37,150,intermediate,2023-02-26,easy,78
+38,71,beginner,2024-03-20,easy,52
+39,189,grammar assessment comprehension,2024-03-22,medium,50
+40,92,assessment,2024-11-29,easy,63
+41,93,pronunciation vocabulary advanced,2023-06-12,medium,63
+42,107,beginner grammar comprehension,2024-05-29,hard,65
+43,164,writing,2024-01-29,medium,77
+44,119,culture expressions,2024-12-17,hard,83
+45,164,reading comprehension skills,2024-12-02,hard,63
+46,14,idioms reading,2024-08-24,medium,47
+47,83,grammar advanced,2023-06-23,hard,78
+48,182,expressions levels dialogue,2023-12-14,easy,60
+49,177,listening expressions intermediate,2024-03-18,easy,63
+50,42,assessment beginner idioms,2024-07-25,easy,85
+51,22,reading assessment,2024-08-21,medium,50
+52,92,comprehension practice,2024-04-05,hard,36
+53,192,assessment advanced,2024-07-05,easy,38
+54,121,conversation,2023-06-07,easy,60
+55,174,review phrases,2024-02-03,easy,51
+56,179,levels assessment,2024-09-01,medium,84
+57,200,conversation intermediate,2023-05-27,easy,64
+58,84,practice listening,2023-10-12,easy,52
+59,23,culture conversation intermediate,2024-04-13,medium,67
+60,153,grammar advanced culture,2024-12-17,easy,82
+61,132,conversation,2024-07-11,easy,69
+62,160,comprehension culture,2024-12-16,medium,59
+63,109,intermediate comprehension expressions,2024-09-30,easy,84
+64,145,beginner pronunciation phrases,2024-08-19,easy,70
+65,25,idioms grammar,2024-08-04,easy,30
+66,164,writing listening,2023-04-01,easy,50
+67,90,culture writing,2023-11-28,easy,60
+68,187,listening conversation phrases,2023-05-05,medium,72
+69,122,culture skills,2024-11-22,medium,71
+70,51,listening review levels,2023-09-27,medium,48
+71,47,test beginner,2023-12-05,easy,56
+72,5,advanced test,2023-12-19,hard,71
+73,181,intermediate phrases,2024-07-28,medium,83
+74,29,phrases dialogue,2023-01-22,hard,50
+75,140,dialogue listening,2023-06-17,medium,65
+76,147,test beginner,2023-03-07,easy,78
+77,170,advanced pronunciation review,2024-01-05,easy,81
+78,162,reading test,2024-02-18,easy,46
+79,42,idioms pronunciation test,2024-10-09,easy,82
+80,85,idioms,2023-12-22,hard,55
+81,42,review practice intermediate,2023-12-13,easy,51
+82,25,idioms conversation skills,2024-12-12,easy,70
+83,169,idioms assessment,2024-07-10,easy,47
+84,192,grammar levels comprehension,2023-02-16,easy,76
+85,189,advanced assessment,2024-06-10,easy,66
+86,80,intermediate,2024-04-02,easy,43
+87,103,skills,2024-04-04,easy,65
+88,77,dialogue,2023-09-02,easy,33
+89,1,beginner,2024-08-01,hard,37
+90,19,idioms advanced,2023-03-04,easy,74
+91,169,advanced idioms intermediate,2023-02-21,easy,54
+92,64,advanced phrases,2023-04-23,easy,81
+93,16,conversation assessment,2023-06-13,medium,59
+94,23,test assessment advanced,2024-01-16,medium,58
+95,193,beginner review,2024-03-08,hard,59
+96,145,levels expressions,2023-09-24,easy,81
+97,126,listening,2023-08-11,easy,63
+98,179,beginner conversation culture,2024-09-30,easy,73
+99,197,idioms practice,2024-01-22,easy,93
+100,91,assessment grammar skills,2024-05-30,medium,35
+101,188,review intermediate pronunciation,2023-05-21,easy,93
+102,80,test practice,2024-06-10,easy,56
+103,3,pronunciation skills,2023-07-10,easy,57
+104,17,pronunciation idioms practice,2024-06-10,easy,61
+105,200,comprehension listening,2023-01-25,easy,88
+106,184,comprehension writing,2023-07-27,easy,68
+107,182,phrases levels pronunciation,2024-09-25,medium,66
+108,103,practice,2023-06-17,easy,74
+109,109,skills conversation,2023-06-02,easy,85
+110,127,listening practice,2024-01-27,hard,34
+111,185,skills listening,2023-02-23,medium,64
+112,99,skills phrases comprehension,2024-10-09,medium,66
+113,6,assessment dialogue skills,2024-05-20,easy,67
+114,68,intermediate culture,2024-08-30,easy,30
+115,21,pronunciation,2023-08-22,easy,74
+116,64,test,2024-04-11,medium,76
+117,102,assessment,2024-07-20,easy,81
+118,178,practice,2024-05-04,medium,62
+119,157,review vocabulary dialogue,2024-11-12,hard,62
+120,155,expressions beginner,2023-10-17,medium,28
+121,35,conversation idioms,2024-11-01,easy,84
+122,116,expressions intermediate grammar,2023-09-20,easy,67
+123,184,culture,2023-09-09,easy,48
+124,100,listening grammar,2023-04-19,easy,51
+125,116,dialogue comprehension,2024-01-31,easy,84
+126,89,phrases intermediate advanced,2024-10-10,easy,63
+127,89,reading beginner vocabulary,2023-10-17,easy,82
+128,127,test,2023-11-22,easy,29
+129,29,culture grammar test,2024-08-14,medium,39
+130,161,idioms,2024-12-10,medium,78
+131,166,skills conversation practice,2023-11-07,easy,69
+132,18,advanced,2024-04-05,easy,87
+133,75,phrases skills listening,2023-06-27,easy,53
+134,176,phrases vocabulary expressions,2023-02-04,medium,50
+135,151,levels,2024-12-07,medium,69
+136,82,vocabulary,2023-03-19,easy,76
+137,80,pronunciation,2024-12-13,medium,83
+138,167,levels,2023-09-14,medium,65
+139,156,listening levels,2023-12-07,medium,77
+140,167,assessment skills advanced,2024-08-24,easy,73
+141,181,beginner practice,2024-04-15,medium,54
+142,16,grammar levels,2024-01-28,easy,54
+143,167,writing,2024-10-05,easy,67
+144,164,beginner,2023-06-13,easy,47
+145,170,reading,2024-05-23,easy,59
+146,158,idioms,2023-03-02,hard,52
+147,120,pronunciation beginner,2024-01-17,easy,82
+148,155,listening grammar intermediate,2024-01-15,easy,83
+149,118,phrases,2024-07-11,medium,60
+150,44,idioms intermediate,2024-09-12,medium,73
+151,13,idioms intermediate,2023-09-25,easy,57
+152,10,culture assessment pronunciation,2023-05-02,hard,64
+153,64,comprehension review skills,2023-02-24,medium,35
+154,192,phrases practice advanced,2024-09-20,medium,43
+155,10,listening,2023-07-21,easy,73
+156,52,grammar dialogue,2023-07-19,hard,51
+157,140,test,2023-06-20,easy,35
+158,98,comprehension listening advanced,2024-06-12,medium,46
+159,34,vocabulary,2023-03-10,hard,40
+160,155,phrases test dialogue,2024-08-17,easy,60
+161,141,pronunciation listening skills,2023-02-28,medium,39
+162,58,writing,2023-05-09,easy,63
+163,151,writing skills,2024-08-11,easy,40
+164,11,beginner test,2023-05-25,easy,33
+165,18,assessment advanced,2024-12-31,easy,96
+166,82,test,2024-11-25,hard,61
+167,12,expressions listening,2023-08-13,hard,41
+168,47,expressions,2024-01-13,easy,83
+169,10,review assessment phrases,2024-06-15,hard,74
+170,88,conversation,2024-07-20,easy,45
+171,142,listening,2023-12-07,medium,67
+172,68,advanced vocabulary,2023-09-23,easy,36
+173,110,conversation idioms advanced,2023-03-14,medium,76
+174,157,culture,2023-10-03,easy,54
+175,157,practice idioms,2023-10-11,hard,39
+176,24,practice pronunciation intermediate,2024-07-30,easy,71
+177,142,skills,2023-12-22,medium,81
+178,185,reading,2023-03-07,easy,69
+179,164,review test practice,2024-01-17,medium,96
+180,100,levels,2023-08-04,easy,77
+181,120,listening skills phrases,2024-03-27,medium,80
+182,84,phrases reading,2023-06-16,medium,76
+183,147,expressions,2023-11-08,easy,58
+184,185,assessment pronunciation,2024-02-09,hard,60
+185,17,comprehension,2023-02-19,easy,91
+186,105,idioms,2023-05-20,hard,38
+187,135,grammar,2023-09-09,easy,47
+188,74,advanced intermediate levels,2023-11-11,medium,69
+189,2,phrases skills,2023-08-18,medium,43
+190,98,intermediate,2023-12-01,hard,44
+191,150,advanced pronunciation,2024-06-28,easy,66
+192,131,listening grammar skills,2023-06-14,easy,60
+193,141,culture,2023-08-31,medium,63
+194,102,beginner assessment,2024-06-02,easy,48
+195,1,review conversation vocabulary,2024-12-12,easy,85
+196,52,test,2023-02-05,medium,69
+197,146,reading expressions skills,2024-03-29,easy,72
+198,130,conversation culture beginner,2023-05-11,easy,64
+199,127,test,2024-09-07,hard,33
+200,60,beginner advanced idioms,2024-11-18,easy,64
+201,185,dialogue,2024-12-02,easy,49
+202,132,dialogue expressions,2023-01-04,hard,43
+203,31,reading,2023-01-20,hard,74
+204,19,comprehension advanced test,2024-12-21,medium,85
+205,11,culture,2024-11-25,easy,71
+206,9,skills phrases conversation,2024-06-15,medium,86
+207,136,writing test,2023-09-15,easy,90
+208,17,comprehension beginner dialogue,2024-01-14,hard,59
+209,53,comprehension listening reading,2023-06-16,hard,29
+210,97,listening beginner,2023-02-06,easy,67
+211,156,reading,2023-06-11,medium,61
+212,57,vocabulary intermediate,2024-02-13,hard,60
+213,193,dialogue phrases,2024-08-20,easy,47
+214,123,beginner,2024-04-19,medium,53
+215,4,practice skills listening,2024-07-17,easy,98
+216,53,expressions,2023-06-05,easy,64
+217,34,vocabulary skills,2023-12-22,easy,64
+218,101,advanced reading,2024-08-06,medium,64
+219,66,listening review beginner,2024-01-08,medium,70
+220,111,phrases writing,2024-12-18,medium,80
+221,162,advanced comprehension,2023-01-01,easy,69
+222,117,intermediate test,2023-10-07,easy,55
+223,153,levels,2024-05-06,easy,91
+224,152,listening pronunciation,2024-12-14,easy,68
+225,124,intermediate,2024-08-16,easy,74
+226,43,conversation intermediate,2023-04-28,easy,61
+227,83,vocabulary,2023-08-10,hard,77
+228,86,expressions review pronunciation,2024-09-26,medium,50
+229,29,conversation test,2024-05-27,hard,65
+230,67,test,2024-12-17,medium,71
+231,160,grammar,2024-06-22,easy,69
+232,44,listening,2024-02-15,easy,37
+233,161,beginner dialogue,2023-11-25,easy,44
+234,164,pronunciation advanced grammar,2023-09-09,easy,63
+235,59,intermediate,2023-09-20,easy,51
+236,135,levels,2024-10-23,hard,79
+237,76,review grammar,2024-12-17,easy,81
+238,120,review assessment levels,2024-06-29,medium,91
+239,46,expressions intermediate dialogue,2024-03-21,medium,65
+240,200,advanced beginner,2024-04-18,medium,45
+241,143,pronunciation beginner intermediate,2024-12-03,easy,81
+242,34,advanced grammar conversation,2024-09-23,medium,82
+243,78,culture,2023-12-20,easy,68
+244,107,levels assessment review,2024-11-12,easy,73
+245,136,dialogue review,2024-01-26,hard,52
+246,126,review dialogue,2023-10-03,hard,51
+247,15,listening idioms,2023-01-25,hard,78
+248,167,listening,2023-10-27,easy,72
+249,121,advanced culture,2024-04-27,easy,66
+250,188,assessment writing,2024-04-23,easy,83
+251,132,comprehension intermediate expressions,2024-06-05,medium,67
+252,183,idioms advanced reading,2024-02-05,medium,75
+253,101,writing reading test,2024-01-25,hard,53
+254,149,writing advanced pronunciation,2023-07-02,easy,52
+255,65,vocabulary test expressions,2024-11-21,easy,57
+256,119,test,2024-07-03,medium,46
+257,106,skills,2023-02-22,easy,76
+258,151,listening test,2023-01-20,easy,68
+259,124,advanced,2023-06-13,easy,57
+260,200,grammar,2024-04-30,easy,89
+261,159,advanced conversation,2024-02-06,hard,65
+262,59,writing,2023-07-10,easy,33
+263,175,grammar,2024-04-09,easy,42
+264,84,listening,2024-07-16,hard,63
+265,122,pronunciation,2024-10-25,medium,33
+266,40,conversation expressions vocabulary,2023-08-18,medium,32
+267,68,beginner,2023-08-07,medium,73
+268,165,beginner vocabulary,2023-08-24,easy,37
+269,164,test,2024-07-02,easy,65
+270,34,listening idioms,2023-07-05,medium,57
+271,52,phrases listening,2023-07-30,easy,56
+272,88,culture intermediate dialogue,2023-06-30,easy,42
+273,186,dialogue levels,2023-03-07,easy,51
+274,8,levels,2023-01-26,easy,82
+275,14,assessment levels,2024-05-20,easy,69
+276,84,advanced vocabulary test,2024-06-01,easy,102
+277,100,phrases vocabulary listening,2023-07-05,medium,40
+278,151,grammar,2024-06-07,easy,59
+279,105,conversation,2024-12-12,hard,64
+280,172,intermediate,2023-11-09,medium,43
+281,89,comprehension review assessment,2024-08-13,medium,93
+282,37,conversation reading culture,2023-11-17,easy,41
+283,110,idioms expressions,2023-12-27,medium,65
+284,126,practice skills,2023-02-27,easy,54
+285,196,comprehension,2023-01-06,hard,55
+286,189,idioms grammar review,2023-08-30,hard,49
+287,105,review skills intermediate,2024-09-06,medium,45
+288,75,intermediate comprehension assessment,2024-04-28,hard,59
+289,193,beginner,2024-12-28,medium,31
+290,91,writing,2024-03-18,hard,61
+291,83,beginner practice intermediate,2023-05-07,easy,50
+292,9,comprehension,2024-09-16,easy,63
+293,155,practice assessment,2024-10-26,medium,62
+294,5,practice intermediate writing,2023-07-05,easy,49
+295,94,listening vocabulary writing,2024-12-12,medium,40
+296,69,beginner intermediate levels,2024-02-10,medium,75
+297,31,expressions conversation,2024-02-11,medium,81
+298,127,levels skills intermediate,2023-08-10,hard,68
+299,17,listening,2024-07-16,medium,83
+300,11,assessment beginner listening,2024-12-30,medium,81
+301,199,vocabulary,2023-05-22,hard,84
+302,122,dialogue,2024-03-03,hard,91
+303,30,assessment pronunciation,2023-01-17,medium,77
+304,33,phrases skills,2023-07-19,medium,52
+305,132,dialogue practice,2024-04-20,hard,43
+306,1,review,2024-04-23,easy,63
+307,50,intermediate,2024-06-20,easy,69
+308,160,assessment test reading,2023-05-25,easy,57
+309,99,expressions comprehension,2023-03-13,easy,88
+310,183,skills grammar,2023-11-10,medium,59
+311,51,expressions idioms,2023-03-20,medium,54
+312,13,grammar culture vocabulary,2023-11-14,easy,70
+313,152,idioms,2023-06-06,easy,48
+314,169,writing,2024-11-25,easy,84
+315,63,vocabulary intermediate conversation,2023-01-17,hard,47
+316,193,assessment phrases vocabulary,2023-04-26,hard,55
+317,160,culture,2024-05-31,medium,72
+318,199,listening,2024-06-25,easy,64
+319,109,test,2023-03-14,hard,45
+320,104,practice test,2024-11-11,easy,61
+321,10,writing phrases,2024-03-22,hard,33
+322,6,assessment test pronunciation,2024-03-24,medium,51
+323,92,reading idioms,2024-11-29,hard,82
+324,185,assessment grammar phrases,2024-04-07,medium,67
+325,36,advanced idioms,2024-08-29,medium,61
+326,109,grammar,2024-11-20,easy,66
+327,32,beginner conversation test,2024-11-25,medium,34
+328,148,assessment idioms vocabulary,2023-09-29,easy,57
+329,45,phrases review beginner,2024-09-17,medium,63
+330,177,levels expressions beginner,2023-10-03,easy,74
+331,30,culture comprehension,2024-11-23,medium,43
+332,101,vocabulary listening,2023-04-28,easy,29
+333,46,review,2023-07-26,easy,89
+334,160,levels beginner test,2023-10-21,easy,72
+335,37,skills vocabulary,2024-06-16,easy,42
+336,162,expressions levels,2024-03-07,easy,75
+337,30,reading,2024-12-04,easy,80
+338,8,listening writing,2024-04-13,easy,59
+339,15,assessment,2024-06-21,medium,54
+340,189,review,2023-04-21,hard,58
+341,88,practice,2024-01-06,easy,61
+342,90,intermediate levels,2024-08-25,easy,69
+343,139,expressions,2023-07-12,hard,48
+344,7,conversation phrases expressions,2024-07-21,easy,53
+345,80,culture levels skills,2024-01-03,medium,36
+346,135,idioms,2024-12-16,easy,62
+347,44,writing idioms,2023-05-03,hard,57
+348,11,intermediate reading writing,2023-01-24,hard,13
+349,71,phrases dialogue writing,2024-02-19,medium,38
+350,162,phrases assessment,2023-06-06,easy,82
+351,178,writing review,2023-04-21,easy,97
+352,3,idioms practice,2024-05-01,hard,31
+353,65,practice,2024-10-23,medium,92
+354,163,conversation,2023-07-26,hard,59
+355,97,practice assessment,2024-04-06,medium,43
+356,132,skills,2023-09-16,easy,49
+357,135,intermediate advanced,2023-03-31,hard,56
+358,64,phrases expressions,2024-01-30,medium,70
+359,184,conversation culture vocabulary,2023-01-29,hard,38
+360,29,listening idioms phrases,2023-01-17,hard,83
+361,142,phrases vocabulary assessment,2024-04-02,easy,103
+362,144,beginner conversation dialogue,2023-01-11,easy,34
+363,80,advanced,2024-03-12,medium,38
+364,100,listening levels,2023-12-03,easy,65
+365,164,beginner,2024-09-13,easy,77
+366,3,practice expressions,2023-08-04,hard,63
+367,29,conversation levels listening,2024-05-27,medium,70
+368,26,test,2023-04-17,medium,60
+369,105,writing skills,2024-11-30,easy,55
+370,194,review pronunciation beginner,2023-09-19,easy,71
+371,154,reading test,2024-06-11,easy,90
+372,95,expressions listening,2024-05-23,medium,81
+373,123,assessment writing idioms,2023-03-12,easy,54
+374,4,practice beginner expressions,2023-09-28,easy,52
+375,195,dialogue review beginner,2023-03-31,easy,64
+376,89,levels skills,2024-04-04,hard,28
+377,96,practice beginner expressions,2023-09-21,medium,83
+378,197,vocabulary,2023-01-18,hard,53
+379,10,phrases review,2023-04-18,hard,79
+380,131,intermediate,2024-08-12,easy,76
+381,164,practice,2023-11-11,medium,56
+382,29,phrases intermediate,2024-05-13,easy,75
+383,183,conversation culture,2024-09-05,easy,69
+384,74,practice intermediate vocabulary,2024-11-28,medium,57
+385,62,pronunciation test,2024-01-22,medium,44
+386,68,listening skills,2024-05-14,easy,44
+387,105,listening,2023-05-30,medium,76
+388,47,culture beginner,2024-05-03,hard,85
+389,195,skills expressions,2024-11-27,easy,42
+390,47,writing comprehension,2024-08-09,easy,63
+391,154,practice phrases,2023-07-19,easy,49
+392,49,culture pronunciation test,2023-06-29,easy,67
+393,163,assessment culture,2023-10-02,medium,41
+394,1,conversation assessment,2024-08-31,easy,83
+395,179,practice,2023-11-21,easy,54
+396,148,pronunciation skills beginner,2024-11-23,medium,79
+397,176,listening dialogue test,2024-06-09,hard,58
+398,15,expressions levels listening,2024-08-13,easy,56
+399,67,practice phrases culture,2024-11-07,hard,78
+400,151,comprehension,2023-02-09,medium,59
+401,36,reading comprehension skills,2023-04-16,hard,50
+402,150,levels,2023-10-06,easy,36
+403,108,advanced,2024-07-18,easy,52
+404,164,expressions,2024-02-28,medium,73
+405,62,listening phrases comprehension,2023-11-22,easy,62
+406,179,levels assessment,2024-01-21,easy,77
+407,140,advanced writing,2023-03-14,easy,91
+408,113,pronunciation phrases,2023-04-23,easy,68
+409,192,pronunciation,2024-11-29,easy,62
+410,89,pronunciation,2023-07-05,easy,59
+411,35,practice beginner advanced,2023-12-21,easy,67
+412,152,expressions beginner,2024-08-05,easy,66
+413,71,intermediate writing,2023-12-16,easy,77
+414,182,pronunciation,2024-04-07,easy,36
+415,47,review phrases,2024-12-16,medium,90
+416,123,beginner phrases skills,2024-01-20,easy,57
+417,175,expressions pronunciation skills,2024-09-25,hard,61
+418,39,practice grammar,2024-06-05,easy,61
+419,159,listening advanced,2023-11-06,easy,82
+420,101,listening,2023-05-15,easy,82
+421,71,pronunciation phrases,2023-06-30,hard,55
+422,105,assessment phrases skills,2023-12-19,medium,52
+423,115,phrases intermediate,2023-01-18,medium,81
+424,85,vocabulary,2024-07-13,medium,55
+425,184,phrases,2023-06-21,easy,67
+426,29,phrases culture,2023-07-14,medium,67
+427,126,writing beginner,2023-04-17,easy,73
+428,7,vocabulary test,2023-06-22,easy,74
+429,170,writing vocabulary,2023-11-17,easy,75
+430,3,comprehension skills phrases,2023-08-02,medium,47
+431,92,review advanced test,2024-05-19,medium,29
+432,52,expressions reading intermediate,2023-12-02,medium,65
+433,24,comprehension intermediate levels,2023-11-17,medium,59
+434,168,grammar,2024-10-05,medium,77
+435,175,conversation comprehension,2024-08-16,easy,38
+436,194,listening intermediate,2024-02-09,easy,67
+437,92,intermediate assessment expressions,2024-07-11,hard,79
+438,59,phrases culture,2024-08-08,easy,62
+439,69,dialogue grammar conversation,2023-09-05,medium,73
+440,25,culture pronunciation,2023-11-07,hard,43
+441,193,vocabulary,2024-02-03,hard,64
+442,134,writing vocabulary listening,2024-05-29,easy,88
+443,182,expressions idioms conversation,2024-11-13,medium,57
+444,28,intermediate,2023-05-16,medium,41
+445,185,pronunciation,2023-07-01,easy,41
+446,114,dialogue intermediate,2024-04-16,easy,82
+447,44,review culture,2024-09-24,easy,45
+448,11,advanced,2024-07-30,easy,54
+449,199,skills vocabulary expressions,2023-07-17,easy,56
+450,130,expressions,2023-04-05,easy,84
+451,144,idioms advanced,2024-05-13,hard,65
+452,130,levels conversation grammar,2024-12-16,medium,46
+453,156,idioms intermediate test,2023-08-27,medium,64
+454,3,listening practice grammar,2023-05-24,medium,35
+455,47,reading intermediate dialogue,2023-12-20,easy,87
+456,172,vocabulary idioms,2024-03-10,hard,53
+457,44,assessment listening phrases,2024-03-24,medium,58
+458,161,vocabulary,2024-12-05,easy,51
+459,82,grammar assessment practice,2023-04-07,easy,44
+460,27,advanced beginner,2023-11-12,easy,49
+461,87,conversation,2023-12-15,medium,68
+462,190,review,2024-08-13,hard,66
+463,159,beginner pronunciation,2023-04-16,easy,83
+464,65,expressions beginner,2024-01-03,medium,87
+465,122,pronunciation comprehension,2023-08-22,medium,66
+466,33,levels intermediate grammar,2024-04-18,hard,33
+467,138,conversation practice listening,2023-06-13,easy,36
+468,40,test conversation,2024-08-14,easy,56
+469,191,grammar assessment idioms,2024-12-18,hard,37
+470,42,conversation culture,2023-02-02,easy,75
+471,72,levels practice test,2023-01-31,medium,44
+472,102,assessment reading,2024-11-22,easy,53
+473,96,pronunciation assessment intermediate,2023-04-12,easy,69
+474,166,advanced listening,2023-03-08,medium,57
+475,80,culture,2024-04-11,hard,38
+476,36,vocabulary practice grammar,2024-11-10,easy,55
+477,7,writing,2024-04-28,hard,59
+478,77,advanced conversation,2023-11-08,easy,70
+479,146,intermediate levels vocabulary,2023-11-11,easy,69
+480,11,vocabulary phrases,2023-08-30,easy,62
+481,48,intermediate comprehension test,2024-10-24,hard,58
+482,137,test,2023-12-20,easy,58
+483,6,levels,2023-03-14,easy,89
+484,79,expressions,2024-05-19,hard,71
+485,188,grammar,2024-11-24,easy,67
+486,182,test practice,2024-03-09,hard,84
+487,178,practice,2024-04-24,easy,67
+488,98,beginner advanced,2024-05-17,medium,99
+489,16,culture dialogue intermediate,2024-06-15,easy,40
+490,91,practice conversation assessment,2024-11-18,hard,98
+491,78,skills assessment writing,2023-04-08,medium,48
+492,152,culture phrases conversation,2024-07-16,easy,62
+493,19,vocabulary,2024-02-01,hard,67
+494,110,idioms pronunciation beginner,2023-11-01,easy,97
+495,93,levels,2024-01-05,hard,41
+496,33,test writing intermediate,2023-08-12,hard,56
+497,39,skills vocabulary,2024-02-21,hard,71
+498,63,comprehension beginner phrases,2023-11-08,easy,88
+499,132,writing listening,2023-01-21,medium,57
+500,113,culture,2023-06-06,easy,57
+501,18,phrases,2023-02-11,medium,64
+502,146,idioms vocabulary culture,2024-03-31,medium,75
+503,160,culture,2024-11-24,easy,85
+504,117,vocabulary,2023-11-26,easy,68
+505,65,writing skills comprehension,2024-11-02,hard,64
+506,161,idioms advanced grammar,2023-08-05,hard,41
+507,98,idioms writing review,2024-07-28,easy,70
+508,81,reading conversation review,2024-05-18,easy,23
+509,200,comprehension intermediate dialogue,2024-05-31,easy,80
+510,31,beginner grammar,2024-11-26,hard,56
+511,160,dialogue,2024-08-16,hard,44
+512,79,dialogue,2024-03-09,easy,70
+513,192,culture,2024-10-22,easy,39
+514,87,assessment listening,2023-09-07,easy,67
+515,20,idioms,2023-10-09,medium,60
+516,10,expressions phrases,2023-05-01,easy,64
+517,31,intermediate pronunciation conversation,2023-07-23,hard,85
+518,42,expressions advanced,2024-04-03,easy,33
+519,24,writing levels beginner,2024-11-22,medium,76
+520,40,reading practice,2024-09-27,hard,53
+521,66,vocabulary,2024-10-07,medium,61
+522,185,levels,2024-11-21,easy,42
+523,16,listening conversation,2024-01-23,medium,51
+524,96,grammar expressions,2024-08-09,easy,70
+525,89,writing,2024-04-25,easy,77
+526,160,practice intermediate conversation,2024-07-13,easy,72
+527,152,beginner,2024-03-16,easy,78
+528,73,levels skills assessment,2024-01-27,medium,86
+529,34,intermediate assessment,2024-05-17,easy,34
+530,61,advanced phrases,2024-08-26,medium,44
+531,183,skills test,2024-05-08,easy,83
+532,51,comprehension intermediate,2023-11-21,easy,49
+533,2,phrases,2024-08-31,easy,53
+534,146,phrases review listening,2024-10-15,medium,62
+535,124,skills expressions writing,2023-10-20,medium,51
+536,163,reading,2024-07-12,medium,55
+537,132,conversation idioms culture,2024-02-26,hard,57
+538,183,skills idioms,2023-04-24,easy,84
+539,27,dialogue,2024-10-25,medium,76
+540,189,practice reading,2024-11-10,medium,70
+541,37,grammar beginner,2023-08-08,easy,82
+542,148,practice,2024-01-01,hard,43
+543,178,review test,2023-02-12,medium,62
+544,96,intermediate phrases,2024-12-27,easy,49
+545,79,practice,2024-10-11,easy,45
+546,79,pronunciation,2024-08-06,easy,69
+547,172,culture,2023-03-28,medium,74
+548,163,grammar levels beginner,2024-06-30,medium,71
+549,93,listening grammar phrases,2023-10-05,easy,66
+550,176,assessment review grammar,2024-09-02,easy,101
+551,55,expressions intermediate conversation,2024-10-31,easy,75
+552,5,skills,2023-05-03,easy,54
+553,81,dialogue reading idioms,2023-11-16,hard,95
+554,170,review pronunciation skills,2023-07-08,easy,56
+555,48,comprehension vocabulary,2024-12-29,easy,80
+556,20,grammar dialogue,2023-05-14,easy,54
+557,121,reading pronunciation,2023-08-16,easy,62
+558,81,test levels writing,2024-05-31,easy,58
+559,40,test,2023-09-02,easy,57
+560,98,vocabulary assessment,2023-04-12,easy,79
+561,114,listening idioms test,2024-03-13,easy,61
+562,126,practice,2023-06-30,easy,69
+563,12,skills,2023-07-19,medium,66
+564,176,pronunciation,2024-06-17,hard,69
+565,180,conversation writing vocabulary,2023-10-27,hard,66
+566,97,reading practice beginner,2023-07-07,medium,39
+567,138,advanced,2023-01-06,easy,55
+568,67,test phrases intermediate,2023-10-06,medium,34
+569,186,comprehension,2024-01-17,medium,66
+570,29,comprehension levels idioms,2023-08-28,medium,22
+571,170,listening dialogue idioms,2024-01-18,hard,63
+572,84,comprehension,2023-01-12,easy,60
+573,8,practice dialogue intermediate,2024-07-27,hard,58
+574,113,dialogue,2024-09-05,medium,56
+575,116,reading dialogue writing,2024-01-18,medium,93
+576,128,beginner conversation,2023-06-29,medium,47
+577,167,pronunciation,2024-01-24,easy,59
+578,140,reading,2023-05-18,medium,71
+579,84,skills writing practice,2023-12-13,easy,67
+580,104,vocabulary expressions pronunciation,2023-11-20,easy,23
+581,50,expressions,2024-09-06,medium,54
+582,152,reading,2023-12-05,hard,62
+583,33,dialogue,2023-04-19,medium,70
+584,173,beginner idioms,2024-02-14,easy,74
+585,130,phrases assessment,2023-06-23,easy,69
+586,5,beginner,2023-04-18,hard,44
+587,44,intermediate dialogue comprehension,2023-03-07,easy,50
+588,54,beginner test intermediate,2024-05-06,easy,59
+589,197,intermediate culture review,2024-07-19,medium,56
+590,163,vocabulary pronunciation,2024-12-14,easy,61
+591,187,assessment,2023-07-11,medium,74
+592,51,writing test pronunciation,2023-01-24,easy,57
+593,86,phrases culture vocabulary,2024-04-09,easy,44
+594,126,intermediate,2024-07-08,easy,72
+595,119,pronunciation vocabulary review,2024-06-20,easy,53
+596,172,grammar comprehension intermediate,2023-06-05,easy,47
+597,165,assessment expressions,2024-11-09,medium,93
+598,159,levels review,2024-08-30,easy,57
+599,18,skills,2024-07-21,easy,91
+600,95,assessment,2023-12-06,hard,51
+601,192,beginner reading writing,2024-03-27,hard,65
+602,124,skills intermediate,2024-10-11,hard,28
+603,101,listening beginner,2023-04-23,hard,63
+604,88,expressions,2024-11-26,easy,40
+605,119,pronunciation intermediate dialogue,2024-12-25,easy,70
+606,79,expressions reading skills,2023-12-28,hard,74
+607,50,reading,2023-11-04,medium,84
+608,135,levels advanced reading,2024-11-21,easy,45
+609,179,writing,2024-09-25,hard,55
+610,5,practice culture writing,2024-04-18,medium,36
+611,113,idioms assessment dialogue,2023-06-13,easy,62
+612,160,phrases vocabulary,2024-06-21,medium,65
+613,129,grammar reading,2024-10-25,easy,35
+614,40,phrases test,2024-10-24,hard,47
+615,105,writing intermediate beginner,2023-11-02,medium,83
+616,175,intermediate conversation beginner,2024-10-20,medium,46
+617,62,review listening,2024-03-20,easy,70
+618,198,assessment advanced writing,2024-05-19,easy,55
+619,73,dialogue,2023-06-28,easy,74
+620,153,reading comprehension pronunciation,2024-05-09,medium,86
+621,168,levels dialogue,2024-06-27,easy,61
+622,27,comprehension culture idioms,2024-07-23,medium,66
+623,31,expressions idioms conversation,2024-06-28,medium,67
+624,114,review,2023-05-14,easy,25
+625,64,skills advanced,2024-09-03,easy,76
+626,173,listening,2023-11-23,easy,64
+627,107,dialogue expressions,2024-06-16,medium,76
+628,32,intermediate phrases,2023-03-01,medium,80
+629,49,comprehension beginner grammar,2023-05-21,medium,81
+630,76,skills,2024-09-03,medium,51
+631,113,vocabulary practice assessment,2024-09-21,easy,67
+632,24,idioms,2023-11-12,easy,64
+633,47,reading assessment,2024-02-10,easy,70
+634,93,listening,2024-09-09,easy,50
+635,114,grammar,2024-09-01,medium,73
+636,166,phrases beginner pronunciation,2024-07-16,easy,51
+637,170,comprehension practice idioms,2024-06-18,medium,56
+638,115,dialogue,2023-07-06,easy,22
+639,171,beginner,2023-10-03,hard,31
+640,197,listening intermediate,2023-12-23,medium,64
+641,97,pronunciation advanced,2024-10-07,medium,71
+642,107,reading,2023-03-28,medium,58
+643,53,phrases,2023-08-30,easy,77
+644,132,test grammar,2024-01-06,medium,42
+645,15,grammar writing idioms,2024-03-29,easy,75
+646,170,practice,2023-03-14,hard,54
+647,87,grammar,2024-07-15,medium,66
+648,20,comprehension,2023-09-09,hard,45
+649,8,test,2024-12-27,medium,65
+650,196,culture,2023-05-06,easy,72
+651,144,practice conversation comprehension,2024-10-05,easy,69
+652,125,vocabulary skills,2024-01-31,easy,65
+653,15,dialogue,2023-12-23,easy,30
+654,171,practice,2024-08-11,easy,44
+655,143,listening pronunciation conversation,2023-09-12,easy,72
+656,157,beginner expressions,2024-02-07,hard,73
+657,33,reading review practice,2024-10-20,medium,49
+658,142,vocabulary dialogue grammar,2024-01-31,easy,67
+659,178,advanced,2024-10-18,medium,60
+660,25,comprehension dialogue listening,2024-02-11,hard,53
+661,94,dialogue advanced pronunciation,2024-01-14,easy,81
+662,85,grammar,2023-09-15,medium,75
+663,76,assessment conversation,2024-12-10,medium,71
+664,178,advanced comprehension,2023-07-04,easy,66
+665,41,grammar reading culture,2023-09-24,medium,65
+666,106,review skills,2024-11-07,easy,77
+667,19,levels,2024-04-02,hard,66
+668,93,reading vocabulary,2024-10-18,medium,42
+669,98,intermediate,2023-04-28,easy,40
+670,156,comprehension,2023-10-11,hard,48
+671,58,advanced beginner grammar,2023-05-30,medium,21
+672,167,levels pronunciation,2023-01-27,medium,51
+673,190,reading assessment test,2023-10-21,medium,60
+674,112,assessment vocabulary,2023-09-09,hard,40
+675,146,review grammar,2023-01-23,hard,53
+676,111,comprehension practice,2023-01-13,medium,95
+677,181,vocabulary,2024-07-08,medium,35
+678,16,beginner,2024-08-05,medium,68
+679,137,review practice beginner,2024-02-06,medium,91
+680,200,assessment test listening,2024-08-16,medium,64
+681,19,beginner,2023-03-09,medium,73
+682,136,writing,2023-12-04,easy,51
+683,95,writing pronunciation,2024-12-29,medium,63
+684,18,pronunciation,2024-12-14,easy,55
+685,96,vocabulary review pronunciation,2023-01-09,medium,36
+686,32,assessment writing advanced,2024-07-25,medium,97
+687,157,idioms,2023-01-03,easy,73
+688,93,test practice,2023-07-03,easy,43
+689,184,test review intermediate,2023-07-13,hard,53
+690,177,comprehension listening phrases,2024-11-17,hard,40
+691,114,dialogue,2024-03-16,medium,69
+692,191,grammar comprehension advanced,2024-07-09,easy,52
+693,84,practice,2024-01-20,medium,34
+694,25,review advanced,2023-07-22,easy,90
+695,180,beginner advanced,2024-08-11,hard,58
+696,176,conversation practice pronunciation,2024-06-25,hard,37
+697,27,beginner test,2024-01-17,easy,54
+698,123,expressions idioms phrases,2023-02-07,hard,74
+699,140,levels culture phrases,2023-12-20,medium,50
+700,48,phrases,2023-06-08,easy,92
+701,136,grammar review,2024-07-10,hard,97
+702,41,test conversation,2024-11-30,easy,77
+703,130,reading expressions,2023-04-10,easy,62
+704,128,dialogue review idioms,2023-06-27,medium,88
+705,110,listening reading review,2023-01-25,hard,69
+706,96,pronunciation intermediate,2024-08-31,medium,48
+707,94,reading,2023-04-30,easy,99
+708,15,listening,2024-12-19,hard,55
+709,55,comprehension dialogue advanced,2024-11-03,hard,59
+710,142,phrases reading,2024-11-13,medium,61
+711,151,expressions assessment,2024-05-31,hard,69
+712,95,dialogue,2023-09-21,medium,60
+713,121,reading,2024-09-29,easy,74
+714,149,practice phrases skills,2024-11-20,easy,69
+715,151,assessment pronunciation,2024-10-04,easy,64
+716,70,idioms vocabulary skills,2023-03-12,easy,40
+717,117,review,2023-08-02,hard,71
+718,152,grammar,2024-03-26,easy,64
+719,75,dialogue,2023-12-08,medium,57
+720,45,advanced,2024-09-24,easy,60
+721,83,comprehension beginner,2024-01-14,hard,60
+722,92,vocabulary,2023-12-14,medium,70
+723,147,idioms test listening,2023-05-07,easy,75
+724,48,culture listening writing,2024-06-08,easy,67
+725,12,comprehension reading grammar,2023-02-19,medium,83
+726,75,review expressions dialogue,2023-01-22,easy,58
+727,77,vocabulary beginner intermediate,2023-08-06,easy,76
+728,50,reading practice pronunciation,2024-04-27,easy,74
+729,102,practice writing idioms,2024-09-23,medium,73
+730,19,idioms writing dialogue,2024-08-02,easy,36
+731,14,skills,2023-04-21,easy,82
+732,153,test culture practice,2024-01-26,medium,36
+733,108,writing idioms,2023-02-08,hard,65
+734,164,skills idioms,2024-07-29,medium,56
+735,154,practice test levels,2024-04-24,hard,53
+736,188,culture levels,2024-07-30,easy,53
+737,140,reading grammar vocabulary,2024-08-04,easy,55
+738,18,reading comprehension levels,2023-03-15,hard,57
+739,48,assessment culture expressions,2024-10-29,medium,84
+740,102,writing assessment,2023-06-26,medium,76
+741,40,intermediate comprehension,2023-01-31,easy,63
+742,71,test levels skills,2024-12-07,medium,47
+743,138,skills idioms grammar,2023-07-21,hard,76
+744,143,reading writing,2023-11-01,medium,54
+745,148,advanced writing,2023-12-19,easy,54
+746,146,conversation phrases intermediate,2023-07-12,easy,56
+747,157,listening practice,2024-09-25,medium,91
+748,126,advanced levels,2024-07-21,easy,66
+749,124,phrases comprehension idioms,2024-07-28,medium,88
+750,128,expressions listening vocabulary,2023-09-11,easy,67
+751,97,review,2023-11-27,medium,70
+752,106,advanced practice,2023-02-25,easy,80
+753,26,beginner phrases expressions,2023-02-16,easy,36
+754,68,assessment culture phrases,2023-09-25,easy,62
+755,153,vocabulary assessment reading,2023-12-12,hard,97
+756,71,idioms assessment,2024-08-12,easy,53
+757,122,comprehension,2024-02-17,easy,20
+758,188,dialogue skills pronunciation,2024-09-20,easy,54
+759,4,grammar advanced culture,2023-12-11,easy,75
+760,47,grammar writing,2024-07-24,easy,53
+761,171,reading review levels,2023-03-28,medium,30
+762,82,grammar comprehension listening,2024-08-03,easy,66
+763,172,beginner skills intermediate,2024-07-20,medium,88
+764,19,culture expressions,2024-07-06,hard,61
+765,13,dialogue,2023-12-11,hard,87
+766,156,listening,2023-08-17,medium,46
+767,137,phrases,2023-12-07,easy,78
+768,167,advanced phrases expressions,2023-07-30,hard,55
+769,94,expressions,2023-05-23,hard,48
+770,2,culture pronunciation writing,2024-03-15,easy,83
+771,93,assessment grammar listening,2024-05-31,easy,28
+772,91,assessment,2023-09-09,easy,63
+773,38,practice conversation assessment,2024-01-30,medium,69
+774,125,phrases skills,2024-04-12,medium,63
+775,161,beginner writing phrases,2023-12-20,medium,95
+776,145,idioms conversation,2024-10-10,easy,26
+777,123,test,2023-02-14,easy,55
+778,168,assessment comprehension reading,2023-06-03,hard,67
+779,37,conversation levels,2023-07-13,easy,53
+780,152,review vocabulary culture,2023-05-02,easy,33
+781,170,culture,2023-04-07,medium,59
+782,57,beginner advanced,2023-03-15,hard,49
+783,48,comprehension idioms beginner,2024-08-07,medium,82
+784,53,review comprehension idioms,2023-08-30,easy,49
+785,93,beginner skills,2023-03-11,easy,56
+786,194,reading comprehension intermediate,2024-03-04,easy,66
+787,95,skills,2023-11-16,hard,47
+788,146,idioms practice,2024-07-27,hard,49
+789,154,review assessment levels,2024-07-11,easy,77
+790,164,conversation reading vocabulary,2024-12-20,easy,76
+791,113,phrases pronunciation comprehension,2023-07-07,medium,42
+792,195,writing expressions conversation,2024-12-10,easy,34
+793,179,practice pronunciation dialogue,2024-12-08,medium,68
+794,179,grammar review conversation,2024-05-05,hard,95
+795,15,writing,2024-04-10,easy,51
+796,159,practice,2023-09-27,medium,63
+797,157,grammar phrases,2023-05-29,easy,63
+798,34,expressions writing beginner,2024-01-20,hard,43
+799,37,idioms,2023-09-15,easy,69
+800,40,phrases culture,2023-05-12,easy,81
