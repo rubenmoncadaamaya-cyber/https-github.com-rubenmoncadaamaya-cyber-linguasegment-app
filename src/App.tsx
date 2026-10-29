@@ -29,74 +29,146 @@ import { PersonalizationView } from './components/PersonalizationView';
 import { MarketingView } from './components/MarketingView';
 import { PaymentsView } from './components/PaymentsView';
 import { SchedulingView } from './components/SchedulingView';
+import { TeacherAcademicView } from './components/TeacherAcademicView';
+import { UserManagementView } from './components/UserManagementView';
 import { ReportsView } from './components/ReportsView';
 import { StudentPortalView } from './components/StudentPortalView';
 import { AuthModal } from './components/AuthModal';
-import { getStoredUser, saveStoredUser, DEMO_USERS, ROLE_CONFIGS, syncUserProfileToFirestore } from './services/authService';
+import { AlertCenterModal } from './components/AlertCenterModal';
+import { ProductivizationGuideModal } from './components/ProductivizationGuideModal';
+import { getStoredUser, saveStoredUser, DEMO_USERS, ROLE_CONFIGS, syncUserProfileToFirestore, INITIAL_MANAGED_USERS } from './services/authService';
 import { NotificationToast, ToastData } from './components/NotificationToast';
 import { auth, testFirestoreConnection } from './lib/firebase';
 import { onAuthStateChanged } from 'firebase/auth';
+import { dispatchAlertAction, AlertTemplates } from './services/alertService';
+import { AlertNotificationItem, ManagedUserProfile, StudentEvaluation } from './types';
+import { INITIAL_STUDENT_EVALUATIONS } from './data/classTemplatesData';
 
 const INITIAL_SCHEDULED_CLASSES: ScheduledClass[] = [
   {
-    id: 'class_1',
-    title: 'Taller de Fluidez y Modismos Idiomáticos B2/C1',
-    topic: 'Expresiones coloquiales y conectores argumentativos',
-    instructor: 'Dra. Carmen Valenzuela',
-    dateTime: '2025-01-22T18:00',
-    durationMinutes: 55,
+    id: 'class_a1_intro',
+    title: 'Iniciación y Saludos en Inglés: Tu Primer Diálogo Cotidiano',
+    topic: 'Presentaciones personales, verb to be, números y deletreo fonético',
+    instructor: 'Prof. David Sterling',
+    dateTime: '2025-01-22T10:00',
+    durationMinutes: 45,
     modality: 'video_call',
     targetType: 'cluster',
-    targetId: 0,
-    targetLabel: 'Segmento: Dominio Avanzado',
-    attendeesCount: 14,
+    targetId: 3,
+    targetLabel: 'Nivel A1: Principiantes e Iniciación',
+    level: 'A1',
+    capacity: 15,
+    enrolledStudentIds: [5, 12, 18],
+    attendeesCount: 3,
     status: 'scheduled',
-    remindersSent: { email: true, push: true, lastSentAt: '2025-01-21 10:00' }
+    remindersSent: { email: false, push: true, whatsapp: false, lastSentAt: '2025-01-21 10:00' }
   },
   {
     id: 'class_2',
-    title: 'Laboratorio de Fonética y Pronunciación Intensiva',
-    topic: 'Pares mínimos y entonación de enlace (Connected Speech)',
+    title: 'Laboratorio de Fonética y Pronunciación Básica A2',
+    topic: 'Pares mínimos, entonación de preguntas y enlace sonoro cotidiano',
     instructor: 'Prof. David Sterling',
     dateTime: '2025-01-23T16:30',
     durationMinutes: 45,
     modality: 'audio_lab',
     targetType: 'cluster',
     targetId: 1,
-    targetLabel: 'Segmento: Constantes en Progreso',
-    attendeesCount: 18,
+    targetLabel: 'Nivel A2: Constantes en Progreso',
+    level: 'A2',
+    capacity: 14,
+    enrolledStudentIds: [1, 2, 7], // Zara Hoffmann (#1) enrolled
+    attendeesCount: 3,
     status: 'scheduled',
-    remindersSent: { email: false, push: true, lastSentAt: '2025-01-22 14:00' }
+    remindersSent: { email: true, push: true, whatsapp: true, lastSentAt: '2025-01-22 14:00' }
   },
   {
-    id: 'class_3',
-    title: 'Sesión de Reactivación y Desbloqueo Lingüístico 1-a-1',
-    topic: 'Diagnóstico conversacional sin presión para reanudar hábitos',
+    id: 'class_a2_conversation',
+    title: 'Taller Práctico A2: Rutinas Diarias, Compras y Direcciones',
+    topic: 'Práctica conversacional para describir el día a día y pedir indicaciones',
     instructor: 'Lic. Mateo Rivas',
-    dateTime: '2025-01-24T19:00',
-    durationMinutes: 30,
+    dateTime: '2025-01-24T17:00',
+    durationMinutes: 50,
     modality: 'video_call',
-    targetType: 'student',
-    targetId: 2,
-    targetLabel: 'Yara Schmidt (Alumno en Riesgo)',
-    attendeesCount: 1,
+    targetType: 'cluster',
+    targetId: 1,
+    targetLabel: 'Nivel A2: Intermedio Básico',
+    level: 'A2',
+    capacity: 12,
+    enrolledStudentIds: [6, 14],
+    attendeesCount: 2,
     status: 'scheduled',
-    remindersSent: { email: true, push: false, lastSentAt: '2025-01-23 09:00' }
+    remindersSent: { email: false, push: false, whatsapp: false }
+  },
+  {
+    id: 'class_b1_grammar',
+    title: 'Gramática en Acción B1: Tiempos Perfectos y Pasados Continuos',
+    topic: 'Contrastar Present Perfect vs Past Simple en anécdotas de vida',
+    instructor: 'Dra. Carmen Valenzuela',
+    dateTime: '2025-01-23T18:30',
+    durationMinutes: 50,
+    modality: 'video_call',
+    targetType: 'cluster',
+    targetId: 2,
+    targetLabel: 'Nivel B1: Pre-Intermedio',
+    level: 'B1',
+    capacity: 15,
+    enrolledStudentIds: [4, 9, 13],
+    attendeesCount: 3,
+    status: 'scheduled',
+    remindersSent: { email: true, push: true, whatsapp: false }
+  },
+  {
+    id: 'class_1',
+    title: 'Taller de Fluidez y Modismos Idiomáticos B2/C1',
+    topic: 'Expresiones coloquiales, conectores argumentativos y debate',
+    instructor: 'Dra. Carmen Valenzuela',
+    dateTime: '2025-01-24T18:00',
+    durationMinutes: 55,
+    modality: 'video_call',
+    targetType: 'cluster',
+    targetId: 0,
+    targetLabel: 'Nivel B2: Dominio Avanzado',
+    level: 'B2',
+    capacity: 15,
+    enrolledStudentIds: [8, 15, 20],
+    attendeesCount: 3,
+    status: 'scheduled',
+    remindersSent: { email: true, push: true, whatsapp: true, lastSentAt: '2025-01-21 10:00' }
+  },
+  {
+    id: 'class_c1_business',
+    title: 'Mesa Redonda C1: Negociación Ejecutiva y Presentaciones B2B',
+    topic: 'Pitch de negocios, lenguaje diplomático y resolución de conflictos',
+    instructor: 'Dra. Carmen Valenzuela',
+    dateTime: '2025-01-25T15:00',
+    durationMinutes: 60,
+    modality: 'video_call',
+    targetType: 'cluster',
+    targetId: 0,
+    targetLabel: 'Nivel C1: Fluidez Nativa & Negocios',
+    level: 'C1',
+    capacity: 10,
+    enrolledStudentIds: [22, 27],
+    attendeesCount: 2,
+    status: 'scheduled',
+    remindersSent: { email: true, push: false, whatsapp: false }
   },
   {
     id: 'class_kids',
     title: 'Taller LinguaKids: Fonética Lúdica, Rimas y Cuentos (4-8 años)',
-    topic: 'Enseñanza Infantil: Fonética Lúdica y Storytelling',
+    topic: 'Enseñanza Infantil: Fonética Lúdica y Storytelling sensorial',
     instructor: 'Lic. Sofía Alarcón (Especialista Infantil)',
     dateTime: '2025-01-25T11:00',
     durationMinutes: 30,
     modality: 'video_call',
-    targetType: 'cluster',
-    targetId: 1,
-    targetLabel: 'Enseñanza Infantil & Kids',
-    attendeesCount: 16,
+    targetType: 'all',
+    targetLabel: 'Enseñanza Infantil & Kids (4 a 12 años)',
+    level: 'Todos',
+    capacity: 16,
+    enrolledStudentIds: [10, 11, 16],
+    attendeesCount: 3,
     status: 'scheduled',
-    remindersSent: { email: true, push: true, lastSentAt: '2025-01-24 10:00' }
+    remindersSent: { email: true, push: true, whatsapp: true, lastSentAt: '2025-01-24 10:00' }
   }
 ];
 
@@ -170,6 +242,21 @@ export default function App() {
 
   // In-app push notification toast
   const [activeToast, setActiveToast] = useState<ToastData | null>(null);
+
+  // Modals for Alerts & Productivization
+  const [isAlertModalOpen, setIsAlertModalOpen] = useState(false);
+  const [isProductivizationModalOpen, setIsProductivizationModalOpen] = useState(false);
+  const [alertModalParams, setAlertModalParams] = useState<{
+    type?: 'class_reminder' | 'payment_bre_b' | 'enrollment_confirmation' | 'diagnostic_report';
+    initialClass?: ScheduledClass;
+    initialStudent?: StudentProfile;
+  }>({});
+
+  // Managed Users / Profiles Directory (Admin RBAC only)
+  const [managedUsers, setManagedUsers] = useState<ManagedUserProfile[]>(INITIAL_MANAGED_USERS);
+
+  // Student Evaluations & Rubrics (Teacher / Academic Tutor Module)
+  const [evaluations, setEvaluations] = useState<StudentEvaluation[]>(INITIAL_STUDENT_EVALUATIONS);
 
   // Ref for latest students and clusters in interval
   const studentsRef = useRef(students);
@@ -462,8 +549,8 @@ export default function App() {
     });
   }, [students.length]);
 
-  // Send test reminder (Push or Email)
-  const handleSendTestReminder = useCallback((classItem: ScheduledClass, channel: 'push' | 'email') => {
+  // Send reminder (Push, Email, or WhatsApp)
+  const handleSendTestReminder = useCallback((classItem: ScheduledClass, channel: 'push' | 'email' | 'whatsapp') => {
     // Find recipient info
     let recipientName = classItem.targetLabel;
     let recipientEmail = 'alumnos@lingua-ai.edu';
@@ -476,8 +563,14 @@ export default function App() {
       }
     }
 
-    const dateStr = new Date(classItem.dateTime).toLocaleTimeString('es-ES', { hour: '2-digit', minute: '2-digit' });
-    const message = `Hola ${recipientName}, tu sesión de "${classItem.title}" con ${classItem.instructor} está programada para hoy a las ${dateStr}.`;
+    const { subject, message } = AlertTemplates.classReminder(classItem, recipientName);
+
+    // If channel is whatsapp or email, dispatch directly via browser URL scheme
+    if (channel === 'whatsapp') {
+      dispatchAlertAction('whatsapp', '3105558899', subject, message);
+    } else if (channel === 'email') {
+      dispatchAlertAction('email', recipientEmail, subject, message);
+    }
 
     // Add to notification history
     const newNotif: ReminderNotification = {
@@ -487,7 +580,7 @@ export default function App() {
       channel,
       recipientName,
       recipientEmail,
-      subject: `Recordatorio: ${classItem.title}`,
+      subject,
       message,
       scheduledTime: new Date().toISOString(),
       status: 'enviado',
@@ -514,12 +607,53 @@ export default function App() {
     // Trigger Rich In-App Push Notification banner with audio chime
     setActiveToast({
       id: `toast_${Date.now()}`,
-      title: channel === 'push' ? 'Notificación Push: Recordatorio de Clase' : 'Correo Transaccional Enviado',
-      body: message,
-      recipient: `${recipientName} (${recipientEmail})`,
-      channel
+      title: channel === 'whatsapp' ? 'Alerta WhatsApp Abierta' : channel === 'push' ? 'Notificación Push Disparada' : 'Correo Transaccional Generado',
+      body: `"${classItem.title}" · ${channel === 'whatsapp' ? 'Abierto en WhatsApp' : 'Notificación enviada'} a ${recipientName}.`,
+      recipient: channel === 'whatsapp' ? 'WhatsApp (+57 3105558899)' : `${recipientName} (${recipientEmail})`,
+      channel: channel === 'whatsapp' ? 'push' : channel
     });
   }, [students]);
+
+  // Handle student enrolling/unsubscribing to a class
+  const handleToggleEnrollClass = useCallback((classId: string) => {
+    const studentToEnroll = students.find(s => s.id === currentUser.studentId) || selectedStudent || students[0];
+    if (!studentToEnroll) return;
+
+    setClasses(prev => prev.map(cls => {
+      if (cls.id === classId) {
+        const currentEnrolled = cls.enrolledStudentIds || [];
+        const isEnrolled = currentEnrolled.includes(studentToEnroll.id);
+
+        let newEnrolled: number[];
+        if (isEnrolled) {
+          newEnrolled = currentEnrolled.filter(id => id !== studentToEnroll.id);
+          setActiveToast({
+            id: `toast_${Date.now()}`,
+            title: 'Inscripción Cancelada',
+            body: `Has liberado tu cupo en "${cls.title}". Puedes registrarte en otro horario cuando lo desees.`,
+            recipient: studentToEnroll.full_name,
+            channel: 'push'
+          });
+        } else {
+          newEnrolled = [...currentEnrolled, studentToEnroll.id];
+          setActiveToast({
+            id: `toast_${Date.now()}`,
+            title: '¡Inscripción Exitosa en Horario!',
+            body: `Te has inscrito en "${cls.title}" con ${cls.instructor} para el ${new Date(cls.dateTime).toLocaleDateString('es-CO')}.`,
+            recipient: studentToEnroll.full_name,
+            channel: 'push'
+          });
+        }
+
+        return {
+          ...cls,
+          enrolledStudentIds: newEnrolled,
+          attendeesCount: newEnrolled.length
+        };
+      }
+      return cls;
+    }));
+  }, [currentUser, selectedStudent, students]);
 
   // Navigate to Personalization tab with selected student
   const handleNavigateToPersonalization = useCallback((student: StudentProfile) => {
@@ -624,6 +758,79 @@ export default function App() {
     });
   }, [currentTab]);
 
+  // User profile directory management handlers (Admin exclusive)
+  const handleAddUser = useCallback((newUserData: Omit<ManagedUserProfile, 'uid' | 'createdAt'>) => {
+    const newUser: ManagedUserProfile = {
+      ...newUserData,
+      uid: `usr_${Date.now().toString(36)}`,
+      createdAt: new Date().toISOString().slice(0, 10),
+      lastLogin: 'Recién creado'
+    };
+    setManagedUsers(prev => [newUser, ...prev]);
+    setActiveToast({
+      id: `toast_${Date.now()}`,
+      title: 'Persona Registrada en el Padrón',
+      body: `${newUser.displayName} ha sido agregado(a) con rol de ${ROLE_CONFIGS[newUser.role].badge}.`,
+      recipient: 'Directorio de Usuarios',
+      channel: 'push'
+    });
+  }, []);
+
+  const handleUpdateUser = useCallback((updated: ManagedUserProfile) => {
+    setManagedUsers(prev => prev.map(u => (u.uid === updated.uid ? updated : u)));
+    setActiveToast({
+      id: `toast_${Date.now()}`,
+      title: 'Perfil de Usuario Actualizado',
+      body: `Datos de ${updated.displayName} guardados (${updated.status} · ${ROLE_CONFIGS[updated.role].badge}).`,
+      recipient: updated.displayName,
+      channel: 'push'
+    });
+  }, []);
+
+  const handleDeleteUser = useCallback((uid: string) => {
+    setManagedUsers(prev => prev.filter(u => u.uid !== uid));
+    setActiveToast({
+      id: `toast_${Date.now()}`,
+      title: 'Usuario Eliminado',
+      body: 'El registro ha sido removido del padrón institucional.',
+      recipient: 'Directorio de Usuarios',
+      channel: 'push'
+    });
+  }, []);
+
+  // Academic Evaluation handler (Teacher / Academic module)
+  const handleAddEvaluation = useCallback((evaluation: StudentEvaluation) => {
+    setEvaluations(prev => [evaluation, ...prev]);
+
+    // Also update student skill scores in state if student matches
+    setStudents(prev => prev.map(s => {
+      if (s.id === evaluation.studentId) {
+        return {
+          ...s,
+          cefrLevel: evaluation.cefrLevel,
+          skills: {
+            ...s.skills,
+            grammar: evaluation.scores.grammar,
+            pronunciation: evaluation.scores.pronunciation,
+            conversation: evaluation.scores.conversation,
+            listening: evaluation.scores.listening,
+            vocabulary: evaluation.scores.vocabulary,
+            reading: evaluation.scores.reading
+          }
+        };
+      }
+      return s;
+    }));
+
+    setActiveToast({
+      id: `toast_${Date.now()}`,
+      title: 'Evaluación y Rúbrica Guardada',
+      body: `${evaluation.studentName} · Nivel ${evaluation.cefrLevel} (${evaluation.averageScore}/100 - ${evaluation.performance}).`,
+      recipient: evaluation.studentEmail,
+      channel: 'push'
+    });
+  }, []);
+
   const currentStudentForPortal = students.find(s => s.id === currentUser.studentId) || selectedStudent || students[0];
   const currentStudentPayment = currentStudentForPortal ? payments.find(p => p.studentId === currentStudentForPortal.id) : undefined;
 
@@ -638,6 +845,11 @@ export default function App() {
         onToggleSimulation={() => setLiveSimulationActive(prev => !prev)}
         currentUser={currentUser}
         onOpenAuthModal={() => setIsAuthModalOpen(true)}
+        onOpenAlertModal={() => {
+          setAlertModalParams({ type: 'class_reminder' });
+          setIsAlertModalOpen(true);
+        }}
+        onOpenProductivizationModal={() => setIsProductivizationModalOpen(true)}
       />
 
       {/* Main Content Area */}
@@ -716,15 +928,13 @@ export default function App() {
             )}
 
             {currentTab === 'scheduling' && (
-              <SchedulingView
-                classes={classes}
+              <TeacherAcademicView
                 students={students}
-                clusters={clusters}
-                notifications={notifications}
+                classes={classes}
+                evaluations={evaluations}
                 onAddClass={handleAddClass}
+                onAddEvaluation={handleAddEvaluation}
                 onSendTestReminder={handleSendTestReminder}
-                initialPreselectedStudent={selectedStudent}
-                initialTopic={preselectedTopic}
               />
             )}
 
@@ -738,12 +948,31 @@ export default function App() {
               />
             )}
 
+            {currentTab === 'users_management' && (
+              <UserManagementView
+                currentUser={currentUser}
+                users={managedUsers}
+                onAddUser={handleAddUser}
+                onUpdateUser={handleUpdateUser}
+                onDeleteUser={handleDeleteUser}
+              />
+            )}
+
             {currentTab === 'student_portal' && currentStudentForPortal && (
               <StudentPortalView
                 student={currentStudentForPortal}
                 classes={classes}
                 payment={currentStudentPayment}
                 onRecordPracticeLesson={(name, dur, pts) => handleRecordManualLesson(currentStudentForPortal.id, name, 'easy', dur, pts)}
+                onToggleEnrollClass={handleToggleEnrollClass}
+                onOpenAlertCenter={(type, cls) => {
+                  setAlertModalParams({
+                    type: type || 'class_reminder',
+                    initialClass: cls,
+                    initialStudent: currentStudentForPortal
+                  });
+                  setIsAlertModalOpen(true);
+                }}
                 onReportPayment={() => {
                   if (currentStudentPayment) {
                     handleUpdatePayment({
@@ -770,9 +999,10 @@ export default function App() {
             marketing: { label: 'Mercadeo', icon: '📈' },
             payments: { label: 'Pagos', icon: '💳' },
             personalization: { label: 'Pedagogía', icon: '✨' },
-            scheduling: { label: 'Clases', icon: '📅' },
+            scheduling: { label: 'Docente', icon: '🎓' },
             reports: { label: 'Reportes', icon: '📑' },
-            student_portal: { label: 'Mi Portal', icon: '🧸' }
+            student_portal: { label: 'Mi Portal', icon: '🧸' },
+            users_management: { label: 'Perfiles', icon: '🛡️' }
           };
           const meta = tabMeta[tabId] || { label: tabId, icon: '📌' };
           const isActive = currentTab === tabId;
@@ -814,6 +1044,33 @@ export default function App() {
             channel: 'push'
           });
         }}
+      />
+
+      {/* Alert Center Modal (WhatsApp & Email Direct Dispatch) */}
+      <AlertCenterModal
+        isOpen={isAlertModalOpen}
+        onClose={() => setIsAlertModalOpen(false)}
+        students={students}
+        classes={classes}
+        payments={payments}
+        initialType={alertModalParams.type}
+        initialClass={alertModalParams.initialClass}
+        initialStudent={alertModalParams.initialStudent}
+        onAlertDispatched={(item) => {
+          setActiveToast({
+            id: `toast_${Date.now()}`,
+            title: item.channel === 'whatsapp' ? 'Alerta WhatsApp Disparada' : 'Correo Generado',
+            body: `Mensaje enviado a ${item.recipientName} (${item.recipientContact})`,
+            recipient: item.recipientName,
+            channel: 'push'
+          });
+        }}
+      />
+
+      {/* Production & Deployment Step-by-Step Guide Modal for Ruben */}
+      <ProductivizationGuideModal
+        isOpen={isProductivizationModalOpen}
+        onClose={() => setIsProductivizationModalOpen(false)}
       />
 
       {/* Push Notification Banner Overlay */}

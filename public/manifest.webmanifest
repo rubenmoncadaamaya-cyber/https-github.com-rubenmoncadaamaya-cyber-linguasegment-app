@@ -1,0 +1,32 @@
+{
+  "id": "/",
+  "name": "LinguaSegment AI - Academia de Idiomas",
+  "short_name": "LinguaAI",
+  "description": "Plataforma inteligente de segmentación de estudiantes, agendamiento de clases y gestión de mensualidades Bre-B.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "theme_color": "#4f46e5",
+  "background_color": "#020617",
+  "icons": [
+    {
+      "src": "/icon.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon.svg",
+      "sizes": "192x192",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "maskable"
+    }
+  ]
+}

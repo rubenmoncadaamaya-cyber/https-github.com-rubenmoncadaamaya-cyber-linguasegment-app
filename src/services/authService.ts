@@ -18,7 +18,8 @@ export const ROLE_CONFIGS: Record<UserRole, RolePermissionConfig> = {
       'personalization',
       'scheduling',
       'reports',
-      'student_portal'
+      'student_portal',
+      'users_management'
     ]
   },
   teacher: {
@@ -210,3 +211,141 @@ export async function signOutPlatform(): Promise<void> {
   }
   localStorage.removeItem(STORAGE_KEY);
 }
+
+export const INITIAL_MANAGED_USERS: import('../types').ManagedUserProfile[] = [
+  {
+    uid: 'usr_admin_001',
+    displayName: 'Rubén Moncada',
+    email: 'ruben.moncada.amaya@gmail.com',
+    phoneNumber: '+57 310 555 8899',
+    role: 'admin',
+    status: 'Activo',
+    assignedLevel: 'Coordinación Global',
+    institutionOrDept: 'Dirección General & Académica',
+    createdAt: '2025-01-10',
+    lastLogin: 'Hoy, 19:40',
+    notes: 'Administrador general y titular de cuenta'
+  },
+  {
+    uid: 'usr_teacher_001',
+    displayName: 'Dra. Carmen Valenzuela',
+    email: 'carmen.valenzuela@lingua-ai.edu',
+    phoneNumber: '+57 312 444 1122',
+    role: 'teacher',
+    status: 'Activo',
+    assignedLevel: 'Niveles B2 / C1 & Fonética',
+    institutionOrDept: 'Departamento Pedagógico',
+    createdAt: '2025-01-12',
+    lastLogin: 'Hoy, 18:15',
+    notes: 'Líder de conversación y diagnóstico'
+  },
+  {
+    uid: 'usr_teacher_002',
+    displayName: 'Prof. David Sterling',
+    email: 'david.sterling@lingua-ai.edu',
+    phoneNumber: '+57 315 888 3344',
+    role: 'teacher',
+    status: 'Activo',
+    assignedLevel: 'Niveles A1 / A2 & Laboratorios',
+    institutionOrDept: 'Departamento Pedagógico',
+    createdAt: '2025-01-15',
+    lastLogin: 'Ayer, 16:30',
+    notes: 'Tutor de inmersión inicial y acento'
+  },
+  {
+    uid: 'usr_teacher_003',
+    displayName: 'Lic. Sofía Alarcón',
+    email: 'sofia.alarcon@lingua-ai.edu',
+    phoneNumber: '+57 318 222 9900',
+    role: 'teacher',
+    status: 'Activo',
+    assignedLevel: 'LinguaKids (4-12 años)',
+    institutionOrDept: 'Pedagogía Infantil & Lúdica',
+    createdAt: '2025-01-18',
+    lastLogin: 'Hoy, 11:20',
+    notes: 'Especialista en desarrollo bilingüe temprano'
+  },
+  {
+    uid: 'usr_sales_001',
+    displayName: 'Mateo Rivas',
+    email: 'mateo.rivas@lingua-ai.edu',
+    phoneNumber: '+57 311 999 4455',
+    role: 'sales',
+    status: 'Activo',
+    assignedLevel: 'Prospectos B2B & Campañas',
+    institutionOrDept: 'Equipo Comercial & Crecimiento',
+    createdAt: '2025-01-14',
+    lastLogin: 'Hoy, 15:45',
+    notes: 'Encargado de embudo comercial y copies IA'
+  },
+  {
+    uid: 'usr_sales_002',
+    displayName: 'Lucía Gómez',
+    email: 'lucia.gomez@lingua-ai.edu',
+    phoneNumber: '+57 314 333 7788',
+    role: 'sales',
+    status: 'Activo',
+    assignedLevel: 'Admisiones Particulares',
+    institutionOrDept: 'Equipo Comercial & Crecimiento',
+    createdAt: '2025-01-19',
+    lastLogin: 'Hoy, 14:10',
+    notes: 'Seguimiento de leads WhatsApp y agendamiento diagnóstico'
+  },
+  {
+    uid: 'usr_student_001',
+    displayName: 'Zara Hoffmann',
+    email: 'zara.hoffmann@example.net',
+    phoneNumber: '+57 310 555 1234',
+    role: 'parent_student',
+    status: 'Activo',
+    assignedLevel: 'A2 (Elemental Alto)',
+    institutionOrDept: 'Estudiante Activa (Cuota Bre-B al día)',
+    createdAt: '2025-01-05',
+    lastLogin: 'Hoy, 17:30',
+    notes: 'Familia Hoffmann - 200 lecciones completadas',
+    studentId: 1
+  },
+  {
+    uid: 'usr_student_002',
+    displayName: 'Theo Díaz',
+    email: 'theo.diaz@example.com',
+    phoneNumber: '+57 313 777 6655',
+    role: 'parent_student',
+    status: 'Activo',
+    assignedLevel: 'B1 (Intermedio)',
+    institutionOrDept: 'Estudiante Activo',
+    createdAt: '2025-01-08',
+    lastLogin: 'Ayer, 20:00',
+    notes: 'En preparación para certificación B2',
+    studentId: 27
+  },
+  {
+    uid: 'usr_student_003',
+    displayName: 'Mila Schneider',
+    email: 'mila.schneider@example.com',
+    phoneNumber: '+57 316 222 4433',
+    role: 'parent_student',
+    status: 'Activo',
+    assignedLevel: 'B2 (Avanzado)',
+    institutionOrDept: 'Estudiante Activa',
+    createdAt: '2025-01-07',
+    lastLogin: 'Hoy, 19:10',
+    notes: 'Club de conversación y debates',
+    studentId: 8
+  },
+  {
+    uid: 'usr_student_004',
+    displayName: 'Yara Schmidt',
+    email: 'yara.schmidt@example.net',
+    phoneNumber: '+57 317 666 1199',
+    role: 'parent_student',
+    status: 'Pendiente',
+    assignedLevel: 'A1 (Iniciación)',
+    institutionOrDept: 'Estudiante en Reactivación',
+    createdAt: '2025-01-20',
+    lastLogin: 'Hace 3 días',
+    notes: 'Requiere tutoría 1-a-1 de nivelación',
+    studentId: 2
+  }
+];
+

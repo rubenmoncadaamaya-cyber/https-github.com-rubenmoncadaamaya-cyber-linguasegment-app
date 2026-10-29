@@ -147,20 +147,43 @@ export interface ScheduledClass {
   targetLabel: string;
   attendeesCount: number;
   status: 'scheduled' | 'in_progress' | 'completed' | 'cancelled';
+  level?: CEFRLevel | 'Todos';
+  capacity?: number;
+  enrolledStudentIds?: number[];
+  description?: string;
+  meetLink?: string;
   remindersSent: {
     email: boolean;
     push: boolean;
+    whatsapp?: boolean;
     lastSentAt?: string;
   };
+}
+
+export type AlertChannel = 'whatsapp' | 'email' | 'push';
+export type AlertType = 'class_reminder' | 'payment_bre_b' | 'enrollment_confirmation' | 'diagnostic_report';
+
+export interface AlertNotificationItem {
+  id: string;
+  type: AlertType;
+  channel: AlertChannel;
+  recipientName: string;
+  recipientContact: string; // Phone or Email
+  subject: string;
+  message: string;
+  timestamp: string;
+  status: 'enviado' | 'abierto';
+  referenceId?: string;
 }
 
 export interface ReminderNotification {
   id: string;
   classId: string;
   classTitle: string;
-  channel: 'push' | 'email';
+  channel: 'push' | 'email' | 'whatsapp';
   recipientName: string;
   recipientEmail: string;
+  recipientPhone?: string;
   subject: string;
   message: string;
   scheduledTime: string;
@@ -396,5 +419,74 @@ export interface RolePermissionConfig {
   badge: string;
   description: string;
   badgeColor: string;
-  allowedTabs: ('dashboard' | 'students' | 'personalization' | 'marketing' | 'payments' | 'scheduling' | 'reports' | 'student_portal')[];
+  allowedTabs: ('dashboard' | 'students' | 'personalization' | 'marketing' | 'payments' | 'scheduling' | 'reports' | 'student_portal' | 'users_management')[];
+}
+
+// ========================
+// TEACHER / TUTOR ACADEMIC TEMPLATES & EVALUATIONS
+// ========================
+export type EvaluationPerformance = 'Sobresaliente' | 'Aprobado' | 'En Progreso' | 'Requiere Refuerzo';
+
+export interface EvaluationScores {
+  grammar: number;       // 1-100
+  pronunciation: number; // 1-100
+  conversation: number;  // 1-100
+  listening: number;     // 1-100
+  vocabulary: number;    // 1-100
+  reading: number;       // 1-100
+}
+
+export interface StudentEvaluation {
+  id: string;
+  studentId: number;
+  studentName: string;
+  studentEmail: string;
+  evaluatorName: string;
+  evaluationDate: string;
+  cefrLevel: CEFRLevel;
+  lessonTopic: string;
+  scores: EvaluationScores;
+  averageScore: number;
+  performance: EvaluationPerformance;
+  strengths: string;
+  growthAreas: string;
+  assignedHomework?: string;
+  teacherFeedback: string;
+  attendanceStatus?: 'Presente' | 'Tarde' | 'Ausente';
+  sharedViaWhatsApp?: boolean;
+  sharedViaEmail?: boolean;
+}
+
+export interface ClassConfigTemplate {
+  id: string;
+  name: string;
+  code: string;
+  level: CEFRLevel | 'Todos';
+  defaultDuration: number;
+  defaultModality: 'video_call' | 'in_person' | 'audio_lab';
+  defaultCapacity: number;
+  curriculumUnit: string;
+  learningObjectives: string[];
+  suggestedMaterials: string[];
+  pedagogyTips: string;
+}
+
+// ========================
+// ADMIN USER / PROFILE DIRECTORY MANAGEMENT
+// ========================
+export type UserAccountStatus = 'Activo' | 'Inactivo' | 'Pendiente';
+
+export interface ManagedUserProfile {
+  uid: string;
+  displayName: string;
+  email: string;
+  phoneNumber?: string;
+  role: UserRole;
+  status: UserAccountStatus;
+  assignedLevel?: CEFRLevel | 'Multinivel' | string;
+  institutionOrDept?: string;
+  createdAt: string;
+  lastLogin?: string;
+  notes?: string;
+  studentId?: number;
 }

@@ -14,10 +14,13 @@ import {
   Baby,
   ChevronDown,
   ShieldCheck,
-  GraduationCap
+  GraduationCap,
+  Bell,
+  Rocket
 } from 'lucide-react';
 import { AuthUser, UserRole } from '../types';
 import { ROLE_CONFIGS } from '../services/authService';
+import { PWAInstallButton } from './PWAInstallButton';
 
 export type AppTab = 
   | 'dashboard' 
@@ -27,7 +30,8 @@ export type AppTab =
   | 'payments' 
   | 'scheduling' 
   | 'reports' 
-  | 'student_portal';
+  | 'student_portal'
+  | 'users_management';
 
 interface HeaderProps {
   currentTab: AppTab;
@@ -37,6 +41,8 @@ interface HeaderProps {
   onToggleSimulation: () => void;
   currentUser: AuthUser;
   onOpenAuthModal: () => void;
+  onOpenAlertModal?: () => void;
+  onOpenProductivizationModal?: () => void;
 }
 
 export const Header: React.FC<HeaderProps> = ({
@@ -46,7 +52,9 @@ export const Header: React.FC<HeaderProps> = ({
   liveSimulationActive,
   onToggleSimulation,
   currentUser,
-  onOpenAuthModal
+  onOpenAuthModal,
+  onOpenAlertModal,
+  onOpenProductivizationModal
 }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -86,9 +94,9 @@ export const Header: React.FC<HeaderProps> = ({
     },
     {
       id: 'scheduling',
-      label: 'Agendamiento & Recordatorios',
-      shortLabel: 'Clases',
-      icon: <Calendar className="w-4 h-4" />
+      label: 'Plantillas & Clases',
+      shortLabel: 'Docente',
+      icon: <GraduationCap className="w-4 h-4 text-indigo-400" />
     },
     {
       id: 'reports',
@@ -102,6 +110,13 @@ export const Header: React.FC<HeaderProps> = ({
       shortLabel: 'Mi Portal',
       badge: 'Kids',
       icon: <Baby className="w-4 h-4 text-amber-300" />
+    },
+    {
+      id: 'users_management',
+      label: 'Gestión de Perfiles',
+      shortLabel: 'Perfiles',
+      badge: 'Admin',
+      icon: <ShieldCheck className="w-4 h-4 text-rose-400" />
     }
   ];
 
@@ -179,11 +194,39 @@ export const Header: React.FC<HeaderProps> = ({
             </nav>
 
             {/* Right: Role indicator & Actions */}
-            <div className="flex items-center gap-2 sm:gap-3 shrink-0">
+            <div className="flex items-center gap-1.5 sm:gap-2.5 shrink-0">
+              {/* Productivization Guide Modal Trigger */}
+              {onOpenProductivizationModal && (
+                <button
+                  onClick={onOpenProductivizationModal}
+                  className="px-2.5 sm:px-3 py-1.5 rounded-lg bg-gradient-to-r from-emerald-600/20 to-indigo-600/20 hover:from-emerald-600/30 hover:to-indigo-600/30 text-emerald-300 border border-emerald-500/30 text-xs font-semibold flex items-center gap-1.5 transition-all shadow-sm"
+                  title="Ruta paso a paso para pasar la plataforma a producción real"
+                >
+                  <Rocket className="w-3.5 h-3.5 text-emerald-400" />
+                  <span className="hidden md:inline">Paso a Producción</span>
+                  <span className="md:hidden">Producción</span>
+                </button>
+              )}
+
+              {/* Alert Center Trigger */}
+              {onOpenAlertModal && (
+                <button
+                  onClick={onOpenAlertModal}
+                  className="p-1.5 sm:px-2.5 sm:py-1.5 rounded-lg bg-slate-950 border border-slate-800 hover:border-slate-700 text-slate-200 text-xs font-medium flex items-center gap-1.5 transition-all"
+                  title="Abrir Centro de Alertas por WhatsApp y Correo"
+                >
+                  <Bell className="w-3.5 h-3.5 text-indigo-400" />
+                  <span className="hidden sm:inline">Alertas</span>
+                </button>
+              )}
+
+              {/* PWA Install Button */}
+              <PWAInstallButton />
+
               {/* Role Indicator & Switcher Button */}
               <button
                 onClick={onOpenAuthModal}
-                className="px-2.5 sm:px-3 py-1.5 rounded-lg bg-slate-950 border border-slate-800 hover:border-slate-700 text-xs flex items-center gap-2 transition-all shadow-sm"
+                className="px-2 sm:px-2.5 py-1.5 rounded-lg bg-slate-950 border border-slate-800 hover:border-slate-700 text-xs flex items-center gap-1.5 transition-all shadow-sm"
                 title="Cambiar rol de usuario o ver credenciales RBAC"
               >
                 <div className="w-6 h-6 rounded-full bg-indigo-600 flex items-center justify-center text-white font-bold text-xs shrink-0">
@@ -197,32 +240,31 @@ export const Header: React.FC<HeaderProps> = ({
                     {roleConfig.badge}
                   </span>
                 </div>
-                <ChevronDown className="w-3.5 h-3.5 text-slate-400" />
+                <ChevronDown className="w-3 h-3 text-slate-400" />
               </button>
 
               {/* Live Streaming Toggle (Hidden on very small screens) */}
               <button
                 onClick={onToggleSimulation}
                 title={liveSimulationActive ? "Pausar adquisición de datos" : "Activar adquisición de datos"}
-                className={`hidden md:flex px-2.5 py-1.5 text-xs font-medium rounded-lg border transition-colors items-center gap-1.5 ${
+                className={`hidden lg:flex px-2 py-1.5 text-xs font-medium rounded-lg border transition-colors items-center gap-1.5 ${
                   liveSimulationActive
                     ? 'bg-emerald-950/60 border-emerald-600/50 text-emerald-300'
                     : 'bg-slate-800/80 border-slate-700 text-slate-400 hover:bg-slate-700'
                 }`}
               >
                 <span className={`w-2 h-2 rounded-full ${liveSimulationActive ? 'bg-emerald-400 animate-pulse' : 'bg-slate-500'}`} />
-                <span className="text-[11px]">{liveSimulationActive ? 'Stream ML' : 'Pausado'}</span>
+                <span className="text-[11px]">{liveSimulationActive ? 'Stream' : 'Pausa'}</span>
               </button>
 
               {/* Primary Action Button (Agendar Clase) if allowed */}
               {allowedTabs.includes('scheduling') && (
                 <button
                   onClick={onOpenScheduleModal}
-                  className="px-3 sm:px-3.5 py-1.5 text-xs font-semibold text-white bg-indigo-600 hover:bg-indigo-500 rounded-lg transition-colors flex items-center gap-1.5 shadow-sm shadow-indigo-600/30"
+                  className="px-2.5 sm:px-3 py-1.5 text-xs font-semibold text-white bg-indigo-600 hover:bg-indigo-500 rounded-lg transition-colors flex items-center gap-1.5 shadow-sm shadow-indigo-600/30"
                 >
                   <CalendarPlus className="w-3.5 h-3.5" />
-                  <span className="hidden sm:inline">Agendar Clase</span>
-                  <span className="sm:hidden">Agendar</span>
+                  <span className="hidden sm:inline">Agendar</span>
                 </button>
               )}
             </div>

@@ -2,9 +2,14 @@ import React, { useState } from 'react';
 import {
   StudentProfile,
   ScheduledClass,
-  PaymentRecord
+  PaymentRecord,
+  CEFRLevel
 } from '../types';
 import { formatCOP } from '../services/paymentService';
+import {
+  dispatchAlertAction,
+  AlertTemplates
+} from '../services/alertService';
 import {
   Calendar,
   Clock,
@@ -21,7 +26,13 @@ import {
   DollarSign,
   ChevronRight,
   ExternalLink,
-  Target
+  Target,
+  MessageSquare,
+  Mail,
+  UserCheck,
+  Users,
+  CheckCircle2,
+  AlertCircle
 } from 'lucide-react';
 
 interface StudentPortalViewProps {
@@ -30,6 +41,8 @@ interface StudentPortalViewProps {
   payment?: PaymentRecord;
   onRecordPracticeLesson?: (lessonName: string, duration: number, points: number) => void;
   onReportPayment?: () => void;
+  onToggleEnrollClass?: (classId: string) => void;
+  onOpenAlertCenter?: (type?: 'class_reminder' | 'payment_bre_b' | 'enrollment_confirmation' | 'diagnostic_report', cls?: ScheduledClass) => void;
 }
 
 export const StudentPortalView: React.FC<StudentPortalViewProps> = ({
@@ -37,9 +50,14 @@ export const StudentPortalView: React.FC<StudentPortalViewProps> = ({
   classes,
   payment,
   onRecordPracticeLesson,
-  onReportPayment
+  onReportPayment,
+  onToggleEnrollClass,
+  onOpenAlertCenter
 }) => {
   const [activeTab, setActiveTab] = useState<'classes' | 'progress' | 'homework' | 'kids' | 'payment'>('classes');
+  const [levelFilter, setLevelFilter] = useState<CEFRLevel | 'Todos' | 'MiNivel'>('MiNivel');
+  const [alertFeedback, setAlertFeedback] = useState<string | null>(null);
+
   const [completedTasks, setCompletedTasks] = useState<Record<string, boolean>>({
     task_1: true,
     task_2: false,
@@ -50,12 +68,60 @@ export const StudentPortalView: React.FC<StudentPortalViewProps> = ({
   const [isPlayingAudio, setIsPlayingAudio] = useState(false);
   const [practiceCompleted, setPracticeCompleted] = useState(false);
 
-  // Filter classes relevant to this student (either assigned directly, to their cluster, or to all)
-  const studentClasses = classes.filter(c => 
-    c.targetType === 'all' ||
-    (c.targetType === 'cluster' && c.targetId === student.clusterId) ||
-    (c.targetType === 'student' && c.targetId === student.id)
-  );
+  // Student is considered enrolled in a class if:
+  // 1. Their ID is in enrolledStudentIds
+  // 2. Or the class targetId matches their student ID
+  // 3. Or it's a general class assigned to all
+  const isStudentEnrolled = (cls: ScheduledClass): boolean => {
+    if (cls.enrolledStudentIds && cls.enrolledStudentIds.includes(student.id)) {
+      return true;
+    }
+    if (cls.targetType === 'student' && cls.targetId === student.id) {
+      return true;
+    }
+    return false;
+  };
+
+  // Classes student is enrolled in
+  const myEnrolledClasses = classes.filter(c => isStudentEnrolled(c));
+
+  // Available classes according to selected filter
+  const availableClasses = classes.filter(cls => {
+    if (levelFilter === 'MiNivel') {
+      return cls.level === student.cefrLevel || cls.level === 'Todos' || !cls.level;
+    }
+    if (levelFilter === 'Todos') {
+      return true;
+    }
+    return cls.level === levelFilter || cls.level === 'Todos';
+  });
+
+  const handleEnrollClick = (cls: ScheduledClass) => {
+    if (onToggleEnrollClass) {
+      onToggleEnrollClass(cls.id);
+    }
+  };
+
+  const handleQuickWhatsAppAlert = (cls: ScheduledClass) => {
+    const { subject, message } = AlertTemplates.classReminder(cls, student.full_name);
+    dispatchAlertAction('whatsapp', '3105558899', subject, message);
+    setAlertFeedback(`Recordatorio WhatsApp abierto para la clase: ${cls.title}`);
+    setTimeout(() => setAlertFeedback(null), 4000);
+  };
+
+  const handleQuickEmailAlert = (cls: ScheduledClass) => {
+    const { subject, message } = AlertTemplates.classReminder(cls, student.full_name);
+    dispatchAlertAction('email', student.email, subject, message);
+    setAlertFeedback(`Plantilla de correo generada para ${student.email}`);
+    setTimeout(() => setAlertFeedback(null), 4000);
+  };
+
+  const handleSendReportWhatsApp = () => {
+    const { subject, message } = AlertTemplates.diagnosticReport(student);
+    dispatchAlertAction('whatsapp', '3105558899', subject, message);
+    setAlertFeedback('Reporte pedagógico abierto en WhatsApp');
+    setTimeout(() => setAlertFeedback(null), 4000);
+  };
 
   const homeworkList = [
     {
@@ -131,8 +197,24 @@ export const StudentPortalView: React.FC<StudentPortalViewProps> = ({
 
   return (
     <div className="space-y-6">
+      {/* Alert Dispatch Feedback Notification Banner */}
+      {alertFeedback && (
+        <div className="p-3.5 rounded-xl bg-emerald-500/20 border border-emerald-500/40 text-emerald-300 text-xs flex items-center justify-between shadow-lg animate-fadeIn">
+          <div className="flex items-center gap-2">
+            <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
+            <span>{alertFeedback}</span>
+          </div>
+          <button
+            onClick={() => setAlertFeedback(null)}
+            className="text-xs text-emerald-400 hover:text-white"
+          >
+            ✕
+          </button>
+        </div>
+      )}
+
       {/* Welcome Banner */}
-      <div className="relative overflow-hidden rounded-xl bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 border border-indigo-900/50 p-6 shadow-xl">
+      <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 border border-indigo-900/50 p-6 shadow-xl">
         <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div>
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-indigo-500/20 text-indigo-300 border border-indigo-500/30 mb-2">
@@ -143,7 +225,7 @@ export const StudentPortalView: React.FC<StudentPortalViewProps> = ({
               ¡Hola, {student.full_name}! 👋
             </h1>
             <p className="text-xs md:text-sm text-slate-300 mt-1 max-w-xl">
-              Nivel actual: <strong className="text-indigo-400 font-mono">{student.cefrLevel}</strong> · Segmento: <span className="text-slate-200">{student.clusterName}</span> · {student.totalLessons} lecciones completadas
+              Nivel actual: <strong className="text-indigo-400 font-mono font-bold">{student.cefrLevel}</strong> · Segmento: <span className="text-slate-200">{student.clusterName}</span> · {student.totalLessons} lecciones completadas
             </p>
           </div>
 
@@ -161,7 +243,7 @@ export const StudentPortalView: React.FC<StudentPortalViewProps> = ({
         </div>
       </div>
 
-      {/* Navigation Tabs for Student Portal (Clean, Responsive, Mobile-first) */}
+      {/* Navigation Tabs for Student Portal */}
       <div className="flex overflow-x-auto gap-2 pb-2 border-b border-slate-800 scrollbar-none">
         <button
           onClick={() => setActiveTab('classes')}
@@ -172,7 +254,7 @@ export const StudentPortalView: React.FC<StudentPortalViewProps> = ({
           }`}
         >
           <Calendar className="w-4 h-4" />
-          <span>Mis Clases & Horarios ({studentClasses.length})</span>
+          <span>Clases por Nivel & Inscripciones ({myEnrolledClasses.length})</span>
         </button>
 
         <button
@@ -224,66 +306,291 @@ export const StudentPortalView: React.FC<StudentPortalViewProps> = ({
         </button>
       </div>
 
-      {/* TAB 1: MIS CLASES & HORARIOS */}
+      {/* TAB 1: CLASES POR NIVEL & INSCRIPCIONES */}
       {activeTab === 'classes' && (
-        <div className="space-y-4">
-          <div className="flex items-center justify-between">
-            <h2 className="text-sm font-bold text-white flex items-center gap-2">
-              <Calendar className="w-4 h-4 text-indigo-400" />
-              <span>Tus Próximas Clases y Talleres Programados</span>
-            </h2>
-            <span className="text-xs text-slate-400">
-              Notificaciones activadas vía Push y Correo
-            </span>
+        <div className="space-y-6">
+          {/* SECTION A: Mis Clases Confirmadas */}
+          <div className="space-y-3">
+            <div className="flex items-center justify-between">
+              <h2 className="text-sm font-bold text-white flex items-center gap-2">
+                <CheckCircle2 className="w-4 h-4 text-emerald-400" />
+                <span>Mis Clases Confirmadas en Horario ({myEnrolledClasses.length})</span>
+              </h2>
+              <span className="text-xs text-slate-400">
+                Tu cupo está reservado
+              </span>
+            </div>
+
+            {myEnrolledClasses.length === 0 ? (
+              <div className="p-6 rounded-xl bg-slate-900/60 border border-slate-800 text-center space-y-2">
+                <p className="text-xs text-slate-400">
+                  Aún no estás inscrito en ninguna clase de este período.
+                </p>
+                <p className="text-xs text-indigo-400 font-medium">
+                  👇 Explora abajo las clases recomendadas para tu nivel {student.cefrLevel} e inscríbete con un solo clic.
+                </p>
+              </div>
+            ) : (
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {myEnrolledClasses.map(cls => (
+                  <div
+                    key={cls.id}
+                    className="p-5 rounded-xl bg-slate-900 border border-indigo-500/30 hover:border-indigo-500/60 transition-all space-y-3 shadow-md relative overflow-hidden"
+                  >
+                    <div className="flex items-start justify-between gap-2">
+                      <div>
+                        <div className="flex items-center gap-2">
+                          <span className="px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 font-mono">
+                            Nivel {cls.level || student.cefrLevel} · Inscrito
+                          </span>
+                          <span className="px-2 py-0.5 rounded text-[10px] font-semibold bg-indigo-950 text-indigo-300 border border-indigo-800">
+                            {cls.modality === 'video_call' ? 'Videollamada' : 'Audio Lab'}
+                          </span>
+                        </div>
+                        <h3 className="text-sm font-bold text-white mt-1.5 leading-snug">
+                          {cls.title}
+                        </h3>
+                      </div>
+                      <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 shrink-0" title="Confirmada" />
+                    </div>
+
+                    <p className="text-xs text-slate-400">
+                      Materia: {cls.topic}
+                    </p>
+
+                    <div className="grid grid-cols-2 gap-2 p-3 rounded-lg bg-slate-950 border border-slate-800/80 text-xs">
+                      <div className="flex items-center gap-2 text-slate-300">
+                        <Clock className="w-3.5 h-3.5 text-indigo-400 shrink-0" />
+                        <span>{new Date(cls.dateTime).toLocaleDateString('es-CO', { weekday: 'short', day: 'numeric', month: 'short' })} · {new Date(cls.dateTime).toLocaleTimeString('es-CO', { hour: '2-digit', minute: '2-digit' })}</span>
+                      </div>
+                      <div className="flex items-center gap-2 text-slate-300">
+                        <Video className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+                        <span>{cls.durationMinutes} min · {cls.instructor}</span>
+                      </div>
+                    </div>
+
+                    {/* Alert & Reminder Triggers */}
+                    <div className="pt-2 border-t border-slate-800 flex flex-wrap items-center justify-between gap-2">
+                      <div className="flex items-center gap-2">
+                        <button
+                          type="button"
+                          onClick={() => handleQuickWhatsAppAlert(cls)}
+                          className="px-2.5 py-1.5 rounded-lg bg-emerald-600/20 hover:bg-emerald-600/30 text-emerald-300 border border-emerald-500/30 text-[11px] font-semibold flex items-center gap-1.5 transition-colors"
+                          title="Recibir o reenviar recordatorio a WhatsApp"
+                        >
+                          <MessageSquare className="w-3 h-3 fill-current" />
+                          <span>WhatsApp</span>
+                        </button>
+
+                        <button
+                          type="button"
+                          onClick={() => handleQuickEmailAlert(cls)}
+                          className="px-2.5 py-1.5 rounded-lg bg-indigo-600/20 hover:bg-indigo-600/30 text-indigo-300 border border-indigo-500/30 text-[11px] font-semibold flex items-center gap-1.5 transition-colors"
+                          title="Enviar detalles a mi correo"
+                        >
+                          <Mail className="w-3 h-3" />
+                          <span>Correo</span>
+                        </button>
+                      </div>
+
+                      <div className="flex items-center gap-2">
+                        <button
+                          type="button"
+                          onClick={() => handleEnrollClick(cls)}
+                          className="px-2.5 py-1 text-[11px] font-semibold text-rose-400 hover:text-rose-300 transition-colors"
+                          title="Liberar tu cupo en esta clase"
+                        >
+                          Cancelar cupo
+                        </button>
+
+                        <button
+                          type="button"
+                          onClick={() => alert(`Conectando a la sala en vivo de "${cls.title}" con ${cls.instructor}...`)}
+                          className="px-3.5 py-1.5 bg-indigo-600 hover:bg-indigo-500 text-white rounded-lg text-xs font-semibold flex items-center gap-1.5 transition-colors shadow-sm"
+                        >
+                          <Video className="w-3.5 h-3.5" />
+                          <span>Entrar a Clase</span>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {studentClasses.map(cls => (
-              <div
-                key={cls.id}
-                className="p-5 rounded-xl bg-slate-900 border border-slate-800 hover:border-slate-700 transition-all space-y-4 shadow-sm"
-              >
-                <div className="flex items-start justify-between gap-3">
-                  <div>
-                    <span className="px-2.5 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider bg-indigo-950 text-indigo-300 border border-indigo-800">
-                      {cls.modality === 'video_call' ? 'Videollamada en Vivo' : 'Laboratorio de Audio'}
-                    </span>
-                    <h3 className="text-sm font-bold text-white mt-1.5 leading-snug">
-                      {cls.title}
-                    </h3>
-                  </div>
-                  <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 shrink-0" title="Confirmada" />
-                </div>
-
-                <p className="text-xs text-slate-400 line-clamp-2">
-                  Tema: {cls.topic}
+          {/* SECTION B: Catálogo de Clases Disponibles según Nivel Académico */}
+          <div className="space-y-4 pt-4 border-t border-slate-800">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+              <div>
+                <h2 className="text-base font-bold text-white flex items-center gap-2">
+                  <BookOpen className="w-4 h-4 text-indigo-400" />
+                  <span>Catálogo de Clases Disponibles según Nivel Académico</span>
+                </h2>
+                <p className="text-xs text-slate-400 mt-0.5">
+                  Selecciona tu nivel o explora otros horarios propuestos para inscribirte de inmediato.
                 </p>
-
-                <div className="grid grid-cols-2 gap-2 p-3 rounded-lg bg-slate-950 border border-slate-800/80 text-xs">
-                  <div className="flex items-center gap-2 text-slate-300">
-                    <Clock className="w-3.5 h-3.5 text-indigo-400 shrink-0" />
-                    <span>{new Date(cls.dateTime).toLocaleDateString('es-ES', { weekday: 'short', day: 'numeric', month: 'short' })} · {new Date(cls.dateTime).toLocaleTimeString('es-ES', { hour: '2-digit', minute: '2-digit' })}</span>
-                  </div>
-                  <div className="flex items-center gap-2 text-slate-300">
-                    <Video className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
-                    <span>{cls.durationMinutes} min con {cls.instructor}</span>
-                  </div>
-                </div>
-
-                <div className="flex items-center justify-between pt-1">
-                  <div className="text-[11px] text-slate-500">
-                    {cls.attendeesCount} participantes · {cls.remindersSent.push ? '🔔 Recordatorio listo' : 'Aviso pendiente'}
-                  </div>
-                  <button
-                    onClick={() => alert(`Conectando a la sala en vivo: "${cls.title}" con ${cls.instructor}...`)}
-                    className="px-3.5 py-1.5 bg-indigo-600 hover:bg-indigo-500 text-white rounded-md text-xs font-semibold flex items-center gap-1.5 transition-colors shadow-sm"
-                  >
-                    <Video className="w-3.5 h-3.5" />
-                    <span>Entrar a Clase</span>
-                  </button>
-                </div>
               </div>
-            ))}
+
+              {onOpenAlertCenter && (
+                <button
+                  type="button"
+                  onClick={() => onOpenAlertCenter('class_reminder')}
+                  className="px-3 py-1.5 bg-slate-900 hover:bg-slate-850 text-indigo-400 border border-indigo-500/30 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition-colors"
+                >
+                  <MessageSquare className="w-3.5 h-3.5" />
+                  <span>Enviar Alerta a WhatsApp</span>
+                </button>
+              )}
+            </div>
+
+            {/* Level Filter Tabs */}
+            <div className="flex overflow-x-auto gap-1.5 pb-1 text-xs font-semibold scrollbar-none">
+              <button
+                onClick={() => setLevelFilter('MiNivel')}
+                className={`px-3 py-1.5 rounded-lg whitespace-nowrap transition-colors flex items-center gap-1.5 ${
+                  levelFilter === 'MiNivel'
+                    ? 'bg-indigo-600 text-white shadow-sm'
+                    : 'bg-slate-900 text-slate-400 hover:text-white'
+                }`}
+              >
+                <Sparkles className="w-3 h-3 text-amber-300" />
+                <span>Recomendadas para Mi Nivel ({student.cefrLevel})</span>
+              </button>
+
+              {(['A1', 'A2', 'B1', 'B2', 'C1', 'Todos'] as const).map(lvl => (
+                <button
+                  key={lvl}
+                  onClick={() => setLevelFilter(lvl)}
+                  className={`px-3 py-1.5 rounded-lg whitespace-nowrap transition-colors ${
+                    levelFilter === lvl
+                      ? 'bg-indigo-600 text-white shadow-sm'
+                      : 'bg-slate-900 text-slate-400 hover:text-white'
+                  }`}
+                >
+                  {lvl === 'Todos' ? 'Todas' : `Nivel ${lvl}`}
+                </button>
+              ))}
+            </div>
+
+            {/* Available Classes Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+              {availableClasses.map(cls => {
+                const enrolled = isStudentEnrolled(cls);
+                const capacity = cls.capacity || 15;
+                const currentCount = cls.enrolledStudentIds?.length || cls.attendeesCount || 0;
+                const spotsLeft = Math.max(0, capacity - currentCount);
+                const percentFull = Math.min(100, Math.round((currentCount / capacity) * 100));
+
+                return (
+                  <div
+                    key={cls.id}
+                    className={`p-4 rounded-xl border transition-all flex flex-col justify-between gap-3 ${
+                      enrolled
+                        ? 'bg-slate-900/90 border-indigo-500/50 shadow-md ring-1 ring-indigo-500/20'
+                        : 'bg-slate-900 border-slate-800 hover:border-slate-700'
+                    }`}
+                  >
+                    <div className="space-y-2">
+                      <div className="flex items-center justify-between">
+                        <span className="px-2 py-0.5 rounded text-[10px] font-bold uppercase font-mono bg-indigo-500/20 text-indigo-300 border border-indigo-500/30">
+                          {cls.level ? `Nivel ${cls.level}` : 'Multinivel'}
+                        </span>
+                        <span className="text-[11px] font-mono text-slate-400">
+                          {cls.durationMinutes} min
+                        </span>
+                      </div>
+
+                      <h4 className="text-sm font-bold text-white leading-snug">
+                        {cls.title}
+                      </h4>
+
+                      <p className="text-xs text-slate-400 line-clamp-2">
+                        {cls.topic}
+                      </p>
+
+                      <div className="space-y-1 text-xs pt-1">
+                        <div className="flex items-center gap-1.5 text-slate-300">
+                          <Calendar className="w-3.5 h-3.5 text-indigo-400" />
+                          <span>{new Date(cls.dateTime).toLocaleDateString('es-CO', { weekday: 'short', day: 'numeric', month: 'short' })} a las {new Date(cls.dateTime).toLocaleTimeString('es-CO', { hour: '2-digit', minute: '2-digit' })}</span>
+                        </div>
+                        <div className="flex items-center gap-1.5 text-slate-400">
+                          <Users className="w-3.5 h-3.5 text-slate-500" />
+                          <span>Prof. {cls.instructor}</span>
+                        </div>
+                      </div>
+
+                      {/* Capacity Bar */}
+                      <div className="pt-1 space-y-1">
+                        <div className="flex items-center justify-between text-[11px]">
+                          <span className="text-slate-400">Cupos Disponibles:</span>
+                          <span className={`font-mono font-bold ${spotsLeft <= 3 ? 'text-amber-400' : 'text-emerald-400'}`}>
+                            {spotsLeft} de {capacity} libres
+                          </span>
+                        </div>
+                        <div className="w-full h-1.5 rounded-full bg-slate-800 overflow-hidden">
+                          <div
+                            className={`h-full rounded-full transition-all duration-300 ${
+                              spotsLeft <= 3 ? 'bg-amber-400' : 'bg-emerald-400'
+                            }`}
+                            style={{ width: `${percentFull}%` }}
+                          />
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Subscription Button */}
+                    <div className="pt-2 border-t border-slate-800/80">
+                      {enrolled ? (
+                        <div className="space-y-2">
+                          <div className="p-2 rounded-lg bg-emerald-500/10 border border-emerald-500/20 text-emerald-300 text-xs flex items-center justify-between">
+                            <span className="flex items-center gap-1.5 font-semibold">
+                              <CheckCircle className="w-3.5 h-3.5 text-emerald-400" />
+                              <span>Inscrito en este horario</span>
+                            </span>
+                            <button
+                              onClick={() => handleEnrollClick(cls)}
+                              className="text-[11px] text-rose-400 hover:text-rose-300 underline font-medium"
+                            >
+                              Cancelar
+                            </button>
+                          </div>
+                          <div className="grid grid-cols-2 gap-2 text-xs">
+                            <button
+                              onClick={() => handleQuickWhatsAppAlert(cls)}
+                              className="py-1.5 px-2 rounded bg-emerald-600/20 hover:bg-emerald-600/30 text-emerald-300 border border-emerald-500/30 text-[11px] font-semibold flex items-center justify-center gap-1"
+                            >
+                              <MessageSquare className="w-3 h-3 fill-current" />
+                              <span>WhatsApp</span>
+                            </button>
+                            <button
+                              onClick={() => handleQuickEmailAlert(cls)}
+                              className="py-1.5 px-2 rounded bg-indigo-600/20 hover:bg-indigo-600/30 text-indigo-300 border border-indigo-500/30 text-[11px] font-semibold flex items-center justify-center gap-1"
+                            >
+                              <Mail className="w-3 h-3" />
+                              <span>Correo</span>
+                            </button>
+                          </div>
+                        </div>
+                      ) : (
+                        <button
+                          onClick={() => handleEnrollClick(cls)}
+                          disabled={spotsLeft === 0}
+                          className={`w-full py-2 px-3 rounded-lg text-xs font-bold flex items-center justify-center gap-2 transition-all ${
+                            spotsLeft === 0
+                              ? 'bg-slate-800 text-slate-500 cursor-not-allowed'
+                              : 'bg-indigo-600 hover:bg-indigo-500 text-white shadow-md'
+                          }`}
+                        >
+                          <UserCheck className="w-3.5 h-3.5" />
+                          <span>{spotsLeft === 0 ? 'Cupos Agotados' : 'Inscribirme en este Horario'}</span>
+                        </button>
+                      )}
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
           </div>
         </div>
       )}
@@ -291,6 +598,17 @@ export const StudentPortalView: React.FC<StudentPortalViewProps> = ({
       {/* TAB 2: MI PROGRESO & HABILIDADES */}
       {activeTab === 'progress' && (
         <div className="space-y-5">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+            <h3 className="text-sm font-bold text-white">Resumen Pedagógico de Competencias</h3>
+            <button
+              onClick={handleSendReportWhatsApp}
+              className="px-3 py-1.5 rounded-lg bg-emerald-600/20 hover:bg-emerald-600/30 text-emerald-300 border border-emerald-500/30 text-xs font-semibold flex items-center gap-1.5 self-start sm:self-auto"
+            >
+              <MessageSquare className="w-3.5 h-3.5 fill-current" />
+              <span>Enviar Reporte a WhatsApp</span>
+            </button>
+          </div>
+
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             <div className="p-4 rounded-xl bg-slate-900 border border-slate-800">
               <span className="text-xs text-slate-400 block mb-1">Nivel MCER (CEFR)</span>
@@ -565,15 +883,29 @@ export const StudentPortalView: React.FC<StudentPortalViewProps> = ({
                 </h3>
               </div>
 
-              {onReportPayment && (
+              <div className="flex items-center gap-2">
                 <button
-                  onClick={onReportPayment}
-                  className="px-4 py-2 bg-emerald-600 hover:bg-emerald-500 text-white rounded-lg text-xs font-semibold flex items-center gap-2 transition-colors shadow-sm"
+                  onClick={() => {
+                    const { subject, message } = AlertTemplates.paymentBreB(student.full_name, 200000, payment?.dueDate, payment?.referenceNumber);
+                    dispatchAlertAction('whatsapp', '3105558899', subject, message);
+                  }}
+                  className="px-3 py-2 bg-emerald-600/20 hover:bg-emerald-600/30 text-emerald-300 border border-emerald-500/30 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition-colors"
+                  title="Enviar comprobante o consultar por WhatsApp"
                 >
-                  <DollarSign className="w-4 h-4" />
-                  <span>Reportar Pago Realizado</span>
+                  <MessageSquare className="w-4 h-4 fill-current" />
+                  <span>Enviar por WhatsApp</span>
                 </button>
-              )}
+
+                {onReportPayment && (
+                  <button
+                    onClick={onReportPayment}
+                    className="px-4 py-2 bg-emerald-600 hover:bg-emerald-500 text-white rounded-lg text-xs font-semibold flex items-center gap-2 transition-colors shadow-sm"
+                  >
+                    <DollarSign className="w-4 h-4" />
+                    <span>Reportar Pago Realizado</span>
+                  </button>
+                )}
+              </div>
             </div>
 
             <div className="p-4 rounded-lg bg-emerald-950/20 border border-emerald-500/30 text-xs text-emerald-300 space-y-2">

@@ -24,7 +24,8 @@ import {
   Send,
   CreditCard,
   Settings2,
-  X
+  X,
+  Mail
 } from 'lucide-react';
 
 interface PaymentsViewProps {
@@ -545,6 +546,18 @@ export const PaymentsView: React.FC<PaymentsViewProps> = ({
                         >
                           <Send className="w-3 h-3" />
                           <span>WhatsApp</span>
+                        </a>
+
+                        {/* Correo Cobro */}
+                        <a
+                          href={`mailto:${p.studentEmail}?subject=${encodeURIComponent(`Cobro Mensualidad Bre-B ($200.000 COP) - ${p.period}`)}&body=${encodeURIComponent(`Hola ${p.studentName},\n\nTe recordamos el pago de tu mensualidad de $200.000 COP para ${p.period}.\n\nPuedes pagar sin comisión a través de nuestra Llave Bre-B: ${config.breBKeyValue} o a Nequi/Daviplata: ${config.nequiNumber}.\n\nReferencia: ${p.referenceNumber || 'BREB-2026'}.\n\n¡Gracias!`)}`}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="px-2 py-1 rounded bg-indigo-600/20 hover:bg-indigo-600/30 text-indigo-300 border border-indigo-500/30 text-[11px] font-medium inline-flex items-center gap-1 transition-colors"
+                          title="Enviar detalles de pago por Correo Electrónico"
+                        >
+                          <Mail className="w-3 h-3" />
+                          <span>Correo</span>
                         </a>
 
                         {/* Validar / Registrar Comprobante */}
